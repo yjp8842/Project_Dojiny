@@ -1,0 +1,88 @@
+@font-face {
+  font-family: 'behind';
+  src: url('../font/LINESeedKR-Bd.ttf') format('truetype');
+}
+
+body {
+  background-color: black;
+  height: 98vh;
+  font-family: behind;
+}
+
+a {
+  text-decoration: none;
+  color: white;
+  font-size: 30px;
+  display: flex;
+  justify-content: flex-end;
+}
+
+.nav {
+  width: 135vh;
+  height: 100px;
+  margin-top: 0;
+  padding-left: 3%;
+  padding-top: 8%;
+  background-image: url("../images/behinds.jpg");
+  font-size: 3em;
+  color: white;
+}
+
+.img {
+  width: 50px;
+  height: 50px;
+  margin-right: 50px;
+}
+
+.box {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  height: calc(98vh - 260px);
+}
+
+.select-box {
+  display: flex;
+  justify-content: center;
+  margin-top: 50px;
+  height: 30px;
+}
+
+.form-box {
+  height: calc(98vh - 400px);
+}
+
+.select {
+  padding: 5px 25px 5px 10px;
+  border-radius: 20px;
+  outline: 0 none;
+  font-family: behind;
+}
+
+.select option {
+  background: black;
+  color: #fff;
+  padding: 3px 0;
+  font-family: behind;
+}
+
+.input {
+  width: 250px;
+  margin-left: 80px;
+  margin-right: 20px;
+  border-top: none;
+  border-left: none;
+  border-right: none;
+  border-bottom: 2px solid #f5f5f5;
+  background: transparent;
+  caret-color: #f5f5f5;
+}
+
+.input:focus {
+  outline: none;
+}
+
+.search {
+  width: 30px;
+  height: 30px;
+}

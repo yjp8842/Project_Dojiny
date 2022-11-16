@@ -1,0 +1,63 @@
+@font-face {
+  font-family: 'title';
+  src: url('../font/PPWoodland-Bold.otf') format('truetype');
+}
+
+@keyframes fadeUp {
+  0% {
+    opacity: 0;
+    transform: translate3d(0, 100%, 0);
+  }
+  to {
+    opacity: 1;
+    transform: translateZ(0);
+  }
+}
+
+body {
+  background-color: black;
+  font-family: title;
+  height: 98vh;
+}
+
+img {
+  width: 480px;
+  height: 780px;
+  margin-top: 50vh;
+  border-top-left-radius: 300px;
+  border-top-right-radius: 300px;
+  opacity: 0.3;
+  position: relative;
+}
+
+a {
+  text-decoration: none;
+  color: white;
+}
+
+.login {
+  font-size: 27px !important;
+  position: relative;
+  top: -750px;
+  animation: fadeUp 5s;
+}
+
+.box {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.title {
+  width: 80vh;
+  color: white;
+  font-family: title;
+  font-size: 5em;
+  text-align: center;
+  position: relative;
+  top: -850px;
+  animation: fadeUp 2.5s;
+}

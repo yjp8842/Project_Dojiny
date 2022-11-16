@@ -1,0 +1,11 @@
+{% extends 'base.html' %}
+{% block content %}
+  <h1>{{ movie.title }}</h1>
+  <img src="https://image.tmdb.org/t/p/w500{{ movie.poster_path }}" style="width:200px; height:200px;" alt="movie img">
+  <p>!!장르 일단 보류!!</p>
+  <p>{{ movie.runtime }} 분</p>
+  <p>평점 {{ vote_average }}</p>
+  <p>{{ director }}</p>
+  <p>{{ movie.overview }}</p>
+  <a href="{% url 'movies:index' %}">[back]</a>
+{% endblock content %}

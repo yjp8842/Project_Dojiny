@@ -1,0 +1,29 @@
+{% extends 'base.html' %}
+
+{% block css %}
+  <link rel="stylesheet" href="style.css">
+{% endblock css %}
+
+{% block content %}
+  <h1>SIGN UP</h1>    
+  <h1>SIGN IN</h1>
+  <form action="{% url 'accounts:signup' %}" method="POST">
+      {% csrf_token %}
+      {% comment %} <label for="name">Name: </label>
+      <input type="text" name="name" id="name" placeholder = "이메일">
+      <label for="nickname">Nickname: </label>
+      <input type="text" name="nickname" id="nickname" placeholder = "닉네임">
+      <label for="password">Password: </label>
+      <input type="text" name="password" id="password" placeholder = "비밀번호">
+      <label for="email">Email: </label>
+      <input type="text" name="email" id="email" placeholder = "비밀번호"> {% endcomment %}
+      {% comment %} <p>{{ form.nickname.label_tag }}</p>
+      <p>{{ form.nickname }}</p>
+      <p>{{ form.username }}</p>
+      <p>{{ form.email }}</p>
+      <p>{{ form.password }}</p> {% endcomment %}
+      {{ form.as_p }}
+      <p>감독 인증이 필요하신 분들은 _____@gmail.com으로 필요한 서류를 제출하시길 바랍니다.</p>
+      <input type="submit" value="SIGN UP">
+  </form>
+{% endblock content %}

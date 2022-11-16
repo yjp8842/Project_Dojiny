@@ -1,0 +1,396 @@
+[
+    {
+        "model": "movies.movie",
+        "fields": {
+            "movie_id": 505642,
+            "original_title": "Black Panther: Wakanda Forever",
+            "title": "블랙 팬서: 와칸다 포에버",
+            "overview": "국왕이자 블랙 팬서인 티찰라의 죽음 이후 수많은 강대국으로부터 위협을 받게 된 와칸다. 라몬다, 슈리 그리고 나키아, 오코예, 음바쿠는 각자 사명감을 갖고 와칸다를 지키기 위해 외로운 싸움을 이어간다. 한편, 비브라늄의 패권을 둘러싼 미스터리한 음모와 함께 깊은 해저에서 모습을 드러낸 최강의 적 네이머와 탈로칸의 전사들은 와칸다를 향해 무차별 공격을 퍼붓기 시작하는데…",
+            "genres": [
+                "액션",
+                "모험",
+                "SF"
+            ],
+            "release_date": "2022-11-09",
+            "vote_average": 7.6,
+            "backdrop_path": "/yYrvN5WFeGYjJnRzhY0QXuo4Isw.jpg",
+            "runtime": 162,
+            "director": "Ryan Coogler",
+            "poster_path": "/mEf7JUktBcr229QSXeEN6TbV6I2.jpg"
+        }
+    },
+    {
+        "model": "movies.movie",
+        "fields": {
+            "movie_id": 436270,
+            "original_title": "Black Adam",
+            "title": "블랙 아담",
+            "overview": "기원전 가장 번성하고 위대한 고대 국가였지만 현재는 국제 군사 조직 인터갱의 독재 국가로 전락한 칸다크. 인터갱의 눈을 피해 고대 유물을 찾던 '아드리아나'는 우연히 5000년 동안 잠들어 있던 '블랙 아담'을 깨우게 된다.  엄청난 괴력과 스피드, 방탄 능력과 자유자재의 고공비행, 번개를 쏘는 능력까지. 온몸이 무기인 '블랙 아담'은 자신의 앞을 막아서는 인터갱들을 모조리 쓸어버리고 칸다크 국민들은 이에 열광한다. 한편, 그의 폭주를 막기 위해 호크맨, 닥터 페이트, 아톰 스매셔, 사이클론으로 구성된 히어로 군단 '저스티스 소사이어티'가 칸다크에 나타나는데...",
+            "genres": [
+                "액션",
+                "판타지",
+                "SF"
+            ],
+            "release_date": "2022-10-19",
+            "vote_average": 6.9,
+            "backdrop_path": "/bQXAqRx2Fgc46uCVWgoPz5L5Dtr.jpg",
+            "runtime": 125,
+            "director": "Jaume Collet-Serra",
+            "poster_path": "/mEdMHGy1FfCUc7PskFO0tibm8jp.jpg"
+        }
+    },
+    {
+        "model": "movies.movie",
+        "fields": {
+            "movie_id": 882598,
+            "original_title": "Smile",
+            "title": "스마일",
+            "overview": "기괴한 미소를 지으며 자신의 눈 앞에서 목숨을 끊는 환자를 목격한 정신과 의사 ‘로즈’. 그날 이후로 ‘로즈’의 일상에 설명할 수 없는 끔찍한 일들이 잇따라 발생한다. 일상을 덮친 공포에 발버둥치던 ‘로즈’는 이전에도 자신과 같은 일을 겪은 사람들이 있었고 그들 모두 끔찍한 죽음을 피할 수 없었다는 사실을 알게 된다. 시시각각 다가오는 죽음에서 벗어나기 위해 사투를 벌이던 로즈는 잊고 싶던 과거와 마주하게 되는데…",
+            "genres": [
+                "공포",
+                "미스터리",
+                "스릴러"
+            ],
+            "release_date": "2022-10-06",
+            "vote_average": 6.7,
+            "backdrop_path": "/olPXihyFeeNvnaD6IOBltgIV1FU.jpg",
+            "runtime": 115,
+            "director": "Parker Finn",
+            "poster_path": "/8ncuVFt4e0M2NTTsoPtbxfWN5dO.jpg"
+        }
+    },
+    {
+        "model": "movies.movie",
+        "fields": {
+            "movie_id": 634649,
+            "original_title": "Spider-Man: No Way Home",
+            "title": "스파이더맨: 노 웨이 홈",
+            "overview": "미스테리오의 계략으로 세상에 정체가 탄로난 스파이더맨 피터 파커는 하루 아침에 평범한 일상을 잃게 된다. 문제를 해결하기 위해 닥터 스트레인지를 찾아가 도움을 청하지만 뜻하지 않게 멀티버스가 열리면서 각기 다른 차원의 불청객들이 나타난다. 닥터 옥토퍼스를 비롯해 스파이더맨에게 깊은 원한을 가진 숙적들의 강력한 공격에 피터 파커는 사상 최악의 위기를 맞게 되는데…",
+            "genres": [
+                "액션",
+                "모험",
+                "SF"
+            ],
+            "release_date": "2021-12-15",
+            "vote_average": 8,
+            "backdrop_path": "/14QbnygCuTO0vl7CAFmPf1fgZfV.jpg",
+            "runtime": 148,
+            "director": "Jon Watts",
+            "poster_path": "/voddFVdjUoAtfoZZp2RUmuZILDI.jpg"
+        }
+    },
+    {
+        "model": "movies.movie",
+        "fields": {
+            "movie_id": 799379,
+            "original_title": "늑대사냥",
+            "title": "늑대사냥",
+            "overview": "동남아시아로 도피한 인터폴 수배자들을 이송할 움직이는 교도소 프론티어 타이탄. 극악무도한 이들과 베테랑 형사들이 필리핀 마닐라 항구에 모이고 탈출을 꿈꾸는 종두, 한국으로 돌아가야만 하는 도일을 비롯해 이들은 각자의 목적과 경계심을 품고 탑승한다. 한국으로 향하던 중, 태평양 한 가운데에서 이들에게는 지금까지 보지 못한 극한의 상황과 마주하게 되는데…",
+            "genres": [
+                "SF",
+                "액션",
+                "스릴러"
+            ],
+            "release_date": "2022-09-28",
+            "vote_average": 6.9,
+            "backdrop_path": "/gEpeM4hrAcyzlO223DJQ7BKjuW9.jpg",
+            "runtime": 122,
+            "director": "김홍선",
+            "poster_path": "/op2y1gvqKhAh4yAPLwc4PlX3XRv.jpg"
+        }
+    },
+    {
+        "model": "movies.movie",
+        "fields": {
+            "movie_id": 800939,
+            "original_title": "Ticket to Paradise",
+            "title": "티켓 투 파라다이스",
+            "overview": "한때, 미치게 사랑했지만 지금은 인생의 원수가 되어버린 이혼한 부부 ‘조지아’(줄리아 로버츠)와 ‘데이빗’(조지 클루니).  대학을 졸업하고 변호사로 대형 로펌 입사를 앞둔 딸 ‘릴리’(케이틀린 디버)가 여행지 발리에서 만난 운명 같은 사랑과 결혼을 선포하자 딸이 자신들과 같은 실수를 반복하는 걸 볼 수 없는 그들은 어쩔 수 없이 동맹을 맺고 결혼을 막으려는 계획을 세우게 된다.  그러나 거듭되는 작전에도 불구하고 딸 ‘릴리’의 결혼식은 순조롭게만 진행되고 같은 목표를 향해 합심하는 이들도 서로에게 조금씩 감정의 변화가 생기게 되는데... 이혼 커플의 딸 결혼 반대 프로젝트는 성공할 수 있을까?",
+            "genres": [
+                "로맨스",
+                "코미디"
+            ],
+            "release_date": "2022-10-12",
+            "vote_average": 7,
+            "backdrop_path": "/ulyR4pWVMRtVcanoassVbmgfEPT.jpg",
+            "runtime": 104,
+            "director": "Ol Parker",
+            "poster_path": "/sjfzr7bNLMw4u2HaTdRUxhDspuw.jpg"
+        }
+    },
+    {
+        "model": "movies.movie",
+        "fields": {
+            "movie_id": 541134,
+            "original_title": "The Good Nurse",
+            "title": "그 남자, 좋은 간호사",
+            "overview": "과도한 업무로 지친 중환자실 간호사. 다행히 새로 온 동료가 직장과 집에서 힘이 되어주고 있다. 하지만 한 환자가 의문사를 당하면서 좋은 사람인 줄 알았던 동료 간호사가 달리 보이기 시작하는데.",
+            "genres": [
+                "드라마",
+                "범죄",
+                "미스터리"
+            ],
+            "release_date": "2022-10-19",
+            "vote_average": 7.1,
+            "backdrop_path": "/rV0xrSgkOQj2EpiG8n16VHHJeg3.jpg",
+            "runtime": 121,
+            "director": "Tobias Lindholm",
+            "poster_path": "/cC1wNkQpvdkQPqmY5Io9HzglrlB.jpg"
+        }
+    },
+    {
+        "model": "movies.movie",
+        "fields": {
+            "movie_id": 999205,
+            "original_title": "Stowaway",
+            "title": "더 요트",
+            "overview": "최근 가석방된 벨라 덴튼(루비 로즈)은 아버지의 동료라는 미서(프랭크 그릴로)에게서 오래전 연락이 끊긴 아버지의 죽음에 관한 소식과 자신에게 남겼다는 초호화 요트를 인수해 가라는 전화를 받고 미시시피로 향한다. 그곳에서 뜻밖의 행운을 자축하던 벨라는 세계 일주 중인 미첼(패트릭 슈왈제네거)을 만나 요트에서 함께 밤을 보낸다.  같은 시각, 괴한들이 침입해 정박 중이던 요트를 출항시키고, 망망대해에 홀로 남겨진 벨라는 요트에 감춰진 엄청난 진실을 마주하게 되는데…!",
+            "genres": [
+                "스릴러",
+                "액션"
+            ],
+            "release_date": "2022-10-20",
+            "vote_average": 6.9,
+            "backdrop_path": "/tviTAFuCFRLElylvBAMPjdRnCDZ.jpg",
+            "runtime": 94,
+            "director": "Declan Whitebloom",
+            "poster_path": "/lDzoW7XAi10TkGXIswqw3nMyOqd.jpg"
+        }
+    },
+    {
+        "model": "movies.movie",
+        "fields": {
+            "movie_id": 848123,
+            "original_title": "Black Site",
+            "title": "블랙 사이트",
+            "overview": "터키 이스탄불의 병원 폭발 사고로 사랑하는 남편과 딸을 잃은 CIA 소속 분석가 ‘애비(미셸 모나한)’는 폭발 사고의 원인을 밝히기 위해 테러리스트를 수용하고 심문하는 블랙 사이트 ‘시타델’의 책임자가 된다. 자료를 분석하고 범인으로 의심되는 ‘파한’을 심문하던 어느 날, 살상을 일삼아 악명이 높은 ‘해쳇(제이슨 클라크)’이 공범인 것을 밝혀낸다. 결국 체포된 ‘해쳇’은 심문 도중 내부 공모자의 도움으로 시타델에서 탈출하기 위해 요원들을 제거해 나간다. 본부와의 연락도 끊기고 시설은 강제 폐쇄되면서 ‘애비’와 요원들은 고립된다. 미로와 같은 블랙 사이트에서 ‘해쳇’의 얼굴을 모르는 ‘애비’는 아무도 믿을 수 없는 목숨을 건 쫓고 쫓기는 액션이 시작되는데…",
+            "genres": [
+                "액션",
+                "스릴러"
+            ],
+            "release_date": "2022-11-02",
+            "vote_average": 6.9,
+            "backdrop_path": "/6FbWhRR5B7OWVgzXuTkIFiaI2N3.jpg",
+            "runtime": 99,
+            "director": "Sophia Banks",
+            "poster_path": "/2iKZNSMGMMJMJCPBP2zanLUsdru.jpg"
+        }
+    },
+    {
+        "model": "movies.movie",
+        "fields": {
+            "movie_id": 682507,
+            "original_title": "Where the Crawdads Sing",
+            "title": "가재가 노래하는 곳",
+            "overview": "어렸을 때 가족에게 버림받고 자연만이 유일한 친구였던 카야. 그녀가 세상과 단절된 채 성장하는 가운데, 테이트가 그녀의 마음을 두드린다. 하지만 그가 떠난 뒤, 밀려오는 외로움 속, 체이스가 그녀에게 적극적인 고백을 하고, 마음이 흔들리기 시작한다. 그러던 어느 날, 체이스는 습지에서 추락사로 싸늘한 시체로 발견되고 카야는 유력한 용의자가 되어 법정에 서게 되는데…  그녀의 비밀이 숨겨져 있는  가재가 노래하는 곳.",
+            "genres": [
+                "드라마",
+                "미스터리",
+                "스릴러"
+            ],
+            "release_date": "2022-11-02",
+            "vote_average": 7.7,
+            "backdrop_path": "/7Y3LdmsZukXhmwxtO0UF95BFBTt.jpg",
+            "runtime": 125,
+            "director": "Olivia Newman",
+            "poster_path": "/8wIKnUgj6Sa7j84FJMhDZjeFdNy.jpg"
+        }
+    },
+    {
+        "model": "movies.movie",
+        "fields": {
+            "movie_id": 545611,
+            "original_title": "Everything Everywhere All at Once",
+            "title": "에브리씽 에브리웨어 올 앳 원스",
+            "overview": "남편과 세탁소를 운영하며 근근히 살아가고 있는 이민자 이블린 왕. 20대 시절 남편과 순수한 사랑을 불태우며 모든 것을 뒤로 하고 미국으로 이민을 떠났지만, 50대가 된 지금은 세탁소 운영 등 온갖 일로 허덕이며 단란했던 가족과도 삐그덕거리는 등 고달프게 살고 있다. 세무조사를 받던 중 자신이 멀티버스의 여러 다른 자신들과 연결되어 있음을 알게 되고, 강력한 악의 기운으로부터 모든 우주와 가족을 구해내기 위한 모험에 나서게 되는데......",
+            "genres": [
+                "액션",
+                "모험",
+                "SF"
+            ],
+            "release_date": "2022-10-12",
+            "vote_average": 8.1,
+            "backdrop_path": "/wIR3QRwBhSuss0Nps03XKIHN5dD.jpg",
+            "runtime": 140,
+            "director": "Daniel Kwan",
+            "poster_path": "/aCW0sC55bFnOaUBP2eUGryvAJXf.jpg"
+        }
+    },
+    {
+        "model": "movies.movie",
+        "fields": {
+            "movie_id": 588921,
+            "original_title": "AINBO: Spirit of the Amazon",
+            "title": "아인보: 아마존의 전설",
+            "overview": "신비의 숲 아마존 깊은 곳에 위치한 칸다모 마을. 생명과 자연의 아름다움이 넘치던 칸다모는  전설 속 악마 야쿠루나의 끔찍한 저주로 위험에 빠진다.  최고의 사냥꾼을 꿈꾸는 소녀 ‘아인보’는 아마존을 구하기 위해 자칭(?) 정령 안내자 ‘딜로’와 ‘바카’와 함께 정글의 수호자 ‘모텔로 마마’를 찾아 떠난다.  아마존의 숨겨진 비밀에 다가갈수록 ‘아인보’ 자신이 생명의 땅을 되돌릴 선택 받은 존재라는 것을 알게 되는데…",
+            "genres": [
+                "모험",
+                "애니메이션",
+                "가족",
+                "판타지"
+            ],
+            "release_date": "2022-10-26",
+            "vote_average": 7,
+            "backdrop_path": "/v4NDRjYO3HYj8nt321BEZB65tWl.jpg",
+            "runtime": 84,
+            "director": "Richard Claus",
+            "poster_path": "/1xGd3BYMIAcEcBvJfyItuogWVPW.jpg"
+        }
+    },
+    {
+        "model": "movies.movie",
+        "fields": {
+            "movie_id": 754609,
+            "original_title": "Mrs. Harris Goes to Paris",
+            "title": "미시즈 해리스 파리에 가다",
+            "overview": "1957년 런던, 전쟁에 나간 남편이 돌아오길 기다리며 살고 있는 ‘해리스’는  청소부로 일하던 가정집 부인의 값비싼 디올 드레스를 발견하고 아름다움에 빠진다.  이후 오랜 시간 기다려온 남편의 전사 소식을 듣게 된 ‘해리스’는 이제는 자신을 위한 삶을 살겠다고 다짐하며 벌어온 돈을 모아 막연히 꿈만 꾸었던 디올 드레스를 사기 위해 파리 여행을 결심한다.  하지만 설레는 마음도 잠시, 파리의 디올 매장에서 무시를 당하는 등 예상치 못한 일들을 겪게 되는데…",
+            "genres": [
+                "코미디",
+                "드라마"
+            ],
+            "release_date": "2022-11-02",
+            "vote_average": 7.5,
+            "backdrop_path": "/AhkirfgU32n0D1uxpaGYJEKy2Hu.jpg",
+            "runtime": 116,
+            "director": "Anthony Fabian",
+            "poster_path": "/x37ixiGQr3I6tERKb5OJfx0d0RV.jpg"
+        }
+    },
+    {
+        "model": "movies.movie",
+        "fields": {
+            "movie_id": 283566,
+            "original_title": "シン・エヴァンゲリオン劇場版:||",
+            "title": "신 에반게리온 극장판 리피트",
+            "overview": "‘에반게리온’ 신극장판 시리즈의 제4부이자 완결편  미사토가 이끄는 반네르프 조직 ‘빌레’는 코어화로 붉게 물든 파리 구시가에 있다.  기함 AAA 분더에서 선발대가 강하하여, 남겨져 있던 봉인주에 안착한다.  복원 작전의 작업 가능 시간은 고작 720초.  결사의 작전 수행 중 ‘네르프’의 EVA가 대량으로 무리를 이루고 접근하여,  마리의 개(改) 8호기가 요격을 개시한다.  한편 신지, 아스카, 아야나미 레이 (가칭) 세 사람은 일본의 대지를 떠돌고 있다…….",
+            "genres": [
+                "애니메이션",
+                "액션",
+                "SF",
+                "드라마"
+            ],
+            "release_date": "2022-10-05",
+            "vote_average": 8.4,
+            "backdrop_path": "/1EAxNqdkVnp48a7NUuNBHGflowM.jpg",
+            "runtime": 155,
+            "director": "Hideaki Anno",
+            "poster_path": "/vpfX1mGVobWlrUGqEzbA2RNPdZF.jpg"
+        }
+    },
+    {
+        "model": "movies.movie",
+        "fields": {
+            "movie_id": 553600,
+            "original_title": "プロメア",
+            "title": "프로메어",
+            "overview": "모든 것이 불타버릴 인류에 닥친 최대 위기! 지구의 운명이 걸린 거대한 불꽃 전쟁이 펼쳐진다!  불을 다스리는 돌연변이 ‘버니쉬’의 습격을 받은 지 30년, 한층 더 강력해진 ‘매드 버니쉬’가 등장하며 지구는 또 한번 새로운 위협에 휘말리고, 이에 맞서기 위한 최정예 특수부대 ‘버닝 레스큐’가 결성된다.  불타는 혼을 지닌 ‘버닝 레스큐’ 대원 ‘갈로 티모스’는 마침내 ‘매드 버니쉬’의 수장 ‘리오 포티아’를 마주하게 되고 지구의 운명을 건 두 사람의 최강 빅매치가 시작되는데…",
+            "genres": [
+                "애니메이션",
+                "액션",
+                "SF"
+            ],
+            "release_date": "2022-10-20",
+            "vote_average": 7,
+            "backdrop_path": "/eAWuDbZAYQY0PM0hL7zoO3aoF3T.jpg",
+            "runtime": 111,
+            "director": "今石洋之",
+            "poster_path": "/6QQjquBHiKyVowrv2ClfefXM0A9.jpg"
+        }
+    },
+    {
+        "model": "movies.movie",
+        "fields": {
+            "movie_id": 752,
+            "original_title": "V for Vendetta",
+            "title": "브이 포 벤데타",
+            "overview": "어느 날 밤 이비라는 소녀가 위험에 처하자 어디선가 한 남자가 나타나 놀라운 전투력으로 그녀의 목숨을 구해준다. 옛날 국회의사당을 폭파하려다 사형당한 가이 포크스의 가면을 쓰고 모든 것을 압도하는 카리스마를 가진 남자는 V라는 이니셜로만 알려진 의문의 사나이. 맥베스와 헨리 5세의 대사들을 인용하고, 현실세계의 아픔을 노래한 윌리엄 블레이크의 시를 읊으며 악을 응징하는 V는세상을 구할 혁명을 계획하고 있다. V의 숨겨진 과거를 알아가는 동안 자신에 관한 진실을 깨달아가는 이비는 점점 V에게 이끌려 그의 혁명에 동참하게 된다.",
+            "genres": [
+                "액션",
+                "스릴러",
+                "SF"
+            ],
+            "release_date": "2006-03-17",
+            "vote_average": 7.9,
+            "backdrop_path": "/sFEYsEfzTx7hhjetlNrme8B5OUo.jpg",
+            "runtime": 132,
+            "director": "James McTeigue",
+            "poster_path": "/XkLKkL5Cw4wWM6N4c4dP2IENmb.jpg"
+        }
+    },
+    {
+        "model": "movies.movie",
+        "fields": {
+            "movie_id": 804251,
+            "original_title": "Alcarràs",
+            "title": "알카라스의 여름",
+            "overview": "해가 내리쬐는 작은 마을, 알카라스  매 여름마다 복숭아를 수확하기 위해  3대째 모이는 솔레 가족은 찬란한 계절을 누린다. 탐스러운 복숭아처럼 영글어가는 가족의 이야기. 그 해 여름의 복숭아는 저마다의 기억으로 자란다.",
+            "genres": [
+                "드라마",
+                "로맨스"
+            ],
+            "release_date": "2022-11-03",
+            "vote_average": 7.2,
+            "backdrop_path": "/5sl6GEHjvo0V2lGYlcCghTkUUzK.jpg",
+            "runtime": 120,
+            "director": "Carla Simón",
+            "poster_path": "/xIC5SZoGiQRgM4TLnnxZEsuFSU0.jpg"
+        }
+    },
+    {
+        "model": "movies.movie",
+        "fields": {
+            "movie_id": 795564,
+            "original_title": "クレヨンしんちゃん　謎メキ！花の天カス学園",
+            "title": "극장판 짱구는 못말려: 수수께끼! 꽃피는 천하떡잎학교",
+            "overview": "명문 엘리트 양성학교에 체험 입학하게 된 짱구와 친구들! 좋은 성적을 내서 학교에 정식 입학하고 싶은 철수와 장난만 치려는 짱구는 크게 싸우게 된다. 그러던 중 학교에 도는 괴소문의 존재 ‘흡덩귀’에게 철수가 엉덩이를 물린 채 발견된다. 흡덩귀에게 엉덩이를 물리면 엘리트 학생도 모지리로 변하게 되는데…. 철수와 학생들을 구하기 위해 짱구와 떡잎마을 방범대 친구들은 탐정 동아리를 결성하고 수사를 시작한다!  범인은 과연 누구? 짱구는 사건을 해결하고 철수와의 우정을 지킬 수 있을까?!",
+            "genres": [
+                "애니메이션"
+            ],
+            "release_date": "2022-09-28",
+            "vote_average": 7.2,
+            "backdrop_path": "/s7LkZrweSohEsAtUJYgVgOHNGS8.jpg",
+            "runtime": 104,
+            "director": "高橋わたる",
+            "poster_path": "/sqAm04lTqq5ZBWENlpV25ITAiVw.jpg"
+        }
+    },
+    {
+        "model": "movies.movie",
+        "fields": {
+            "movie_id": 505953,
+            "original_title": "Storm Boy",
+            "title": "스톰 보이",
+            "overview": "사람이 살지 않는 90마일 비치에서 아빠와 단둘이 살게 된 ‘마이클’. 어느 날 사냥으로 어미를 잃은 아기 펠리컨 세 마리를 발견하고 원주민인 ‘손가락 뼈 빌’의 도움으로 책도 없고 수의사도 없는 청정 무공해 집사 생활을 시작한다. 하루 24시간 특식을 급여하며 펠리컨인 ‘미스터 퍼시벌’, ‘미스터 프라우드’, ‘미스터 폰더’를 착실히 확대, 먹이 잡는 법과 나는 법을 직접 가르치며 행복한 나날을 보내게 된다. 하지만 ‘미스터 퍼시벌’이 바다에 빠진 아빠를 구하자 매스컴의 관심이 쏟아지고, ‘마이클’은 가장 친한 친구를 구하기 위해서 고군분투 하는데…",
+            "genres": [
+                "드라마",
+                "모험"
+            ],
+            "release_date": "2022-10-13",
+            "vote_average": 7.2,
+            "backdrop_path": "/2Oli8Jo72w4NjkHLOMy6EzkoYkU.jpg",
+            "runtime": 99,
+            "director": "Shawn Seet",
+            "poster_path": "/hurPOuGCNed88BpDQi5m9qWL9bq.jpg"
+        }
+    },
+    {
+        "model": "movies.movie",
+        "fields": {
+            "movie_id": 768757,
+            "original_title": "Avec amour et acharnement",
+            "title": "칼날의 양면",
+            "overview": "남녀의 평범하지 않은 관계를 이야기한다. 9년째 함께 사는 커플 앞으로, 10년 전 헤어진 남자가 나타났다. 흔한 삼각관계도 드니의 손길에 잡히면 달라진다. 그는 표현하기 힘든 것에 도전하기 때문이다.",
+            "genres": [
+                "드라마",
+                "로맨스",
+                "스릴러"
+            ],
+            "release_date": "2022-10-07",
+            "vote_average": 5.7,
+            "backdrop_path": "/4g5kaH8gfujIS93gTzFLMeDN99R.jpg",
+            "runtime": 117,
+            "director": "Claire Denis",
+            "poster_path": "/xUey4r9AzNNPtzDA9aJV9Hy7Azw.jpg"
+        }
+    }
+]

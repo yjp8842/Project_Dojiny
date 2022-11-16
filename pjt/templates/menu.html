@@ -1,0 +1,67 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block css %}
+  <link rel="stylesheet" href="{% static 'css/menu.css' %}">
+{% endblock css %}
+
+{% block script %}
+  <script type="text/javascript" src="{% static 'js/menu.js' %}"></script>
+{% endblock script %}
+
+{% block content %}
+  <div class="box">
+    <div class="image-box" onclick='moviesPage()'>
+      <div class="img-1 imgs">
+        <div class="span-m">
+          <span>전</span><br>
+          <span>체</span><br>
+          <br>
+          <span>영</span><br>
+          <span>화</span><br>
+          <br>
+        </div>
+      </div>
+      <div class="hidden">이 공간은 모든 영화의 리스트를 보여주는 공간입니다.</div>
+    </div>
+    <div class="image-box" onclick='behindPage()'>
+      <div class="img-2 imgs">
+        <div class="span-m">
+          <span>감</span><br>
+          <span>독</span><br>
+          <span>비</span><br>
+          <span>하</span><br>
+          <span>인</span><br>
+          <span>드</span>
+        </div>
+      </div>
+      <div class="hidden">Intro</div>
+    </div>
+    <div class="image-box">
+      <div class="img-3 imgs">
+        <div class="span-m">
+          <span>추</span><br>
+          <span>천</span><br>
+          <span>영</span><br>
+          <span>화</span><br>
+          <br>
+          <br>
+        </div>
+      </div>
+      <div class="hidden">Intro</div>
+    </div>
+    <div class="image-box">
+      <div class="img-4 imgs">
+        <div class="span-m">
+          <span>마</span><br>
+          <span>이</span><br>
+          <span>페</span><br>
+          <span>이</span><br>
+          <span>지</span><br>
+          <br>
+        </div>
+      </div>
+      <div class="hidden">Intro</div>
+    </div>
+  </div>
+{% endblock content %}

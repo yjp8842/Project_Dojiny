@@ -1,0 +1,32 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block css %}
+  <link rel="stylesheet" href="{% static 'css/behinds.css' %}">
+{% endblock css %}
+
+{% block content %}
+  <div class="nav">
+    감독 비하인드
+  </div>
+  <div class="box">
+    <div class="select-box">
+      <select name="types" id="types" class="select">
+        <option value="update">최신순</option>
+        <option value="popular">인기순</option>
+      </select>
+      <input type="text" class="input">
+      <img src="{% static "images/search.png" %}" alt="" class="search">
+    </div>
+    <div class="form-box">
+      {% for behind in behinds %}
+        <p>제목 : {{ behind.title }}</p>    
+        <p>내용 : {{ behind.content }}</p>
+        <p> {{ behind.user.username }} 감독</p>
+        <button>[팔로우]</button>
+      {% endfor %}
+    </div>
+    <a href="{% url 'behinds:create' %}"><img src="{% static "images/create.png" %}" alt="" class="img"></a>
+  </div>
+{% endblock content %}
+

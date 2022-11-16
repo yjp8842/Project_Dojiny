@@ -1,0 +1,45 @@
+@font-face {
+  font-family: 'behind';
+  src: url('../font/LINESeedKR-Bd.ttf') format('truetype');
+}
+
+body {
+  background-color: black;
+  display: flex;
+  flex-direction: column;
+  /* justify-content: center; */
+  align-items: center;
+  /* height: 98vh; */
+}
+
+a {
+  width: 20%;
+  height: 20%;
+  flex: 1 1 25%;
+  display: flex;
+  /* align-items: center; */
+  justify-content: center;
+  margin-top: 3%;
+}
+
+img {
+  width: 250px;
+  height: 400px;
+}
+
+.box {
+  width: 80%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  color: white;
+}
+
+.movie-list {
+  width: 100%;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+}

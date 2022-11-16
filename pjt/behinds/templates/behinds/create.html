@@ -1,0 +1,28 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block css %}
+  <link rel="stylesheet" href="{% static 'css/create.css' %}">
+{% endblock css %}
+
+{% block content %}
+  <div class="nav">
+    CREATE PAGE
+  </div>
+  <div class="form-box">
+    <form action="{% url 'behinds:create' %}" method="POST">
+      {% csrf_token %}
+      <input type="submit" class="submit-btn">
+      <div class="title">
+        {% comment %} <label for="title">Title: </label> {% endcomment %}
+        <input type="text" name="title" id="title" placeholder = "   제목을 입력하세요.">
+      </div>
+      <div class="content">
+        {% comment %} <label for="content">Content: </label> {% endcomment %}
+        <input type="text" name="content" id="content" placeholder = "   내용을 입력하세요.">
+      </div>
+      {% comment %} <input type="submit" value="제출" class="submit-btn"> {% endcomment %}
+    </form>
+  </div>
+  <a href="{% url 'behinds:index' %}">[back]</a>
+{% endblock content %}

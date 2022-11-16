@@ -1,0 +1,17 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block css %}
+  <link rel="stylesheet" href="{% static 'css/home.css' %}">
+{% endblock css %}
+
+{% block content %}
+  <div class="box">
+    <img src="{% static 'images/spiderman.jpg' %}" alt="">
+    <div class="title">With great power comes great responsibility.</div>
+    <div class="login">
+      <a href="">SIGN UP</a> |
+      <a href="">SIGN IN</a>
+    </div>
+  </div>
+{% endblock content %}

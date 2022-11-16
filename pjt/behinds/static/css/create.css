@@ -1,0 +1,69 @@
+@font-face {
+  font-family: 'behind';
+  src: url('../font/LINESeedKR-Bd.ttf') format('truetype');
+}
+
+body {
+  background-color: black;
+  height: 98vh;
+  font-family: behind;
+}
+
+.nav {
+  width: 135vh;
+  height: 100px;
+  margin-top: 0;
+  padding-left: 3%;
+  padding-top: 8%;
+  background-image: url("../images/behinds.jpg");
+  font-size: 3em;
+  color: white;
+}
+
+form {
+  width: 80%;
+  height: calc(98vh - 300px);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
+
+.form-box {
+  display: flex;
+  justify-content: center;
+}
+
+#title {
+  width: 100%;
+  height: 90%;
+  border-radius: 20px;
+  font-family: behind;
+}
+
+.title {
+  width: 40%;
+  height: 7vh;
+  margin-bottom: 30px;
+}
+
+#content {
+  width: 100%;
+  height: 90%;
+  border-radius: 20px;
+  font-family: behind;
+}
+
+.content {
+  width: 40%;
+  height: 30vh;
+}
+
+.submit-btn {
+  width: 6%;
+  height: 5%;
+  margin-bottom: 3%;
+  margin-left: 35%;
+  border-radius: 15px;
+  font-family: behind;
+}
