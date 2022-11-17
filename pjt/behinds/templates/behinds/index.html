@@ -15,6 +15,7 @@
     감독 비하인드
   </div>
   <div class="box">
+    {% comment %} select & 검색 기능 start {% endcomment %}
     <div class="select-box">
       <select name="types" id="types" class="select">
         <option value="update">최신순</option>
@@ -23,6 +24,8 @@
       <input type="text" class="input" id="search-input">
       <img src="{% static "images/search.png" %}" alt="" class="search" id="search">
     </div>
+    {% comment %} select & 검색 기능 end {% endcomment %}
+    {% comment %} form list 정렬 start {% endcomment %}
     <div class="middle-box">
       <div class="form-box" id="form-box">
         {% for behind in behinds %}
@@ -32,6 +35,7 @@
                 <img src="{% static "images/user.png" %}" alt="" class="user">
                 <p id="director">{{ behind.user.username }} 감독</p>
               </div>
+              {% comment %} follow start {% endcomment %}
               <form id="follow-form" data-user-id="{{ behind.user.pk }}">
                 {% csrf_token %}
                 {% if user in behind.user.followings %}
@@ -40,6 +44,7 @@
                   <button type="submit" class="follow" id="like-button-{{ behind.user.pk }}">팔로우</button>
                 {% endif %}
               </form>
+              {% comment %} follow end {% endcomment %}
             </div>
             <h2>제목 : {{ behind.title }}</h2>    
             <p>내용 : {{ behind.content }}</p>
@@ -52,6 +57,7 @@
         {% endfor %}
       </div>
     </div>
+    {% comment %} form list 정렬 end {% endcomment %}
     <a href="{% url 'behinds:create' %}"><img src="{% static "images/create.png" %}" alt="" class="img"></a>
   </div>
 {% endblock content %}
