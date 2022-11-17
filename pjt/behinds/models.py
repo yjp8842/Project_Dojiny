@@ -2,7 +2,6 @@ from django.db import models
 from django.conf import settings
 
 # Create your models here.
-
 class Behind(models.Model):
     
     user = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.CASCADE)
@@ -10,3 +9,11 @@ class Behind(models.Model):
     content = models.TextField()
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True)
+
+
+class Comment(models.Model):
+    user_comment = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.CASCADE)
+    content = models.CharField(max_length=50)
+    created_at = models.DateTimeField(auto_now_add=True)
+    updated_at = models.DateTimeField(auto_now=True)
+    behind = models.ForeignKey(Behind, on_delete=models.CASCADE)

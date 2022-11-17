@@ -5,28 +5,39 @@
 
 body {
   background-color: black;
-  height: 98vh;
+  height: 50rem;
+  min-width: 620px;
   font-family: behind;
 }
 
+img {
+  width: 3rem;
+  height: 3rem;
+  margin-top: 10px;
+  margin-left: 40px;
+}
+
 .nav {
-  width: 135vh;
-  height: 100px;
+  width: 97%;
+  /* height: 100px; */
+  height: 5rem;
   margin-top: 0;
   padding-left: 3%;
-  padding-top: 8%;
+  padding-top: 5%;
+  padding-bottom: 2%;
   background-image: url("../images/behinds.jpg");
-  font-size: 3em;
+  font-size: 2.5em;
   color: white;
 }
 
 form {
-  width: 80%;
-  height: calc(98vh - 300px);
+  width: 35rem;
+  height: 40rem;
   display: flex;
   justify-content: center;
-  align-items: center;
+  align-items: flex-end;
   flex-direction: column;
+  /* margin-top: 20px; */
 }
 
 .form-box {
@@ -35,35 +46,48 @@ form {
 }
 
 #title {
-  width: 100%;
-  height: 90%;
+  width: 97%;
+  height: 80%;
+  padding: 10px;
   border-radius: 20px;
   font-family: behind;
 }
 
 .title {
-  width: 40%;
-  height: 7vh;
+  width: 100%;
+  height: 5rem;
+  margin-top: 30px;
   margin-bottom: 30px;
 }
 
 #content {
-  width: 100%;
+  width: 94%;
   height: 90%;
+  padding: 20px;
   border-radius: 20px;
   font-family: behind;
+  resize: none;
 }
 
 .content {
-  width: 40%;
-  height: 30vh;
+  width: 100%;
+  height: 20rem;
 }
 
 .submit-btn {
-  width: 6%;
-  height: 5%;
-  margin-bottom: 3%;
-  margin-left: 35%;
-  border-radius: 15px;
+  width: 7rem;
+  height: 50px;
+  margin-left: 28rem;
+  margin-top: 30px;
+  padding-top: 5px;
+  border-radius: 20px;
   font-family: behind;
+  font-size: large;
+  cursor: pointer;
+  /* transition: 0.5s; */
+}
+
+.submit-btn:hover {
+  background-color: #D9D9D9;
+  /* color: white; */
 }

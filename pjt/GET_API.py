@@ -67,9 +67,8 @@ def get_movies():
         for n in get_director(r.get('id')):
             name = n
         detail = get_movies_detail(r.get('id'))
-        for d in detail.get("genres"):
+        for i, d in enumerate(detail.get("genres")):
             genres.append(d.get("name"))
-
 
         objects = {
             "model": "movies.movie",
@@ -87,6 +86,7 @@ def get_movies():
                 'poster_path': r.get('poster_path'),
             }
         }
+        
         movies.append(objects)
 
     with open('movies.json', 'w', encoding='utf-8') as f :

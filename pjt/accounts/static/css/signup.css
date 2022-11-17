@@ -1,0 +1,85 @@
+@font-face {
+  font-family: 'login';
+  src: url('../font/LINESeedKR-Bd.ttf') format('truetype');
+}
+
+body {
+  background-color: black;
+  height: 98vh;
+  font-family: login;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+p {
+  font-size: small;
+  width: 85%;
+  margin-left: 30px;
+}
+
+.signup {
+  width: 400px;
+  height: 480px;
+  background-color: #ECECEC;
+  border-radius: 100px;
+  padding: 30px;
+}
+
+.signin {
+  width: 400px;
+  height: 350px;
+  background-color: #ECECEC;
+  border-radius: 100px;
+  padding: 30px;
+}
+
+.login-tag {
+  display: flex;
+  justify-content: space-evenly;
+}
+
+.input {
+  margin-top: 10px;
+  margin-left: 20px;
+}
+
+.submit {
+  display: flex;
+  justify-content: center;
+}
+
+.submit-btn {
+  width: 75px;
+  height: 40px;
+  border: none;
+  border-radius: 10px;
+  background-color: #D9D9D9;
+  font-family: login;
+  cursor: pointer;
+  transition: 0.5s;
+}
+
+.a {
+  text-decoration: none;
+  color: black;
+}
+
+.active {
+  color: #c5c5c5;
+}
+
+#id_username,
+#id_password {
+  width: 90%;
+  height: 40px;
+  border: none;
+  border-radius: 10px;
+  background-color: #D9D9D9;
+  font-family: login;
+  padding-left: 10px;
+}
+
+.margin {
+  margin-top: 30px;
+}

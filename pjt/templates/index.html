@@ -10,8 +10,13 @@
     <img src="{% static 'images/spiderman.jpg' %}" alt="">
     <div class="title">With great power comes great responsibility.</div>
     <div class="login">
-      <a href="">SIGN UP</a> |
-      <a href="">SIGN IN</a>
+      {% comment %} <a href="{% url 'accounts:signup' %}">SIGN UP</a> |
+      <a href="{% url 'accounts:signin' %}">SIGN IN</a> {% endcomment %}
+      <a href="{% url 'accounts:signup' %}">LOG IN</a>
+      <form action="{% url 'accounts:logout' %}" method="POST">
+        {% csrf_token %}
+        <input type="submit" value="로그아웃">
+      </form>
     </div>
   </div>
 {% endblock content %}

@@ -1,6 +1,9 @@
-from django.shortcuts import render, redirect
+from django.shortcuts import render, redirect, get_object_or_404
+from django.http import JsonResponse
+
 from django.contrib.auth import login as auth_login
 from django.contrib.auth import logout as auth_logout
+from django.contrib.auth import get_user_model
 from django.contrib.auth.forms import (
     AuthenticationForm, 
     UserCreationForm, 
@@ -11,45 +14,43 @@ from .forms import CustomUserChangeForm, CustomUserCreationForm, CustomAuthentic
 
 def index(request) :
     pass
-    # return render(request, 'index.html')
-    return render(request, 'behinds/index.html')
+    return render(request, 'accounts/index.html')
     
-def login(request):
+def signin(request):
     if request.user.is_authenticated:
         return redirect('behinds:index')
     if request.method == 'POST':
-        form = AuthenticationForm(request, request.POST)
+        form = CustomAuthenticationForm(request, request.POST)
         if form.is_valid():
             auth_login(request, form.get_user())
-            return redirect(request.GET.get('next') or 'behinds:index')
+            return redirect(request.GET.get('next') or 'http://127.0.0.1:8000/menu/')
     else:
         form = CustomAuthenticationForm()
     context = {
         'form': form,
     }
-    return render(request, 'accounts/login.html', context)
+    return render(request, 'accounts/signin.html', context)
 
 def signup(request) :
+    if request.user.is_authenticated:
+        return redirect('http://127.0.0.1:8000/menu/')
     if request.method == "POST":
-        # username = request.POST.get('username')
-        # nickname = request.POST.get('nickname')
-        # password = request.POST.get('password')
-        # email = request.POST.get('email')
-        # csrfmiddlewaretoken = request.POST.get('csrfmiddlewaretoken')
-        # user_info = {
-        #     'username': username,
-        #     'nickname': nickname,
-        #     'password': password,
-        #     'email': email,
-        #     'csrfmiddlewaretoken': csrfmiddlewaretoken,
-        # }
         form = CustomUserCreationForm(request.POST)
         if form.is_valid():
-            user = form.save(commit=False)
-            user.user = request.user
-            user.save()
-            return redirect('accounts:index')
-        return render(request, 'accounts/signup.html')
+            user = form.save()
+            print(user.nickname)
+            if user.nickname :
+                pass
+            else:
+                user.nickname = user.username
+                user.save()
+            auth_login(request, user)
+            return redirect('http://127.0.0.1:8000/menu/')
+        form = CustomUserCreationForm()
+        context = {
+            'form': form,
+        }
+        return render(request, 'accounts/signup.html', context)
     else:
         form = CustomUserCreationForm()
     context = {
@@ -57,9 +58,31 @@ def signup(request) :
     }
     return render(request, 'accounts/signup.html', context)
 
-def logout(request) :
-    pass
-    return render(request, 'accounts/logout.html')
+def logout(request):
+    if request.user.is_authenticated:
+        auth_logout(request)
+    return redirect('http://127.0.0.1:8000/')
+
+def follow(request, user_pk) :
+    if request.user.is_authenticated:
+        me = request.user
+        you = get_object_or_404(get_user_model(), pk=user_pk)
+        if me != you:
+            if you.followers.filter(pk=me.pk).exists():
+                you.followers.remove(me)
+                isFollowed = False
+            else:
+                you.followers.add(me)
+                isFollowed = True
+            context = {
+                'isFollowed': isFollowed,
+                'followers_count': you.followers.count(),
+                'followings_count': you.followings.count(),
+            }
+            return JsonResponse(context)
+        return redirect('behinds:index')
+    return redirect('accounts:login')
+
 
 def password(request) :
     pass
@@ -76,7 +99,3 @@ def update(request) :
 def delete(request) :
     pass
     return render(request, 'accounts/delete.html')
-
-def follow(request) :
-    pass
-    return render(request, 'accounts/follow.html')
