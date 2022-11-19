@@ -10,7 +10,7 @@ class BehindForm(forms.ModelForm):
 
 class CommentForm(forms.ModelForm):
     content = forms.CharField(
-        max_length=50,
+        max_length=200,
         required = True,
         widget=forms.TextInput(attrs={'class': 'form-control'}),
     )

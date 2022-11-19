@@ -5,8 +5,11 @@
   <link rel="stylesheet" href="{% static "css/detail.css" %}">
 {% endblock css %}
 
+{% block script %}
+  <script type="text/javascript" src="{% static "js/edit.js" %}"></script>
+{% endblock script %}
+
 {% block content %}
-  {% comment %} <h1 class="nav">디테일 페이지</h1> {% endcomment %}
   <a href="{% url 'behinds:index' %}"><img src="{% static "images/back.png" %}" alt="" class="back"></a>
   <div class="detail">
     <div class="detail-box">
@@ -28,33 +31,60 @@
       <hr>
       <h2>{{ behind.content }}</h2>
     </div>
+    
+
 
     <div>
-      <form action="{% url 'behinds:comment_create' behind.pk %}"  method="POST">
+      <form action="{% url 'behinds:comment_create' behind.pk %}"  method="POST" class="form">
         {% csrf_token %}
         {{ form.content }}
         {{ form.content.errors }}
         <button type="submit" class="comment-btn">등록</button>
       </form>
-    
+
       <div class="comments">
         {% for comment in comments %}
-        <div class="comment-box">
-          {% if comment.user_comment == user %}
-          <div class="btn">
-            <form action="{% url 'behinds:comment_update' behind.pk comment.pk %}">
-              <input type="submit" value="수정">
-            </form>
-            <form action="{% url 'behinds:comment_delete' behind.pk comment.pk %}">
-              <input type="submit" value="삭제">
-            </form>
-          </div>
-          {% endif %}
-          {{ comment.content }}
+          <div class="comment-box">
+            {% if comment.user_comment == user %}
+              <div class="btn">
+                <form
+                  class="update-form update-form{{ comment.pk }}"
+                  data-comment-id="{{ comment.pk }}"
+                  data-comment-content="{{ comment.content }}"
+                  style="display:block;"
+                >
+                  <button type="submit" class="update-btn">수정</button>
+                </form>
+                <form
+                  class="udpate-form-axios update-form-axios{{ comment.pk }}"
+                  data-comment-id="{{ comment.pk }}"
+                  data-comment-content="{{ comment.content }}"
+                  data-behind-id="{{ behind.pk }}"
+                  style="display:none;"
+                >
+                  <button type="submit" class="update-btn">수정2</button>
+                  <button
+                    class="update-btn edit-cancel edit-cancel{{ comment.pk }}"
+                    data-comment-id="{{ comment.pk }}"
+                    data-comment-content="{{ comment.content }}"
+                  >취소</button>
+                </form>
+                <form action="{% url 'behinds:comment_delete' behind.pk comment.pk %}">
+                  <button type="submit" class="update-btn">삭제</button>
+                </form>
+              </div>
+              <div id="edit-div{{ comment.pk }}" style="display:none;">
+                {% comment %} <textarea id="edit-area{{ comment.pk }}" cols="30" rows="10"></textarea> {% endcomment %}
+                <input type="text" id="edit-area{{ comment.pk }}">
+              </div>
+            {% endif %}
+            {% comment %} 댓글 나오는 부분 {% endcomment %}
+            <div class="comment-scroll">
+              <span id="comment-{{ comment.pk }}">{{ comment.content }}</span>
+            </div>
           </div>
         {% endfor %}
       </div>
     </div>
-    </div>
-
+  </div>
 {% endblock content %}

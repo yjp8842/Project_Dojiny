@@ -19,12 +19,19 @@ body {
 }
 
 .detail-box {
-  width: 40rem;
-  height: fit-content;
+  width: 45rem;
+  height: 38rem;
   background-color: #f5f5f5;
   border-radius: 40px;
-  padding: 30px;
+  padding: 60px;
   margin-top: 30px;
+  line-height: 50px;
+  box-shadow: 15px 15px #d9d9d9;
+  overflow-y: scroll;
+}
+
+.detail-box::-webkit-scrollbar {
+  display: none;
 }
 
 .btn {
@@ -35,6 +42,8 @@ body {
 button {
   border: none; 
   background-color: #f5f5f5;
+  cursor: pointer;
+  margin-bottom: 15px;
 }
 
 .img {
@@ -68,7 +77,7 @@ hr {
   background: black;
   caret-color: #f5f5f5;
   color: white;
-  font-size: large;
+  font-size: 25px;
 }
 
 #id_content:focus {
@@ -83,7 +92,7 @@ hr {
   display: flex;
   flex-direction: column;
   overflow-y: scroll;
-  height: 30rem;
+  height: 38rem;
 }
 
 .comments::-webkit-scrollbar {
@@ -93,12 +102,22 @@ hr {
 
 .comment-box {
   width: 35rem;
-  height: 45px;
+  height: 75px;
+  /* overflow-y: scroll; */
+  /* height: fit-content; */
   background-color: #f5f5f5;
   border-radius: 20px;
   margin-bottom: 30px;
-  padding: 20px;
+  padding-top: 25px;
+  padding-left: 25px;
+  padding-right: 25px;
+  padding-bottom: 50px;
+  font-size: 20px;
 }
+
+/* .comment-box::-webkit-scrollbar {
+  display: none;
+} */
 
 .comment-btn {
   width: 5rem;
@@ -121,4 +140,36 @@ hr {
   height: 3rem;
   margin-top: 30px;
   margin-left: 40px;
+  margin-bottom: 30px;
+}
+
+.update-btn {
+  width: 3rem;
+  height: 30px;
+  margin-left: 10px;
+  padding-top: 5px;
+  border-radius: 10px;
+  font-family: behind;
+  font-size: small;
+  cursor: pointer;
+  background-color: #d9d9d9;
+}
+
+.form {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.comment-scroll {
+  width: 100%;
+  height: 100%;
+  margin-bottom: 20px;
+  padding-top: 10px;
+  padding-bottom: 10px;
+  overflow-y: scroll;
+}
+
+.comment-scroll::-webkit-scrollbar {
+  display: none;
 }

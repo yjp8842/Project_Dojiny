@@ -7,24 +7,24 @@
 
 {% block content %}
   <div class="nav">
-    UPDATE PAGE
+    감독 비하인드 수정 페이지
   </div>
   <div class="form-box">
     <form action="{% url 'behinds:update' behind.pk %}" method="POST">
       {% csrf_token %}
-      <input type="submit" class="submit-btn">
       <div class="title">
         {% comment %} <label for="title">Title: </label> {% endcomment %}
         <input type="text" name="title" id="title" value = "{{ behind.title }}">
       </div>
       <div class="content">
         {% comment %} <label for="content">Content: </label> {% endcomment %}
-        <input type="text" name="content" id="content" value = "{{ behind.content }}">
+        <textarea id="content" name="content" cols="30" rows="10">{{ behind.content }}</textarea>
       </div>
+      <input type="submit" class="submit-btn">
       {% comment %} <input type="submit" value="제출" class="submit-btn"> {% endcomment %}
     </form>
   </div>
-  <a href="{% url 'behinds:detail' behind.pk %}">[back]</a>
+  <a href="{% url 'behinds:detail' behind.pk %}"><img src="{% static "images/back.png" %}" alt=""></a>
 {% endblock content %}
 
 {% block script %}

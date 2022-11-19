@@ -1,0 +1,28 @@
+{% extends 'base.html' %}
+
+{% block css %}
+{% endblock css %}
+
+{% block script %}
+{% endblock script %}
+
+{% block content %}
+  <h1>My Page</h1>
+  {% if user.username == person.username %}
+    <form action="" method="POST">
+      {% csrf_token %}
+      <button type="submit">회원 정보 수정</button>
+    </form>
+    <form action="{% url 'accounts:delete' person.pk %}" method="POST">
+      {% csrf_token %}
+      <button type="submit">회원 탈퇴</button>
+    </form>
+  {% endif %}
+
+  <p>유저 이름 : {{ person.username }}</p>
+  <p>닉네임 : {{ person.nickname }}</p>
+
+	<button onclick="location.href=`{% url 'mypage:likedirectors' person.pk %}`">좋아요 한 감독</button>
+	<button>평가한 영화</button>
+
+{% endblock content %}

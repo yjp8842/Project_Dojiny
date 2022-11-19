@@ -35,11 +35,24 @@ a {
   color: white;
 }
 
+button {
+  background-color: transparent;
+  color: white;
+  font-size: 27px;
+  outline: none;
+  border: none;
+  font-family: title;
+  margin-left: 30px;
+  cursor: pointer;
+}
+
 .login {
   font-size: 27px !important;
   position: relative;
   top: -750px;
   animation: fadeUp 5s;
+  display: flex;
+  align-items: center;
 }
 
 .box {

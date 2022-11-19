@@ -1,0 +1,16 @@
+{% extends 'base.html' %}
+
+{% block css %}
+
+{% endblock css %}
+
+{% block script %}
+
+{% endblock script %}
+
+{% block content %}
+  <h1>좋아요 한 감독 LIST</h1>
+  {% for director in directors %}
+    <p>감독 이름 : {{ director }} 감독</p>
+  {% endfor %}
+{% endblock content %}

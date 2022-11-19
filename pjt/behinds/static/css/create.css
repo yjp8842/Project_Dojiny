@@ -10,6 +10,13 @@ body {
   font-family: behind;
 }
 
+img {
+  width: 3rem;
+  height: 3rem;
+  margin-top: 10px;
+  margin-left: 40px;
+}
+
 .nav {
   width: 97%;
   /* height: 100px; */
@@ -21,13 +28,6 @@ body {
   background-image: url("../images/behinds.jpg");
   font-size: 2.5em;
   color: white;
-}
-
-img {
-  width: 3rem;
-  height: 3rem;
-  margin-top: 10px;
-  margin-left: 40px;
 }
 
 form {

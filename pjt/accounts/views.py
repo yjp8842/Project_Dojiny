@@ -83,6 +83,9 @@ def follow(request, user_pk) :
         return redirect('behinds:index')
     return redirect('accounts:login')
 
+def update(request, user_pk) :
+    pass
+    return render(request, 'accounts/update.html')
 
 def password(request) :
     pass
@@ -92,10 +95,8 @@ def profile(request) :
     pass
     return render(request, 'accounts/profile.html')
 
-def update(request) :
-    pass
-    return render(request, 'accounts/update.html')
-
-def delete(request) :
-    pass
-    return render(request, 'accounts/delete.html')
+def delete(request, user_pk) :
+    if request.user.is_authenticated:
+        request.user.delete()
+        auth_logout(request)
+    return redirect('http://127.0.0.1:8000/') 

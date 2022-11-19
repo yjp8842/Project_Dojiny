@@ -1,7 +1,8 @@
 from django.shortcuts import render, redirect, get_object_or_404
 from .forms import BehindForm, CommentForm
 from .models import Behind, Comment
-
+from django.http import JsonResponse
+import json
 
 
 ## 아래부터 behind
@@ -43,15 +44,18 @@ def create(request):
 
 # 디테일 페이지
 def detail(request, behind_pk):
-    behind = Behind.objects.get(pk=behind_pk)
-    form = CommentForm()
-    comments = behind.comment_set.all()
-    context = {
-        'behind': behind,
-        'form': form,
-        'comments': comments
-    }
-    return render(request, 'behinds/detail.html', context)
+    if request.user.is_authenticated:
+        behind = Behind.objects.get(pk=behind_pk)
+        form = CommentForm()
+        comments = behind.comment_set.all()
+        context = {
+            'behind': behind,
+            'form': form,
+            'comments': comments
+        }
+        return render(request, 'behinds/detail.html', context)
+    else:
+        return redirect('http://127.0.0.1:8000/')
 
 # 삭제
 def delete(request, behind_pk):
@@ -94,36 +98,42 @@ def comment_create(request, behind_pk):
             comment.behind = behind
             comment.user_comment = request.user
             form.save()
-            print('성공')
             return redirect('behinds:detail', behind.pk)
     else:
-        print('실패1')
         form = CommentForm()
         context = {
             'form': form
         }
         return redirect('behinds:detail', behind_pk, context)
-    print('실패2')
     return redirect('behinds:detail', behind_pk)
 
 # comment 수정
 def comment_update(request, behind_pk, comment_pk):
-    comment = get_object_or_404(Comment, pk=comment_pk)    
-    if request.user == comment.user_comment:
-        if request.method == "POST":
-            form = CommentForm(request.POST, instance=comment)
+    
+    if request.method == "POST":
+        jsonObject = json.loads(request.body)
+        comment = get_object_or_404 (Comment,pk=jsonObject.get('commentId'))
+        behind = get_object_or_404 (Behind,pk=jsonObject.get('behindId'))
+        if request.user == comment.user_comment:
+            content = jsonObject.get('content')
+            csrfmiddlewaretoken = jsonObject.get('csrftoken')
+            comment_values = {
+                'content': content,
+                'csrfmiddlewaretoken': csrfmiddlewaretoken
+            }
+            form = CommentForm(comment_values, instance=comment)
             if form.is_valid():
-                form.save()
-                return redirect('behinds:detail', behind_pk)
-        else:
-            form = CommentForm(instance=comment)
-    else:
+                editComment = form.save(commit=False)
+                editComment.behind = behind
+                editComment.user_comment = request.user
+                editComment.save()
+                context = {
+                    'editedContent': editComment.content
+                }
+                return JsonResponse(context)
         return redirect('behinds:detail', behind_pk)
-    context = {
-        'comment': comment,
-        'form': form
-    }
-    return render(request, 'behinds/detail.html', context)
+    else : 
+        return redirect('behinds:detail', behind_pk)    
 
 # comment 삭제
 def comment_delete(request, behind_pk, comment_pk):
@@ -133,3 +143,21 @@ def comment_delete(request, behind_pk, comment_pk):
         return redirect('behinds:detail', behind_pk)
     else:
         return redirect('behinds:detail', behind_pk)
+
+# likes
+def likes(request, behind_pk):
+    behind = Behind.objects.get(pk=behind_pk)
+    if request.user.is_authenticated:
+        if request.user != behind.user :
+            if behind.like_user.filter(pk=request.user.pk).exists():
+                behind.like_user.remove(request.user)
+                isLiked = False
+            else:
+                behind.like_user.add(request.user)
+                isLiked = True
+        context = {
+            'isLiked': isLiked,
+            'like_user_count': behind.like_user.count(),
+        }
+        return JsonResponse(context)
+    return redirect('accounts:login')
