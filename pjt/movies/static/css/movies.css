@@ -1,5 +1,5 @@
 @font-face {
-  font-family: 'behind';
+  font-family: 'movie';
   src: url('../font/LINESeedKR-Bd.ttf') format('truetype');
 }
 
@@ -10,36 +10,60 @@ body {
   /* justify-content: center; */
   align-items: center;
   /* height: 98vh; */
+  font-family: movie;
 }
 
 a {
-  width: 20%;
-  height: 20%;
+  width: 30rem;
+  height: 30rem;
   flex: 1 1 25%;
   display: flex;
-  /* align-items: center; */
-  justify-content: center;
-  margin-top: 3%;
-}
-
-img {
-  width: 250px;
-  height: 400px;
-}
-
-.box {
-  width: 80%;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
   align-items: center;
+  justify-content: center;
+  position: relative;
+  margin-top: 30px;
+}
+
+.nav {
+  width: 90%;
+  /* height: 100px; */
+  height: 5rem;
+  margin-top: 0;
+  padding-left: 10%;
+  padding-top: 5%;
+  padding-bottom: 2%;
   color: white;
+  font-size: 3em;
+}
+
+.movie-img {
+  width: 95%;
+  height: 100%;
+  border-radius: 10px;
 }
 
 .movie-list {
-  width: 100%;
+  width: 87rem;
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
   align-items: center;
+}
+
+.info {
+  display: none;
+}
+
+.movie-img:hover {
+  opacity: 0.2;
+}
+
+.movie-img:hover ~ .info {
+  display: block;
+  width: 100%;
+  position: absolute;
+  font-family: movie;
+  color: white;
+  font-size: 25px;
+  text-align: center;
 }

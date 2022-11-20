@@ -5,15 +5,18 @@
   <link rel="stylesheet" href="{% static 'css/movies.css' %}">
 {% endblock css %}
 
+{% block script %}
+  <script type="text/javascript" src="{% static "js/movie.js" %}"></script>
+{% endblock script %}
+
 {% block content %}
-  <div class="box">
-    <h1>전체 영화</h1>
+  <div class="nav">전체 영화</div>
     <div class="movie-list">
       {% for movie in movies %}
         <a href="{% url 'movies:detail' movie.pk %}">
-          <img src="https://image.tmdb.org/t/p/w500{{ movie.poster_path }}" alt="movie img">
+          <img src="https://image.tmdb.org/t/p/w500{{ movie.poster_path }}" alt="movie img" class="movie-img">
+          <div class="info">{{ movie.title }}</div>
         </a>
       {% endfor %}
     </div>
-  </div>
 {% endblock content %}

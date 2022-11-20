@@ -1,13 +1,22 @@
 {% extends 'base.html' %}
+{% load static %}
+
+{% block script %}
+  <link rel="stylesheet" href="{% static "css/movie-detail.css" %}">
+{% endblock script %}
+
+
 {% block content %}
-  <h1>{{ movie.title }}</h1>
-  <img src="https://image.tmdb.org/t/p/w500{{ movie.poster_path }}" style="width:200px; height:200px;" alt="movie img">
-  <div>
-  {% for genre in genres %}{{ genre }}{% endfor %}
-    <p>{{ movie.runtime }} 분</p>
-    <p>평점 {{ vote_average }}</p>
-    <p>{{ director }}</p>
-    <p>{{ movie.overview }}</p>
-    <a href="{% url 'movies:index' %}">[back]</a>
+  <div class="nav">{{ movie.title }}</div>
+  <div class="box">
+    <img src="https://image.tmdb.org/t/p/w500{{ movie.poster_path }}" alt="movie img" class="movie-img">
+    <div class="info">
+      <p>{% for genre in genres %}{{ genre }}{% endfor %} | {{ movie.runtime }} 분</p>
+      <p>평점 {{ vote_average }}</p>
+      <p>{{ movie.release_date }}</p>
+      <p>{{ director }}</p>
+      <div class="line-height">{{ movie.overview }}</div>
+    </div>
+    <a href="{% url 'movies:index' %}"><img src="{% static "images/back.png" %}" alt="" class="back"></a>
   </div>
 {% endblock content %}

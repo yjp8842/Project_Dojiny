@@ -1,0 +1,66 @@
+@font-face {
+  font-family: 'detail';
+  src: url('../font/LINESeedKR-Bd.ttf') format('truetype');
+}
+
+body {
+  background-color: black;
+  font-family: detail;
+  height: 50rem;
+  color: white;
+}
+
+.movie-img {
+  width: 27rem;
+  height: 37rem;
+  border-radius: 10px;
+  box-shadow: 10px 10px #d9d9d9;
+}
+
+a {
+  width: 30px;
+  height: 30px;
+}
+
+.nav {
+  width: 90%;
+  /* height: 100px; */
+  height: 5rem;
+  margin-top: 0;
+  padding-left: 10%;
+  padding-top: 5%;
+  padding-bottom: 2%;
+  font-size: 3em;
+}
+
+.box {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  margin-top: 50px;
+}
+
+.info {
+  width: 40rem;
+  font-size: 1.3em;
+  margin-left: 100px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.line-height {
+  width: 100%;
+  height: 250px;
+  overflow-y: scroll;
+  line-height: 50px;
+}
+
+.line-height::-webkit-scrollbar {
+  display: none;
+}
+
+.back {
+  width: 30px;
+  height: 30px;
+}
