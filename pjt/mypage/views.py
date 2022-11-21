@@ -14,11 +14,25 @@ def likedirectors(request, user_pk):
     person = get_object_or_404(get_user_model(), pk=user_pk)
     directors = person.followings.all()
     context = {
+        'person' : person,
         'directors': directors
     }
     return render(request, 'mypage/likedirectors.html', context)
 
 def likemovies(request, user_pk):
     person = get_object_or_404(get_user_model(), pk=user_pk)
-    pass
-    return render(request, 'mypage/likedirectors.html')
+    movies = person.votemovie_set.all()
+    movies5star = movies.filter(vote=5)
+    movies4star = movies.filter(vote=4)
+    movies3star = movies.filter(vote=3)
+    movies2star = movies.filter(vote=2)
+    movies1star = movies.filter(vote=1)
+    context = {
+        'person': person,
+        'movies5star': movies5star,
+        'movies4star': movies4star,
+        'movies3star': movies3star,
+        'movies2star': movies2star,
+        'movies1star': movies1star,
+    }
+    return render(request, 'mypage/likemovies.html', context)

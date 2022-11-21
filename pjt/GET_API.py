@@ -51,44 +51,103 @@ def get_movies_detail(movie_id):
 
 
 def get_movies():
-    BASE_URL = 'https://api.themoviedb.org/3'
-    PATH = '/movie/now_playing'
-    my_params = {
-        'api_key' : 'c23cd6fb816b2263bfdfecf34a8a6805',
-        'language' : 'ko',
-        'region' : 'KR',
-    }
-    response = requests.get(BASE_URL + PATH, params = my_params).json()
-    result = response.get('results')
+    # now playing
     movies = []
-    for r in result:
-        genres = []
-        name = 0
-        for n in get_director(r.get('id')):
-            name = n
-        detail = get_movies_detail(r.get('id'))
-        for i, d in enumerate(detail.get("genres")):
-            genres.append(d.get("name"))
-
-        objects = {
-            "model": "movies.movie",
-            "fields": {
-                'movie_id' : r.get('id'),
-                'original_title': r.get('original_title'),
-                'title': r.get('title'),
-                'overview': r.get('overview'),
-                'genres': genres,
-                'release_date': r.get('release_date'),
-                'vote_average': r.get('vote_average'),
-                'backdrop_path': r.get('backdrop_path'),
-                'runtime': detail.get('runtime'),
-                'director': name,
-                'poster_path': r.get('poster_path'),
-            }
+    for page in range(1,91):
+        BASE_URL = 'https://api.themoviedb.org/3'
+        PATH = '/movie/now_playing'
+        my_params = {
+            'api_key' : 'c23cd6fb816b2263bfdfecf34a8a6805',
+            'language' : 'ko',
+            'region' : 'KR',
+            'page': page
         }
-        
-        movies.append(objects)
+        response = requests.get(BASE_URL + PATH, params = my_params).json()
+        result = response.get('results')
+        for r in result:
+            genres = []
+            name = 0
+            for n in get_director(r.get('id')):
+                name = n
+            detail = get_movies_detail(r.get('id'))
+            for i, d in enumerate(detail.get("genres")):
+                genres.append(d.get("name"))
 
+            objects = {
+                "model": "movies.movie",
+                "fields": {
+                    'movie_id' : r.get('id'),
+                    'original_title': r.get('original_title'),
+                    'title': r.get('title'),
+                    'overview': r.get('overview'),
+                    'genres': genres,
+                    'release_date': r.get('release_date'),
+                    'vote_average': r.get('vote_average'),
+                    'backdrop_path': r.get('backdrop_path'),
+                    'runtime': detail.get('runtime'),
+                    'director': name,
+                    'poster_path': r.get('poster_path'),
+                }
+            }
+            if name == None:
+                pass
+            else:
+                flag = False
+                for movie in movies:
+                    if r.get('id') in movie['fields'].values():
+                        flag = True
+                        break
+                if not flag:
+                    movies.append(objects)
+
+    # top rating
+    for page in range(1, 170):
+        PATH = '/movie/top_rated'
+        my_params = {
+            'api_key' : 'c23cd6fb816b2263bfdfecf34a8a6805',
+            'language' : 'ko',
+            'region' : 'KR',
+            'page': page
+        }
+        response = requests.get(BASE_URL + PATH, params = my_params).json()
+        result = response.get('results')
+        for r in result:
+            genres = []
+            name = 0
+            for n in get_director(r.get('id')):
+                name = n
+            detail = get_movies_detail(r.get('id'))
+            for i, d in enumerate(detail.get("genres")):
+                genres.append(d.get("name"))
+
+            objects = {
+                "model": "movies.movie",
+                "fields": {
+                    'movie_id' : r.get('id'),
+                    'original_title': r.get('original_title'),
+                    'title': r.get('title'),
+                    'overview': r.get('overview'),
+                    'genres': genres,
+                    'release_date': r.get('release_date'),
+                    'vote_average': r.get('vote_average'),
+                    'backdrop_path': r.get('backdrop_path'),
+                    'runtime': detail.get('runtime'),
+                    'director': name,
+                    'poster_path': r.get('poster_path'),
+                }
+            }
+            if name == None:
+                pass
+            else:
+                flag = False
+                for movie in movies:
+                    if r.get('id') in movie['fields'].values():
+                        flag = True
+                        break
+                if not flag:
+                    movies.append(objects)
+
+    # JSON 으로 저장
     with open('movies.json', 'w', encoding='utf-8') as f :
         json.dump(movies, f, ensure_ascii=False, indent=4)
         

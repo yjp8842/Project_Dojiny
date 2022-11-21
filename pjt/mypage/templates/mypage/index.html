@@ -1,28 +1,40 @@
 {% extends 'base.html' %}
+{% load static %}
 
 {% block css %}
+  <link rel="stylesheet" href="{% static "css/mypage.css" %}">
 {% endblock css %}
 
 {% block script %}
 {% endblock script %}
 
 {% block content %}
-  <h1>My Page</h1>
-  {% if user.username == person.username %}
-    <form action="" method="POST">
-      {% csrf_token %}
-      <button type="submit">회원 정보 수정</button>
-    </form>
-    <form action="{% url 'accounts:delete' person.pk %}" method="POST">
-      {% csrf_token %}
-      <button type="submit">회원 탈퇴</button>
-    </form>
-  {% endif %}
-
-  <p>유저 이름 : {{ person.username }}</p>
-  <p>닉네임 : {{ person.nickname }}</p>
-
-	<button onclick="location.href=`{% url 'mypage:likedirectors' person.pk %}`">좋아요 한 감독</button>
-	<button>평가한 영화</button>
+  <div class="nav">My Page</div>
+  <hr>
+  <div class="box">
+    {% if person.profile_image %}
+      <img src="{{ person.profile_image.url }}" alt="profile" class="user-img">
+    {% endif %}
+    <div class="profile">
+      <h2>{{ person.username }}</h2>
+      <h3>{{ person.nickname }}</h3>
+      <div class="btns">
+        <button onclick="location.href=`{% url 'mypage:likedirectors' person.pk %}`" class="btn">팔로우 한 감독</button>
+        <button onclick="location.href=`{% url 'mypage:likemovies' person.pk %}`" class="btn">평가한 영화</button>
+      </div>
+      {% if user.username == person.username %}
+        <div class="btns">
+          <form action="{% url 'accounts:update' person.pk %}" method="GET">
+            <button type="submit" class="btn">회원 정보 수정</button>
+          </form>
+          <form action="{% url 'accounts:delete' person.pk %}" method="POST">
+            {% csrf_token %}
+            <button type="submit" class="btn">회원 탈퇴</button>
+          </form>
+        </div>
+      {% endif %}
+    </div>
+    <a href="http://127.0.0.1:8000/menu/"><img src="{% static "images/back.png" %}" alt="" class="back"></a>
+  </div>
 
 {% endblock content %}

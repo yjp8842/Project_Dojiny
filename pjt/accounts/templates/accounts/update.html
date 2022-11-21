@@ -1,0 +1,22 @@
+{% extends 'base.html' %}
+{% block css %}
+
+{% endblock css %}
+
+{% block script %}
+
+{% endblock script %}
+
+{% block content %}
+  <h1>accounts update</h1>
+  <form action="{% url 'accounts:update' user.pk%}"  method="POST" enctype="multipart/form-data">
+    {% csrf_token %}
+    {{ form.as_p }}
+    <hr>
+    <input type="submit" value="수정">
+  </form>
+  <a href="{% url 'mypage:index' user.pk %}">[back]</a>
+
+
+
+{% endblock content %}

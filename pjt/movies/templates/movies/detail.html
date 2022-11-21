@@ -1,8 +1,25 @@
 {% extends 'base.html' %}
 {% load static %}
 
-{% block script %}
+{% block css %}
   <link rel="stylesheet" href="{% static "css/movie-detail.css" %}">
+{% endblock css %}
+
+
+{% block script %}
+  <style>
+    .checked {
+      color: blue;
+    }
+    .my-btn {
+      background-color: inherit !important;
+      border : 0 !important;
+      filter: invert(100%);
+      margin-left: -4px;
+    }
+  </style>
+  <script type="text/javascript" src="{% static "js/stars.js" %}"></script>
+
 {% endblock script %}
 
 
@@ -11,12 +28,30 @@
   <div class="box">
     <img src="https://image.tmdb.org/t/p/w500{{ movie.poster_path }}" alt="movie img" class="movie-img">
     <div class="info">
-      <p>{% for genre in genres %}{{ genre }}{% endfor %} | {{ movie.runtime }} 분</p>
-      <p>평점 {{ vote_average }}</p>
+      <p>{% for genre in genres %}{{ genre }}{% endfor %} &nbsp;&nbsp;|&nbsp;&nbsp; {{ movie.runtime }} 분 &nbsp;&nbsp;|&nbsp;&nbsp; 평점 {{ vote_average }}</p>
       <p>{{ movie.release_date }}</p>
       <p>{{ director }}</p>
+      
+      <form
+        id="star-check-form"
+        method="POST"
+        data-movie-id="{{ movie.pk }}"
+        data-user-id="{{ user.pk }}"
+        data-user-vote="{{ uservote }}"
+        class="star"
+      >
+      {% csrf_token %}
+        <button type="submit" class="fa fa-star my-btn" id="first"></button>
+        <button type="submit" class="fa fa-star my-btn" id="second"></button>
+        <button type="submit" class="fa fa-star my-btn" id="third"></button>
+        <button type="submit" class="fa fa-star my-btn" id="fourth"></button>
+        <button type="submit" class="fa fa-star my-btn" id="fifth"></button>
+        <span id="uservote" style="display:none;">{{ uservote }}</span> 
+      </form>
+      
       <div class="line-height">{{ movie.overview }}</div>
     </div>
     <a href="{% url 'movies:index' %}"><img src="{% static "images/back.png" %}" alt="" class="back"></a>
   </div>
+
 {% endblock content %}

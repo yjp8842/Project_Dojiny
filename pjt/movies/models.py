@@ -5,15 +5,15 @@ from django.conf import settings
 class Movie(models.Model) :
     genres = models.CharField(max_length=200)
     movie_id = models.IntegerField()
-    original_title = models.CharField(max_length=50)
+    original_title = models.CharField(max_length=200)
     title = models.CharField(max_length=50)
-    overview = models.TextField(max_length=50)
+    overview = models.TextField(max_length=500)
     
     release_date = models.CharField(max_length=50)
     vote_average = models.IntegerField()
     director = models.CharField(max_length=50)
-    poster_path = models.CharField(max_length=50)
-    backdrop_path = models.CharField(max_length=50)
+    poster_path = models.CharField(max_length=200)
+    backdrop_path = models.CharField(max_length=200, null=True)
     runtime = models.IntegerField()
 
 class VoteMovie(models.Model) :

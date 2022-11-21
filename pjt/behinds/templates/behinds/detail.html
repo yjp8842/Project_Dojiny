@@ -35,7 +35,6 @@
 
 
     <div>
-      <p class="comment-info">댓글 작성</p>
       <form action="{% url 'behinds:comment_create' behind.pk %}"  method="POST" class="form">
         {% csrf_token %}
         {{ form.content }}
@@ -74,14 +73,14 @@
                   <button type="submit" class="update-btn">삭제</button>
                 </form>
               </div>
-              <div id="edit-div{{ comment.pk }}" style="display: none;">
+              <div id="edit-div{{ comment.pk }}" style="display:none;">
                 {% comment %} <textarea id="edit-area{{ comment.pk }}" cols="30" rows="10"></textarea> {% endcomment %}
-                <input type="text" id="edit-area{{ comment.pk }}" class="edit-input">
+                <input type="text" id="edit-area{{ comment.pk }}">
               </div>
             {% endif %}
             {% comment %} 댓글 나오는 부분 {% endcomment %}
             <div class="comment-scroll">
-              <span id="comment-{{ comment.pk }}">{{ comment.content }}</span>
+              <span style="word-wrap: break-word;" id="comment-{{ comment.pk }}">{{ comment.content }}</span>
             </div>
           </div>
         {% endfor %}

@@ -89,7 +89,6 @@ def update(request, behind_pk):
 ## 아래부터 comment
 # comment 생성
 def comment_create(request, behind_pk):
-    print('시작')
     if request.method == "POST":
         form = CommentForm(request.POST)
         behind = Behind.objects.get(pk=behind_pk)

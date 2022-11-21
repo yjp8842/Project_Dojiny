@@ -5,18 +5,14 @@
 
 body {
   background-color: black;
-  display: flex;
-  flex-direction: column;
-  /* justify-content: center; */
-  align-items: center;
-  /* height: 98vh; */
   font-family: movie;
+  color: white;
 }
 
 a {
   width: 30rem;
   height: 30rem;
-  flex: 1 1 25%;
+  flex: 0 0 25%;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -26,7 +22,6 @@ a {
 
 .nav {
   width: 90%;
-  /* height: 100px; */
   height: 5rem;
   margin-top: 0;
   padding-left: 10%;
@@ -36,9 +31,14 @@ a {
   font-size: 3em;
 }
 
+.box {
+  display: flex;
+  justify-content: center;
+}
+
 .movie-img {
-  width: 95%;
-  height: 100%;
+  width: 20rem;
+  height: 30rem;
   border-radius: 10px;
 }
 
@@ -46,8 +46,7 @@ a {
   width: 87rem;
   display: flex;
   flex-wrap: wrap;
-  justify-content: center;
-  align-items: center;
+  /* justify-content: center; */
 }
 
 .info {
@@ -60,7 +59,7 @@ a {
 
 .movie-img:hover ~ .info {
   display: block;
-  width: 100%;
+  width: 90%;
   position: absolute;
   font-family: movie;
   color: white;

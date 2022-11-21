@@ -1,7 +1,8 @@
 {% extends 'base.html' %}
+{% load static %}
 
 {% block css %}
-
+  <link rel="stylesheet" href="{% static "css/likedirectors.css" %}">
 {% endblock css %}
 
 {% block script %}
@@ -9,8 +10,19 @@
 {% endblock script %}
 
 {% block content %}
-  <h1>좋아요 한 감독 LIST</h1>
-  {% for director in directors %}
-    <p>감독 이름 : {{ director }} 감독</p>
-  {% endfor %}
+  <div class="nav">팔로우한 감독 LIST</div>
+  <hr>
+  <div class="back-page">
+    <a href="http://127.0.0.1:8000/mypage/{{person.pk}}/profile"><img src="{% static "images/back.png" %}" alt="" class="back"></a>
+  </div>
+  <div class="box">
+    {% for director in directors %}
+      <div class="director-box">
+        {% if director.profile_image %}
+          <img src="{{ director.profile_image.url }}" alt="" class="director-img">
+        {% endif %}
+        <p>{{ director }} 감독</p>
+      </div>
+    {% endfor %}
+  </div>
 {% endblock content %}

@@ -1,0 +1,96 @@
+@font-face {
+  font-family: 'mypage';
+  src: url('../font/LINESeedKR-Bd.ttf') format('truetype');
+}
+
+body {
+  background-color: black;
+  height: 50rem;
+  font-family: mypage;
+}
+
+.nav {
+  width: 90%;
+  /* height: 100px; */
+  height: 5rem;
+  margin-top: 0;
+  padding-left: 3%;
+  padding-top: 5%;
+  padding-bottom: 2%;
+  color: white;
+  font-size: 3em;
+}
+
+.box {
+  width: 90%;
+  padding: 60px;
+  margin-bottom: 20px;
+}
+
+.movie-list {
+  display: flex;
+  flex-direction: column;
+}
+
+.img-list {
+  width: 91%;
+  height: 90%;
+  display: flex;
+  padding-left: 50px;
+  overflow-x: scroll;
+}
+
+.img-list::-webkit-scrollbar {
+  display: none;
+}
+
+.star-btn {
+  margin-bottom: 50px;
+}
+
+.movie-img {
+  max-width: 18rem;
+  min-width: 18rem;
+  max-height: 25rem;
+  min-height: 25rem;
+  border-radius: 20px;
+  margin-left: 20px;
+}
+
+a {
+  width: fit-content;
+}
+
+.a-align {
+  display: flex;
+  justify-content: flex-end;
+}
+
+.back {
+  width: 30px;
+  height: 30px;
+  margin-top: 20px;
+  margin-right: 50px;
+}
+
+.page-btn {
+  display: flex;
+  justify-content: flex-end;
+  width: 95%;
+  margin-bottom: 10px;
+}
+
+.before {
+  width: 60px;
+  height: 60px;
+}
+
+.next {
+  width: 60px;
+  height: 60px;
+}
+
+.next-page {
+  display: flex;
+  align-items: center;
+}
