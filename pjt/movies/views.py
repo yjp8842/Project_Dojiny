@@ -7,6 +7,7 @@ import json
 # Create your views here.
 
 def index(request) :
+
     movies = Movie.objects.all()
     context = {
         'movies': movies

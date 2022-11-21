@@ -25,16 +25,17 @@
       </div>
       <h1>{{ behind.title }}</h1>
       <div class="info">
-        <p>작성자 : {{ behind.user.username }} 감독</p>
+        <p>작성자 : <a href="{% url 'mypage:index' behind.user.pk %}" class="nickname">{{ behind.user.username }}</a> 감독</p>
         <p>작성일자 : {{ behind.updated_at | date:"Y.m.d H:i:s" }}</p>
       </div>
       <hr>
-      <h2>{{ behind.content }}</h2>
+      <p>{{ behind.content }}</p>
     </div>
     
 
 
     <div>
+      <p class="comment-info">댓글 작성</p>
       <form action="{% url 'behinds:comment_create' behind.pk %}"  method="POST" class="form">
         {% csrf_token %}
         {{ form.content }}
@@ -45,42 +46,49 @@
       <div class="comments">
         {% for comment in comments %}
           <div class="comment-box">
-            {% if comment.user_comment == user %}
-              <div class="btn">
-                <form
-                  class="update-form update-form{{ comment.pk }}"
-                  data-comment-id="{{ comment.pk }}"
-                  data-comment-content="{{ comment.content }}"
-                  style="display:block;"
-                >
-                  <button type="submit" class="update-btn">수정</button>
-                </form>
-                <form
-                  class="udpate-form-axios update-form-axios{{ comment.pk }}"
-                  data-comment-id="{{ comment.pk }}"
-                  data-comment-content="{{ comment.content }}"
-                  data-behind-id="{{ behind.pk }}"
-                  style="display:none;"
-                >
-                  <button type="submit" class="update-btn">수정2</button>
-                  <button
-                    class="update-btn edit-cancel edit-cancel{{ comment.pk }}"
+            <div class="comment-profile">
+              <div>
+                <a href="{% url 'mypage:index' comment.user_comment.pk %}" class="nickname">{{ comment.user_comment.nickname }}</a>
+                {{ comment.updated_at | date:"Y.m.d H:i:s" }}
+              </div>
+              
+              <div class="btn2">
+                {% if comment.user_comment == user %}
+                  <form
+                    class="update-form update-form{{ comment.pk }}"
                     data-comment-id="{{ comment.pk }}"
                     data-comment-content="{{ comment.content }}"
-                  >취소</button>
-                </form>
-                <form action="{% url 'behinds:comment_delete' behind.pk comment.pk %}">
-                  <button type="submit" class="update-btn">삭제</button>
-                </form>
+                    style="display:block;"
+                  >
+                    <button type="submit" class="update-btn">수정</button>
+                  </form>
+                  <form
+                    class="udpate-form-axios update-form-axios{{ comment.pk }}"
+                    data-comment-id="{{ comment.pk }}"
+                    data-comment-content="{{ comment.content }}"
+                    data-behind-id="{{ behind.pk }}"
+                    style="display:none;"
+                  >
+                    <button type="submit" class="update-btn">수정2</button>
+                    <button
+                      class="update-btn edit-cancel edit-cancel{{ comment.pk }}"
+                      data-comment-id="{{ comment.pk }}"
+                      data-comment-content="{{ comment.content }}"
+                    >취소</button>
+                  </form>
+                  <form action="{% url 'behinds:comment_delete' behind.pk comment.pk %}">
+                    <button type="submit" class="update-btn">삭제</button>
+                  </form>
+                </div>
+                <div id="edit-div{{ comment.pk }}" style="display:none;">
+                  {% comment %} <textarea id="edit-area{{ comment.pk }}" cols="30" rows="10"></textarea> {% endcomment %}
+                  <input type="text" id="edit-area{{ comment.pk }}">
+                {% endif %}
               </div>
-              <div id="edit-div{{ comment.pk }}" style="display:none;">
-                {% comment %} <textarea id="edit-area{{ comment.pk }}" cols="30" rows="10"></textarea> {% endcomment %}
-                <input type="text" id="edit-area{{ comment.pk }}">
-              </div>
-            {% endif %}
+            </div>
             {% comment %} 댓글 나오는 부분 {% endcomment %}
             <div class="comment-scroll">
-              <span style="word-wrap: break-word;" id="comment-{{ comment.pk }}">{{ comment.content }}</span>
+              <span id="comment-{{ comment.pk }}" class="comment-content">{{ comment.content }}</span>
             </div>
           </div>
         {% endfor %}

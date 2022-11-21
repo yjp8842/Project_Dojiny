@@ -44,7 +44,7 @@ def signup(request) :
             else:
                 user.nickname = user.username
                 user.save()
-            user.profile_image = 'image/user.png'
+            user.profile_image = 'image/user.jpg'
             user.save()
             auth_login(request, user)
             return redirect('http://127.0.0.1:8000/menu/')

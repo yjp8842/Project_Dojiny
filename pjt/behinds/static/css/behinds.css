@@ -13,7 +13,7 @@ body {
 .nav {
   width: 90%;
   /* height: 100px; */
-  height: 5rem;
+  height: 4.5rem;
   margin-top: 0;
   padding-left: 10%;
   padding-top: 5%;
@@ -28,9 +28,32 @@ a {
 }
 
 .create-page {
+  width: fit-content;
+}
+
+.a-align {
   display: flex;
   justify-content: flex-end;
 }
+
+/*  */
+hr {
+  border: 0;
+  border-bottom: 2px solid white;
+  width: 0;
+  animation: separator-width 0.5s ease-out forwards;
+}
+
+@keyframes separator-width {
+  0% {
+    width: 0;
+  }
+  100% {
+    width: 100%;
+  }
+}
+/*  */
+
 /* 
 .nav {
   width: 97%;

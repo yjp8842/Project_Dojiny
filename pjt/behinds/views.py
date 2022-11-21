@@ -1,16 +1,61 @@
-from django.shortcuts import render, redirect, get_object_or_404
+from django.shortcuts import render, redirect, get_object_or_404, get_list_or_404
 from .forms import BehindForm, CommentForm
 from .models import Behind, Comment
 from django.http import JsonResponse
+from django.contrib.auth import get_user_model
 import json
 
 
 ## 아래부터 behind
 def index(request):
-    behinds = Behind.objects.all()
-    context = {
-        'behinds': behinds,
-    }
+    if request.body:
+        jsonObject = json.loads(request.body)
+        inputContent = jsonObject.get('inputContent')
+        behinds = Behind.objects.all()
+        users = get_user_model().objects. all()
+        data = []
+        behind_name = get_user_model().objects.filter(username__icontains=inputContent)
+        if len(inputContent) > 0 and len(behind_name) > 0:
+            for user in behind_name:
+                targetBehinds = user.behind_set.filter(user=user.pk)
+                for targetbhind in targetBehinds:
+                    item = {
+                        'pk': targetbhind.pk,
+                        'title': targetbhind.title,
+                        'username': user.username,
+                    }
+                    data.append(item)
+
+        behinds_title = Behind.objects.filter(title__icontains = inputContent)
+        if len(inputContent) > 0 and len(behinds_title) > 0:
+            for behind in behinds_title:
+                item = {
+                    'pk': behind.pk,
+                    'title': behind.title,
+                    'username': behind.user.username,
+                }
+                data.append(item)
+
+        behinds_content = Behind.objects.filter(content__icontains = inputContent)
+        if len(inputContent) > 0 and len(behinds_content) > 0:
+            for behind in behinds_content:
+                item = {
+                    'pk': behind.pk,
+                    'title': behind.title,
+                    'username': behind.user.username,
+                }
+                data.append(item)
+
+        context = {
+            'searchResult': data
+        }
+        return JsonResponse(context)
+    else:
+        behinds = Behind.objects.all().order_by('-pk')
+        context = {
+            'behinds': behinds,
+        }
+        print('none')
     return render(request, 'behinds/index.html', context)
 
 # 생성 폼과 생성 페이지
@@ -47,7 +92,7 @@ def detail(request, behind_pk):
     if request.user.is_authenticated:
         behind = Behind.objects.get(pk=behind_pk)
         form = CommentForm()
-        comments = behind.comment_set.all()
+        comments = behind.comment_set.all().order_by('-pk')
         context = {
             'behind': behind,
             'form': form,

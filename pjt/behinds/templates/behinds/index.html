@@ -9,6 +9,23 @@
   <script type="text/javascript" src="{% static "js/search.js" %}"></script>
   <script type="text/javascript" src="{% static "js/follow.js" %}"></script>
   <script type="text/javascript" src="{% static "js/like.js" %}"></script>
+  <style>
+    .not-visible {
+      display: none;
+    }
+    .result-card {
+      max-height: 200px;
+      border: 3px solid white;
+    }
+    .link {
+      text-decoration: none;
+    }
+    .websearch{
+      width: 50px;
+      height: 50px;
+    }
+
+  </style>
 {% endblock script %}
 
 {% block content %}
@@ -20,9 +37,19 @@
         <option value="update">최신순</option>
         <option value="popular">인기순</option>
       </select>
-      <input type="text" class="input" id="search-input">
-      <img src="{% static "images/search.png" %}" alt="" class="search" id="search">
+
+      <div>
+        <form action="" method="post">
+          {% csrf_token %}
+          <input type="text" class="input" id="search-input" data-behind-content="{{ behinds }}">
+          <img src="{% static "images/search.png" %}" alt="" class="search" id="search">
+        </form>
+        <div id="result-Box" class="result-card not-visible">
+        </div>
+      </div>
+
     </div>
+
     <div class="middle-box">
       <div class="form-box" id="form-box">
         {% for behind in behinds %}
@@ -65,6 +92,9 @@
         {% endfor %}
       </div>
     </div>
-    <a href="{% url 'behinds:create' %}" class="create-page"><img src="{% static "images/create.png" %}" alt="" class="img"></a>
+
+    <div class="a-align">
+      <a href="{% url 'behinds:create' %}" class="create-page"><img src="{% static "images/create.png" %}" alt="" class="img"></a>
+    </div>
   </div>
 {% endblock content %}

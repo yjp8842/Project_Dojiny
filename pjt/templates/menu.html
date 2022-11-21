@@ -50,7 +50,7 @@
       </div>
       <div class="hidden">Intro</div>
     </div>
-    <div class="image-box" onclick=''>
+    <div class="image-box" onclick='myPage()'>
       <div class="img-4 imgs">
         <div class="span-m">
           <span>마</span><br>
@@ -59,9 +59,11 @@
           <span>이</span><br>
           <span>지</span><br>
           <br>
+          <span style="display:none;" id="userid">{{ user.pk }}</span>
         </div>
       </div>
       <div class="hidden">Intro</div>
     </div>
   </div>
+
 {% endblock content %}

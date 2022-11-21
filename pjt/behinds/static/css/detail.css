@@ -20,7 +20,7 @@ body {
 
 .detail-box {
   width: 40rem;
-  height: 38rem;
+  height: 40rem;
   background-color: #f5f5f5;
   border-radius: 40px;
   padding: 60px;
@@ -37,6 +37,15 @@ body {
 .btn {
   display: flex;
   justify-content: flex-end;
+}
+
+.btn2 {
+  display: flex;
+}
+
+.comment-profile {
+  display: flex;
+  justify-content: space-between;
 }
 
 button {
@@ -190,4 +199,15 @@ display: none;
 .comment-info {
   color: white;
   font-size: 25px;
+}
+
+.comment-content {
+  word-wrap: break-word;
+  font-size: medium;
+}
+
+.nickname {
+  margin-right: 3px;
+  color: black;
+  /* text-decoration: none; */
 }
