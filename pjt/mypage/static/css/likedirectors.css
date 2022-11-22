@@ -21,22 +21,6 @@ body {
   font-size: 3em;
 }
 
-hr {
-  border: 0;
-  border-bottom: 2px solid white;
-  width: 0;
-  animation: separator-width 0.5s ease-out forwards;
-}
-
-@keyframes separator-width {
-  0% {
-    width: 0;
-  }
-  100% {
-    width: 100%;
-  }
-}
-
 .box {
   width: 65%;
   display: flex;

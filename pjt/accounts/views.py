@@ -1,6 +1,7 @@
 from django.shortcuts import render, redirect, get_object_or_404
 from django.http import JsonResponse
 
+from django.contrib.auth import update_session_auth_hash
 from django.contrib.auth import login as auth_login
 from django.contrib.auth import logout as auth_logout
 from django.contrib.auth import get_user_model
@@ -9,7 +10,7 @@ from django.contrib.auth.forms import (
     UserCreationForm, 
     PasswordChangeForm
 )
-from .forms import CustomUserChangeForm, CustomUserCreationForm, CustomAuthenticationForm
+from .forms import CustomUserChangeForm, CustomUserCreationForm, CustomAuthenticationForm, SetPasswordForm
 from .models import User
 # Create your views here.
 
@@ -100,14 +101,31 @@ def update(request, user_pk) :
         form = CustomUserChangeForm(request.POST, request.FILES, instance=user)
         if form.is_valid():
             user = form.save()
-            return redirect('mypage:index', user.pk)
-        return render(request, 'accounts/update.html')
+            if not request.FILES:
+                user.profile_image = 'image/user.jpg'
+                user.save()
+            form2 = SetPasswordForm(user, request.POST)
+            if form2.is_valid():
+                form2.save()
+                update_session_auth_hash(request, form2.user)
+                return redirect('mypage:index', user.pk)
+
+            passwordForm = SetPasswordForm(user)
+            form = CustomUserChangeForm(instance=user)
+            auth_login(request, user)
+            context = {
+                'form': form,
+                'passwordForm': passwordForm
+            }   
+            return render(request, 'accounts/update.html', context)
     else:
+        passwordForm = SetPasswordForm(user)
         form = CustomUserChangeForm(instance=user)
         context = {
-            'form': form
+            'form': form,
+            'passwordForm': passwordForm
         }
-    return render(request, 'accounts/update.html', context)
+        return render(request, 'accounts/update.html', context)
 
 def password(request) :
     pass

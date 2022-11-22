@@ -8,16 +8,52 @@
   <title></title>
   {% block css %}
   {% endblock css %}
+  <link rel="stylesheet" href="{% static 'css/navbar.css' %}">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
   
 </head>
 <body>
+  <div id="navbar-box">
+    <div id="navbar">
+      <a href="#" class="menu-bars" id="show-menu">
+        <i class="fas fa-bars"></i>
+      </a>
+    </div>
+    <nav id="nav-menu">
+      <ul class="nav-menu-items">
+        <div id="navbar-toggle">
+          {% comment %} <a href="#"><h1>Dojiny</h1></a> {% endcomment %}
+          <a href="#" class="menu-bars" id="hide-menu">
+            <i class="fas fa-bars nav-icons"></i>
+          </a>
+        </div>
+        <hr class="nav-hr">
+        <div class="nav-sections">
+          <li class="nav-text"><a href="#"><img src="{{ user.profile_image.url }}" alt="profile" class="modal-user"></a></li>        
+          <br>
+          <li class="nav-text"><a href="#" class="logout">로그아웃</a></li>        
+          <br>
+          <li class="nav-text item"><a href="#">전체 영화</a></li>        
+          <br>
+          <li class="nav-text item"><a href="#">감독 비하인드</a></li>        
+          <br>
+          <li class="nav-text item"><a href="#">추천 영화</a></li>        
+          <br>
+          <li class="nav-text item"><a href="#">마이페이지</a></li>
+        </div>
+      </ul>
+    </nav>
+  </div>
+
+
+
   {% block content %}
   
   {% endblock content %}
   {% block script %}
   
   {% endblock script %}
+  <script type="text/javascript" src="{% static 'js/navbar.js' %}"></script>
   <script src="https://kit.fontawesome.com/13854dfe88.js" crossorigin="anonymous"></script>
   <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
 </body>

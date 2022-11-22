@@ -9,13 +9,14 @@
   <script type="text/javascript" src="{% static "js/search.js" %}"></script>
   <script type="text/javascript" src="{% static "js/follow.js" %}"></script>
   <script type="text/javascript" src="{% static "js/like.js" %}"></script>
+  <script type="text/javascript" src="{% static "js/sorted.js" %}"></script>
+  <script type="text/javascript" src="{% static "js/modal.js" %}"></script>
   <style>
     .not-visible {
       display: none;
     }
     .result-card {
       max-height: 200px;
-      border: 3px solid white;
     }
     .link {
       text-decoration: none;
@@ -29,10 +30,23 @@
 {% endblock script %}
 
 {% block content %}
+  {% comment %} 검색하는 부분 {% endcomment %}
+  <div class="modal-box not-visible" id="modal">
+    <div class="modal">
+      <form action="" method="post" class="modal-form">
+        {% csrf_token %}
+        <input type="text" class="input" id="search-input" data-behind-content="{{ behinds }}">
+        <img src="{% static "images/search.png" %}" alt="" class="search">
+      </form>
+      <div id="result-Box" class="result-card not-visible"></div>
+    </div>
+  </div>
+  {% comment %} 검색하는 부분 {% endcomment %}
+
   <div class="nav">감독 비하인드</div>
   <hr>
   <div class="box">
-    <div class="select-box">
+    {% comment %} <div class="select-box">
       <select name="types" id="types" class="select">
         <option value="update">최신순</option>
         <option value="popular">인기순</option>
@@ -48,11 +62,72 @@
         </div>
       </div>
 
+    </div> {% endcomment %}
+
+    <div class="re-select-box">
+      <span class="re-select" id="recent">최신순</span>
+      <span class="re-select deactivate" id="popular">인기순</span>
+      <span class="re-select" id="search-btn">검색</span>
+      <a href="{% url 'behinds:create' %}" class="create-page">글쓰기</a>
     </div>
 
-    <div class="middle-box">
+    {% comment %} 최신순 {% endcomment %}
+    <div class="middle-box" id="recent-form">
       <div class="form-box" id="form-box">
-        {% for behind in behinds %}
+        {% for behind in recentBehinds %}
+          <div class="form-list" id="form-list">
+            <div class="profile">
+              <div class="profile-user">
+                {% if behind.user.profile_image %}
+                  <img src="{{ behind.user.profile_image.url }}" alt="" class="user">
+                {% endif %}
+                <p id="director">{{ behind.user.username }} 감독</p>
+              </div>
+              <form id="follow-form" data-user-id="{{ behind.user.pk }}">
+                {% csrf_token %}
+                {% if user in behind.user.followers.all %}
+                  <button type="submit" class="follow" id="like-button-{{ behind.user.pk }}">언팔로우</button>
+                {% else %}
+                  <button type="submit" class="follow" id="like-button-{{ behind.user.pk }}">팔로우</button>
+                {% endif %}
+              </form>
+            </div>
+
+            <div class="in-content-box">
+              <a href="{% url 'behinds:detail' behind.pk %} " ><h2>제목 : {{ behind.title }}</h2></a>    
+              {% if behind.content|length > 300 %}
+                <p>내용 : {{ behind.content | slice:"301" }}...</p>
+              {% else %}
+                <p>내용 : {{ behind.content | slice:"301" }}</p>
+              {% endif %}
+  
+              <div class="like" data-behind-id="{{ behind.pk }}">
+                {% if user in behind.like_user.all %}
+                  <img
+                    src="{% static "images/heart.png" %}"
+                    class="like-img like-img-button like-img-button-{{ behind.pk }}"
+                    data-behind-id="{{ behind.pk }}"
+                  >
+                {% else  %}
+                  <img
+                    src="{% static "images/love.png" %}"
+                    class="like-img like-img-button like-img-button-{{ behind.pk }}"
+                    data-behind-id="{{ behind.pk }}"
+                  >
+                {% endif %}
+                <p id="like-count-{{ behind.pk }}">{{ behind.like_user.all|length }}</p>
+              </div>
+            </div>
+
+          </div>
+        {% endfor %}
+      </div>
+    </div>
+
+    {% comment %} 인기순 {% endcomment %}
+    <div class="middle-box not-visible" id="popular-form">
+      <div class="form-box" id="form-box">
+        {% for behind in popularBehinds %}
           <div class="form-list" id="form-list">
             <div class="profile">
               <div class="profile-user">
@@ -69,7 +144,7 @@
               </form>
             </div>
             <a href="{% url 'behinds:detail' behind.pk %} " ><h2>제목 : {{ behind.title }}</h2></a>    
-            <p>내용 : {{ behind.content }}</p>
+            <p>내용 : {{ behind.content | slice:"301" }}</p>
 
             <div class="like" data-behind-id="{{ behind.pk }}">
               {% if user in behind.like_user.all %}
@@ -93,8 +168,8 @@
       </div>
     </div>
 
-    <div class="a-align">
+    {% comment %} <div class="a-align">
       <a href="{% url 'behinds:create' %}" class="create-page"><img src="{% static "images/create.png" %}" alt="" class="img"></a>
-    </div>
+    </div> {% endcomment %}
   </div>
 {% endblock content %}

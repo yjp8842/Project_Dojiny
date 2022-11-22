@@ -22,6 +22,7 @@
           <img src="{{ director.profile_image.url }}" alt="" class="director-img">
         {% endif %}
         <p>{{ director }} 감독</p>
+        <p>최근 게시글 : <a href="http://127.0.0.1:8000/behinds/{{ director.behind_set.all.last.pk }}/detail/">{{ director.behind_set.all.last.title }}</a></p>
       </div>
     {% endfor %}
   </div>

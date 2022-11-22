@@ -9,15 +9,15 @@ body {
   color: white;
 }
 
-a {
+.movie-a {
   width: 30rem;
-  height: 30rem;
+  height: 25rem;
   flex: 0 0 25%;
   display: flex;
   align-items: center;
   justify-content: center;
   position: relative;
-  margin-top: 30px;
+  margin-top: 20px;
 }
 
 .nav {
@@ -31,35 +31,20 @@ a {
   font-size: 3em;
 }
 
-hr {
-  border: 0;
-  border-bottom: 2px solid white;
-  width: 0;
-  animation: separator-width 0.5s ease-out forwards;
-}
-
-@keyframes separator-width {
-  0% {
-    width: 0;
-  }
-  100% {
-    width: 100%;
-  }
-}
-
 .box {
   display: flex;
   justify-content: center;
+  margin-top: 70px;
 }
 
 .movie-img {
-  width: 20rem;
-  height: 30rem;
+  width: 18rem;
+  height: 25rem;
   border-radius: 10px;
 }
 
 .movie-list {
-  width: 87rem;
+  width: 75rem;
   display: flex;
   flex-wrap: wrap;
   /* justify-content: center; */
@@ -79,6 +64,38 @@ hr {
   position: absolute;
   font-family: movie;
   color: white;
-  font-size: 25px;
+  font-size: 17px;
   text-align: center;
+}
+
+.back {
+  width: 30px;
+  height: 30px;
+}
+
+.back-page {
+  display: flex;
+  justify-content: flex-start;
+  margin-left: 30px;
+  margin-top: 630px;
+  position: fixed;
+}
+
+.load-form {
+  display: flex;
+  justify-content: center;
+  margin-top: 40px;
+  margin-bottom: 40px;
+}
+
+#load-form {
+  width: fit-content;
+}
+
+#load-button {
+  background-color: transparent;
+  font-family: movie;
+  color: white;
+  font-size: 17px;
+  cursor: pointer;
 }

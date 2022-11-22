@@ -3,6 +3,7 @@ from .forms import BehindForm, CommentForm
 from .models import Behind, Comment
 from django.http import JsonResponse
 from django.contrib.auth import get_user_model
+from django.db.models import Count
 import json
 
 
@@ -10,52 +11,66 @@ import json
 def index(request):
     if request.body:
         jsonObject = json.loads(request.body)
-        inputContent = jsonObject.get('inputContent')
-        behinds = Behind.objects.all()
-        users = get_user_model().objects. all()
-        data = []
-        behind_name = get_user_model().objects.filter(username__icontains=inputContent)
-        if len(inputContent) > 0 and len(behind_name) > 0:
-            for user in behind_name:
-                targetBehinds = user.behind_set.filter(user=user.pk)
-                for targetbhind in targetBehinds:
+        # 검색 시 
+        if 'inputContent' in jsonObject.keys():
+            inputContent = jsonObject.get('inputContent')
+            behinds = Behind.objects.all()
+            users = get_user_model().objects. all()
+            data = []
+            behind_name = get_user_model().objects.filter(username__icontains=inputContent)
+            if len(inputContent) > 0 and len(behind_name) > 0:
+                for user in behind_name:
+                    targetBehinds = user.behind_set.filter(user=user.pk)
+                    for targetbhind in targetBehinds:
+                        item = {
+                            'pk': targetbhind.pk,
+                            'title': targetbhind.title,
+                            'username': user.username,
+                        }
+                        data.append(item)
+
+            behinds_title = Behind.objects.filter(title__icontains = inputContent)
+            if len(inputContent) > 0 and len(behinds_title) > 0:
+                for behind in behinds_title:
                     item = {
-                        'pk': targetbhind.pk,
-                        'title': targetbhind.title,
-                        'username': user.username,
+                        'pk': behind.pk,
+                        'title': behind.title,
+                        'username': behind.user.username,
                     }
-                    data.append(item)
+                    flag = True
+                    for d in data :
+                        if d['pk'] == behind.pk:
+                            flag = False
+                            break
+                    if flag :
+                        data.append(item)
 
-        behinds_title = Behind.objects.filter(title__icontains = inputContent)
-        if len(inputContent) > 0 and len(behinds_title) > 0:
-            for behind in behinds_title:
-                item = {
-                    'pk': behind.pk,
-                    'title': behind.title,
-                    'username': behind.user.username,
-                }
-                data.append(item)
-
-        behinds_content = Behind.objects.filter(content__icontains = inputContent)
-        if len(inputContent) > 0 and len(behinds_content) > 0:
-            for behind in behinds_content:
-                item = {
-                    'pk': behind.pk,
-                    'title': behind.title,
-                    'username': behind.user.username,
-                }
-                data.append(item)
-
-        context = {
-            'searchResult': data
-        }
-        return JsonResponse(context)
+            behinds_content = Behind.objects.filter(content__icontains = inputContent)
+            if len(inputContent) > 0 and len(behinds_content) > 0:
+                for behind in behinds_content:
+                    item = {
+                        'pk': behind.pk,
+                        'title': behind.title,
+                        'username': behind.user.username,
+                    }
+                    flag = True
+                    for d in data :
+                        if d['pk'] == behind.pk:
+                            flag = False
+                            break
+                    if flag :
+                        data.append(item)
+            context = {
+                'searchResult': data
+            }
+            return JsonResponse(context)
     else:
-        behinds = Behind.objects.all().order_by('-pk')
+        recentBehinds = Behind.objects.all().order_by('-pk')
+        popularBehinds = Behind.objects.annotate(popular_count=Count('like_user')).order_by('-popular_count')
         context = {
-            'behinds': behinds,
+            'recentBehinds': recentBehinds,
+            'popularBehinds': popularBehinds,
         }
-        print('none')
     return render(request, 'behinds/index.html', context)
 
 # 생성 폼과 생성 페이지
@@ -192,13 +207,12 @@ def comment_delete(request, behind_pk, comment_pk):
 def likes(request, behind_pk):
     behind = Behind.objects.get(pk=behind_pk)
     if request.user.is_authenticated:
-        if request.user != behind.user :
-            if behind.like_user.filter(pk=request.user.pk).exists():
-                behind.like_user.remove(request.user)
-                isLiked = False
-            else:
-                behind.like_user.add(request.user)
-                isLiked = True
+        if behind.like_user.filter(pk=request.user.pk).exists():
+            behind.like_user.remove(request.user)
+            isLiked = False
+        else:
+            behind.like_user.add(request.user)
+            isLiked = True
         context = {
             'isLiked': isLiked,
             'like_user_count': behind.like_user.count(),

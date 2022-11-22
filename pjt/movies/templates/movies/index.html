@@ -5,17 +5,31 @@
   <link rel="stylesheet" href="{% static 'css/movies.css' %}">
 {% endblock css %}
 
+{% block script %}
+  <script type="text/javascript" src="{% static "js/load.js" %}"></script>
+  <script type="text/javascript" src="{% static "js/navbar-back.js" %}"></script>
+{% endblock script %}
+
 {% block content %}
   <div class="nav">전체 영화</div>
   <hr>
+  {% comment %} <div class="back-page" id="back-page">
+    <a href="http://127.0.0.1:8000/menu/" class="back"><img src="{% static "images/back.png" %}" alt="" class="back"></a>
+  </div> {% endcomment %}
   <div class="box">
     <div class="movie-list">
       {% for movie in movies %}
-        <a href="{% url 'movies:detail' movie.pk %}">
+        <a href="{% url 'movies:detail' movie.pk %}" class="movie-a">
           <img src="https://image.tmdb.org/t/p/w500{{ movie.poster_path }}" alt="movie img" class="movie-img">
           <div class="info">{{ movie.title }}</div>
         </a>
       {% endfor %}
     </div>
+  </div>
+  <div class="load-form">
+    <form action="" method="POST" id="load-form">
+      {% csrf_token %}
+      <button type="submit" id="load-button">View More Movies ...</button>
+    </form>
   </div>
 {% endblock content %}

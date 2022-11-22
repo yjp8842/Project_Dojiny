@@ -38,10 +38,13 @@
           <button type="submit" class="fa fa-star my-btn checked" id="fifth"></button>
         </div>
         <div class="page-btn">
-          <img src="{% static "images/before.png" %}" alt="" class="before star5before" data-movie-stars="{{ movies5starURL }}" id="before">
-          <img src="{% static "images/next.png" %}" alt="" class="next star5next" data-movie-stars="{{ movies5starURL }}" id="next">
+          <form action="" id="star5-form" data-user-id="{{ user.pk }}" data-stars="5" data-stars-list="fiveList">
+            {% csrf_token %}
+            <input  TYPE="IMAGE" src="{% static "images/before.png" %}" name="Submit" value="before" class="before" id="before" align="absmiddle">
+            <input  TYPE="IMAGE" src="{% static "images/next.png" %}" name="Submit" value="next" class="next" id="next" align="absmiddle">
+          </form>
         </div>
-        <div class="img-list" id="img-list">
+        <div class="img-list" id="img-list-star5">
           {% for movie5star in movies5star %}
           <img src="https://image.tmdb.org/t/p/w500{{ movie5star.like_movies.poster_path }}" alt="movie img" class="movie-img">
           {% endfor %}
@@ -61,10 +64,13 @@
           <button type="submit" class="fa fa-star my-btn" id="fifth"></button>
         </div>
         <div class="page-btn">
-          <img src="{% static "images/before.png" %}" alt="" class="before star4before" data-movie-stars="{{ movies4starURL }}" id="before">
-          <img src="{% static "images/next.png" %}" alt="" class="next star4next" data-movie-stars="{{ movies4starURL }}" id="next">
+          <form action="" id="star4-form" data-user-id="{{ user.pk }}" data-stars="4" data-stars-list="fourList">
+            {% csrf_token %}
+            <input  TYPE="IMAGE" src="{% static "images/before.png" %}" name="Submit" value="before" class="before" id="before" align="absmiddle">
+            <input  TYPE="IMAGE" src="{% static "images/next.png" %}" name="Submit" value="next" class="next" id="next" align="absmiddle">
+          </form>
         </div>
-        <div class="img-list">
+        <div class="img-list" id="img-list-star4">
           {% for movie4star in movies4star %}
             <img src="https://image.tmdb.org/t/p/w500{{ movie4star.like_movies.poster_path }}" alt="movie img" class="movie-img">
           {% endfor %}
@@ -84,10 +90,13 @@
           <button type="submit" class="fa fa-star my-btn " id="fifth"></button>
         </div>
         <div class="page-btn">
-          <img src="{% static "images/before.png" %}" alt="" class="before star3before" data-movie-stars="{{ movies3starURL }}" id="before">
-          <img src="{% static "images/next.png" %}" alt="" class="next star3next" data-movie-stars="{{ movies3starURL }}" id="next">
+          <form action="" id="star3-form" data-user-id="{{ user.pk }}" data-stars="3" data-stars-list="threeList">
+            {% csrf_token %}
+            <input  TYPE="IMAGE" src="{% static "images/before.png" %}" name="Submit" value="before" class="before" id="before" align="absmiddle">
+            <input  TYPE="IMAGE" src="{% static "images/next.png" %}" name="Submit" value="next" class="next" id="next" align="absmiddle">
+          </form>
         </div>
-        <div class="img-list">
+        <div class="img-list" id="img-list-star3">
           {% for movie3star in movies3star %}
             <img src="https://image.tmdb.org/t/p/w500{{ movie3star.like_movies.poster_path }}" alt="movie img" class="movie-img">
           {% endfor %}
@@ -107,10 +116,13 @@
           <button type="submit" class="fa fa-star my-btn " id="fifth"></button>
         </div>
         <div class="page-btn">
-          <img src="{% static "images/before.png" %}" alt="" class="before star2before" data-movie-stars="{{ movies2starURL }}" id="before">
-          <img src="{% static "images/next.png" %}" alt="" class="next star2next" data-movie-stars="{{ movies2starURL }}" id="next">
+          <form action="" id="star2-form" data-user-id="{{ user.pk }}" data-stars="2" data-stars-list="twoList">
+            {% csrf_token %}
+            <input  TYPE="IMAGE" src="{% static "images/before.png" %}" name="Submit" value="before" class="before" id="before" align="absmiddle">
+            <input  TYPE="IMAGE" src="{% static "images/next.png" %}" name="Submit" value="next" class="next" id="next" align="absmiddle">
+          </form>
         </div>
-        <div class="img-list">
+        <div class="img-list" id="img-list-star2">
           {% for movie2star in movies2star %}
             <img src="https://image.tmdb.org/t/p/w500{{ movie2star.like_movies.poster_path }}" alt="movie img" class="movie-img">
           {% endfor %}
@@ -130,10 +142,13 @@
           <button type="submit" class="fa fa-star my-btn " id="fifth"></button>
         </div>
         <div class="page-btn">
-          <img src="{% static "images/before.png" %}" alt="" class="before star1before" data-movie-stars="{{ movies1starURL }}" id="before">
-          <img src="{% static "images/next.png" %}" alt="" class="next star1next" data-movie-stars="{{ movies1starURL }}" id="next">
+          <form action="" id="star1-form" data-user-id="{{ user.pk }}" data-stars="1" data-stars-list="oneList">
+            {% csrf_token %}
+            <input  TYPE="IMAGE" src="{% static "images/before.png" %}" name="Submit" value="before" class="before" id="before" align="absmiddle">
+            <input  TYPE="IMAGE" src="{% static "images/next.png" %}" name="Submit" value="next" class="next" id="next" align="absmiddle">
+          </form>
         </div>
-        <div class="img-list">
+        <div class="img-list" id="img-list-star1">
           {% for movie1star in movies1star %}
             <img src="https://image.tmdb.org/t/p/w500{{ movie1star.like_movies.poster_path }}" alt="movie img" class="movie-img">
           {% endfor %}

@@ -17,7 +17,7 @@ body {
   box-shadow: 10px 10px #d9d9d9;
 }
 
-a {
+.back-a {
   width: 30px;
   height: 30px;
 }
@@ -50,15 +50,27 @@ a {
 }
 
 .line-height {
-  width: 100%;
+  width: 90%;
   height: 200px;
   overflow-y: scroll;
   line-height: 50px;
+  padding-right: 40px;
   font-size: 0.8em !important;
 }
 
 .line-height::-webkit-scrollbar {
-  display: none;
+  width: 5px;
+}
+
+.line-height::-webkit-scrollbar-thumb {
+  height: 20%;
+  background-color: #d9d9d9;
+  border-radius: 10px;
+}
+
+.line-height::-webkit-scrollbar-track {
+  background-color: #4b4b4b;
+  border-radius: 10px;
 }
 
 .back {

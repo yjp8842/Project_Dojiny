@@ -17,13 +17,13 @@
 body {
   background-color: black;
   font-family: title;
-  height: 98vh;
+  height: 50rem;
 }
 
 img {
   width: 480px;
-  height: 780px;
-  margin-top: 50vh;
+  height: 750px;
+  margin-top: 660px;
   border-top-left-radius: 300px;
   border-top-right-radius: 300px;
   opacity: 0.3;

@@ -9,32 +9,46 @@
 {% endblock script %}
 
 {% block content %}
-  <div class="nav">My Page</div>
+  <div class="nav">마이페이지</div>
   <hr>
   <div class="box">
     {% if person.profile_image %}
       <img src="{{ person.profile_image.url }}" alt="profile" class="user-img">
     {% endif %}
-    <div class="profile">
+    <div class="profile"> 
       <h2>{{ person.username }}</h2>
       <h3>{{ person.nickname }}</h3>
-      <div class="btns">
-        <button onclick="location.href=`{% url 'mypage:likedirectors' person.pk %}`" class="btn">팔로우 한 감독</button>
-        <button onclick="location.href=`{% url 'mypage:likemovies' person.pk %}`" class="btn">평가한 영화</button>
+      <br>
+      {% comment %} <hr class="hr" align="left"> {% endcomment %}
+      <div class="go-page">
+        <p>팔로우 한 감독</p>
+        <button onclick="location.href=`{% url 'mypage:likedirectors' person.pk %}`" class="btn">GO</button>
+      </div>
+      <hr class="hr" align="left">
+      <div class="go-page">
+        <p>별점 남긴 영화</p>
+        <button onclick="location.href=`{% url 'mypage:likemovies' person.pk %}`" class="btn">GO</button>
       </div>
       {% if user.username == person.username %}
-        <div class="btns">
+        <hr class="hr" align="left">
+        <div class="go-page">
+          <p>회원 정보 수정</p>
           <form action="{% url 'accounts:update' person.pk %}" method="GET">
-            <button type="submit" class="btn">회원 정보 수정</button>
-          </form>
-          <form action="{% url 'accounts:delete' person.pk %}" method="POST">
-            {% csrf_token %}
-            <button type="submit" class="btn">회원 탈퇴</button>
+            <button type="submit" class="btn">GO</button>
           </form>
         </div>
-      {% endif %}
+        <hr class="hr" align="left">
+        <div class="go-page">
+          <p>회원 탈퇴</p>
+          <form action="{% url 'accounts:delete' person.pk %}" method="POST">
+            {% csrf_token %}
+            <button type="submit" class="btn">GO</button>
+          </form>
+        </div>
+        {% endif %}
+      <hr class="hr" align="left">
     </div>
-    <a href="http://127.0.0.1:8000/menu/"><img src="{% static "images/back.png" %}" alt="" class="back"></a>
+    {% comment %} <a href="http://127.0.0.1:8000/menu/"><img src="{% static "images/back.png" %}" alt="" class="back"></a> {% endcomment %}
   </div>
 
 {% endblock content %}

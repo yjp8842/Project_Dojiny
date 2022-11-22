@@ -7,10 +7,11 @@
 
 {% block script %}
   <script type="text/javascript" src="{% static "js/edit.js" %}"></script>
+  <script type="text/javascript" src="{% static "js/navbar-back.js" %}"></script>
 {% endblock script %}
 
 {% block content %}
-  <a href="{% url 'behinds:index' %}"><img src="{% static "images/back.png" %}" alt="" class="back"></a>
+  <a href="{% url 'behinds:index' %}" id="back-page"><img src="{% static "images/back.png" %}" alt="" class="back"></a>
   <div class="detail">
     <div class="detail-box">
       <div class="btn">
@@ -34,7 +35,7 @@
     
 
 
-    <div>
+    <div class="second-box">
       <p class="comment-info">댓글 작성</p>
       <form action="{% url 'behinds:comment_create' behind.pk %}"  method="POST" class="form">
         {% csrf_token %}
@@ -49,9 +50,9 @@
             <div class="comment-profile">
               <div>
                 <a href="{% url 'mypage:index' comment.user_comment.pk %}" class="nickname">{{ comment.user_comment.nickname }}</a>
-                {{ comment.updated_at | date:"Y.m.d H:i:s" }}
+                <span class="nickname">{{ comment.updated_at | date:"Y.m.d H:i:s" }}</span>
               </div>
-              
+            
               <div class="btn2">
                 {% if comment.user_comment == user %}
                   <form

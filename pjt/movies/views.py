@@ -7,12 +7,23 @@ import json
 # Create your views here.
 
 def index(request) :
-
-    movies = Movie.objects.all()
-    context = {
-        'movies': movies
-    }
-    return render(request, 'movies/index.html', context)
+    if request.body:
+        jsonObject = json.loads(request.body)
+        pageCount = jsonObject.get('pageCount')
+        movies = Movie.objects.all()[20*pageCount:20*(pageCount+1)]
+        jsonContext = []
+        for movie in movies:
+            jsonContext.append({
+                'poster_url': movie.poster_path,
+                'title': movie.title
+            })
+        return JsonResponse(jsonContext, safe=False)
+    else:
+        movies = Movie.objects.all()
+        context = {
+            'movies': movies[0:20]
+        }
+        return render(request, 'movies/index.html', context)
 
 def detail(request, movie_pk) :
     movie = Movie.objects.get(pk=movie_pk)

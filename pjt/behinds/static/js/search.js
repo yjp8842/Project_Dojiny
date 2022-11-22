@@ -29,8 +29,8 @@ searchInput.addEventListener('keyup', function (event) {
       resultBox.innerHTML = ``
       searchResult.forEach(result => {
         resultBox.innerHTML += `
-          <a href="" class='link'>
-            <div style='margin-top:2px; margin-bottom:2px; color:white'>
+          <a href='http://127.0.0.1:8000/behinds/${result.pk}/detail/' class='link'>
+            <div style='margin-top:2px; margin-bottom:2px; color:black'>
               <div>
                 <p>${result.username} | ${result.title}</p>
               </div>

@@ -6,9 +6,8 @@
 {% endblock css %}
 
 {% block content %}
-  <div class="nav">
-    감독 비하인드 작성 페이지
-  </div>
+  <div class="nav">감독 비하인드 작성 페이지</div>
+  <hr>
   <div class="form-box">
     <form action="{% url 'behinds:create' %}" method="POST">
       {% csrf_token %}
