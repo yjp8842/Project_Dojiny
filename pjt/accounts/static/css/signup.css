@@ -83,3 +83,7 @@ p {
 .margin {
   margin-top: 30px;
 }
+
+#id_nickname::placeholder {
+  font-size: smaller;
+}

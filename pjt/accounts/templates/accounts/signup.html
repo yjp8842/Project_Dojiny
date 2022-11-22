@@ -1,11 +1,14 @@
-{% extends 'base.html' %}
+<!DOCTYPE html>
 {% load static %}
-
-{% block css %}
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link rel="stylesheet" href="{% static 'css/signup.css' %}">
-{% endblock css %}
-
-{% block content %}
+  <title>Document</title>
+</head>
+<body>
   <div class="signup">
     <div class="login-tag">
       <a href="{% url 'accounts:signup' %}" class="a"><h1>SIGN UP</h1></a>
@@ -41,4 +44,50 @@
       </div>
     </form>
   </div>
-{% endblock content %}
+</body>
+</html>
+
+{% comment %} {% extends 'base.html' %}
+{% load static %}
+
+{% block css %}
+  <link rel="stylesheet" href="{% static 'css/signup.css' %}">
+{% endblock css %}
+
+{% block content %}
+  <div class="signup">
+    <div class="login-tag">
+      <a href="{% url 'accounts:signup' %}" class="a"><h1>SIGN UP</h1></a>
+      <h1>|</h1>
+      <a href="{% url 'accounts:signin' %}" class="a active"><h1>SIGN IN</h1></a>
+    </div>
+    <form action="{% url 'accounts:signup' %}" method="POST">
+      {% csrf_token %} {% endcomment %}
+      {% comment %} {{ form.as_p }} {% endcomment %}
+      {% comment %} <div class="input">
+        <label for="{{ form.username.id_for_label }}">Username</label><br>
+        {{ form.username }}
+        {{ form.username.errors }}
+      </div>
+      <div class="input">
+        <label for="{{ form.nickname.id_for_label }}">Nickname</label><br>
+        {{ form.nickname }}
+        {{ form.nickname.errors }}
+      </div>
+      <div class="input">
+        <label for="{{ form.email.id_for_label }}">Email</label><br>
+        {{ form.email }}
+        {{ form.email.errors }}
+      </div>
+      <div class="input">
+        <label for="{{ form.password1.id_for_label }}">Password</label><br>
+        {{ form.password1 }}
+        {{ form.password1.errors }}
+      </div>
+      <p>감독 인증이 필요하신 분들은 _____@gmail.com으로 필요한 서류를 제출하시길 바랍니다.</p>
+      <div class="submit">
+        <button type="submit" class="submit-btn">SIGN UP</button>
+      </div>
+    </form>
+  </div>
+{% endblock content %} {% endcomment %}

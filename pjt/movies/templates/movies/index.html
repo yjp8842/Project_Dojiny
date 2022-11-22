@@ -8,15 +8,33 @@
 {% block script %}
   <script type="text/javascript" src="{% static "js/load.js" %}"></script>
   <script type="text/javascript" src="{% static "js/navbar-back.js" %}"></script>
+  <script type="text/javascript" src="{% static "js/modal.js" %}"></script>
 {% endblock script %}
 
 {% block content %}
+  {% comment %} 검색하는 부분 {% endcomment %}
+  <div class="modal-box" id="modal">
+    <div class="modal">
+      <form action="" method="post" class="modal-form">
+        {% csrf_token %}
+        <input type="text" class="input" id="search-input" data-behind-content="{{ behinds }}">
+        <img src="{% static "images/search.png" %}" alt="" class="search">
+      </form>
+      <div id="result-Box" class="result-card not-visible"></div>
+    </div>
+  </div>
+  {% comment %} 검색하는 부분 {% endcomment %}
+
   <div class="nav">전체 영화</div>
   <hr>
   {% comment %} <div class="back-page" id="back-page">
     <a href="http://127.0.0.1:8000/menu/" class="back"><img src="{% static "images/back.png" %}" alt="" class="back"></a>
   </div> {% endcomment %}
-  <div class="box">
+  <div class="search-div" id="search-btn">
+    <p>검색</p>
+    <img src="{% static "images/search.png" %}" alt="" class="search-btn">
+  </div>
+  <div class="box display" id="movie-list">
     <div class="movie-list">
       {% for movie in movies %}
         <a href="{% url 'movies:detail' movie.pk %}" class="movie-a">
