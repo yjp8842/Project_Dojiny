@@ -14,6 +14,7 @@ def index(request) :
         jsonContext = []
         for movie in movies:
             jsonContext.append({
+                'pk' : movie.pk,
                 'poster_url': movie.poster_path,
                 'title': movie.title
             })

@@ -28,7 +28,13 @@
   <div class="box">
     <img src="https://image.tmdb.org/t/p/w500{{ movie.poster_path }}" alt="movie img" class="movie-img">
     <div class="info">
-      <p>{% for genre in genres %}{{ genre }}{% endfor %} &nbsp;&nbsp;|&nbsp;&nbsp; {{ movie.runtime }} 분 &nbsp;&nbsp;|&nbsp;&nbsp; 평점 {{ vote_average }}</p>
+      <p>{% for genre in genres %}
+        {% if genre == genres|last %}
+          {{ genre }}&nbsp;
+        {% else %}
+          {{ genre }},&nbsp;
+        {% endif %}
+        {% endfor %} &nbsp;&nbsp;|&nbsp;&nbsp; {{ movie.runtime }} 분 &nbsp;&nbsp;|&nbsp;&nbsp; 평점 {{ vote_average }}</p>
       <p>{{ movie.release_date }}</p>
       <p>{{ director }}</p>
       

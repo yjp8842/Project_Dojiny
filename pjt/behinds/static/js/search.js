@@ -30,10 +30,9 @@ searchInput.addEventListener('keyup', function (event) {
       searchResult.forEach(result => {
         resultBox.innerHTML += `
           <a href='http://127.0.0.1:8000/behinds/${result.pk}/detail/' class='link'>
-            <div style='margin-top:2px; margin-bottom:2px; color:black'>
-              <div>
-                <p>${result.username} | ${result.title}</p>
-              </div>
+            <div style='width: 90%; max-height: fit-content; margin-top:15px; margin-bottom:2px; padding: 15px; background-color: white; border-radius: 20px;'>
+              <p style='text-decoration: underline;'>${result.username} 감독</p>
+              <p style='font-size: small;'>${result.title}</p>
             </div>
           </a>
         `

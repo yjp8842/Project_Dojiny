@@ -6,9 +6,23 @@
 {% endblock css %}
 
 {% block script %}
+  <script type="text/javascript" src="{% static "js/quit.js" %}"></script>
 {% endblock script %}
 
 {% block content %}
+  <div class="quit-alert not-visible" id="quit-alert">
+    <div class="quit-alert-modal">
+      <p class="alert-font">정말로 탈퇴하시겠습니까 ?</p>
+      <div class="quit-btns">
+        <form action="{% url 'accounts:delete' person.pk %}" method="POST">
+          {% csrf_token %}
+          <button class="quit-btn" id="quit-btn">예</button>
+        </form>
+        <button class="quit-btn" id="cancel">아니오</button>
+      </div>
+    </div>
+  </div>
+
   <div class="nav">마이페이지</div>
   <hr>
   <div class="box">
@@ -42,7 +56,7 @@
           <p>회원 탈퇴</p>
           <form action="{% url 'accounts:delete' person.pk %}" method="POST">
             {% csrf_token %}
-            <button type="submit" class="btn">GO</button>
+            <button type="submit" class="btn" id="quit-account">GO</button>
           </form>
         </div>
         {% endif %}

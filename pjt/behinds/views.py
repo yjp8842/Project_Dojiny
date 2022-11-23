@@ -21,10 +21,10 @@ def index(request):
             if len(inputContent) > 0 and len(behind_name) > 0:
                 for user in behind_name:
                     targetBehinds = user.behind_set.filter(user=user.pk)
-                    for targetbhind in targetBehinds:
+                    for targetbehind in targetBehinds:
                         item = {
-                            'pk': targetbhind.pk,
-                            'title': targetbhind.title,
+                            'pk': targetbehind.pk,
+                            'title': targetbehind.title,
                             'username': user.username,
                         }
                         data.append(item)

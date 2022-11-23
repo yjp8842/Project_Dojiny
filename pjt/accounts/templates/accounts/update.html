@@ -1,24 +1,64 @@
 {% extends 'base.html' %}
-{% block css %}
+{% load static %}
 
+{% block css %}
+  <link rel="stylesheet" href="{% static "css/update.css" %}">
 {% endblock css %}
 
 {% block script %}
-
+  <script type="text/javascript" src="{% static "js/navbar.back.js" %}"></script>
 {% endblock script %}
 
 {% block content %}
-  <h1>accounts update</h1>
-  <form action="{% url 'accounts:update' user.pk%}"  method="POST" enctype="multipart/form-data">
-    {% csrf_token %}
-    {{ form.as_p }}
-    {{ passwordForm.as_p }}
-    <hr>
-    <input type="submit" value="수정">
-  </form>
-
-  <a href="{% url 'mypage:index' user.pk %}">[back]</a>
-
-
-
+  <div class="nav">회원 정보 수정</div>
+  <hr>
+  <div class="box">
+    <div class="update-box">
+      <form action="{% url 'accounts:update' user.pk %}"  method="POST" enctype="multipart/form-data" id="update-form">
+        {% csrf_token %}
+        {% comment %} {{ form.as_p }} {% endcomment %}
+        <div class="middle">
+          <div class="first">
+            <h2>회원 정보 수정</h2>
+            <div class="input">
+              <label for="{{ form.username.id_for_label }}">Username</label><br>
+              {{ form.username }}
+              {{ form.username.errors }}
+            </div>
+            <div class="input">
+              <label for="{{ form.nickname.id_for_label }}">Nickname</label><br>
+              {{ form.nickname }}
+              {{ form.nickname.errors }}
+            </div>
+            <div class="input">
+              <label for="{{ form.email.id_for_label }}">Email</label><br>
+              {{ form.email }}
+              {{ form.email.errors }}
+            </div>
+            <div class="input">
+              {% comment %} <label for="{{ form.email.id_for_label }}">Email</label><br> {% endcomment %}
+              {{ form.profile_image }}
+              {% comment %} {{ form.email.errors }} {% endcomment %}
+            </div>
+          </div>
+          {% comment %} {{ passwordForm.as_p }} {% endcomment %}
+          <div class="first">
+            <h2>비밀번호 수정</h2>
+            <div class="input">
+              <label for="{{ passwordForm.new_password1.id_for_label }}">New Password</label><br>
+              {{ passwordForm.new_password1 }}
+            </div>
+            <div class="input">
+              <label for="{{ passwordForm.new_password2.id_for_label }}">New Password2</label><br>
+              {{ passwordForm.new_password2 }}
+            </div>
+          </div>
+        </div>
+        <input type="submit" value="수정" class="submit-btn">
+      </form>
+    </div>
+  </div>
+  <div id="back-page">
+    <a href="{% url 'mypage:index' user.pk %}"><img src="{% static "images/back.png" %}" alt="" class="back"></a>
+  </div>
 {% endblock content %}

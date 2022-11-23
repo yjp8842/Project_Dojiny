@@ -31,10 +31,11 @@
     <a href="http://127.0.0.1:8000/menu/" class="back"><img src="{% static "images/back.png" %}" alt="" class="back"></a>
   </div> {% endcomment %}
   <div class="search-div" id="search-btn">
-    <p>검색</p>
-    <img src="{% static "images/search.png" %}" alt="" class="search-btn">
+    {% comment %} <p>검색</p> {% endcomment %}
+    <img src="{% static "images/searchbtn.png" %}" alt="" class="search">
   </div>
-  <div class="box display" id="movie-list">
+
+  <div class="box">
     <div class="movie-list">
       {% for movie in movies %}
         <a href="{% url 'movies:detail' movie.pk %}" class="movie-a">

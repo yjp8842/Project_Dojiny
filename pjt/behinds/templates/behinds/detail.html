@@ -26,7 +26,7 @@
       </div>
       <h1>{{ behind.title }}</h1>
       <div class="info">
-        <p>작성자 : <a href="{% url 'mypage:index' behind.user.pk %}" class="nickname">{{ behind.user.username }}</a> 감독</p>
+        <p>작성자 : <a href="{% url 'mypage:index' behind.user.pk %}" class="nickname1">{{ behind.user.username }}</a> 감독</p>
         <p>작성일자 : {{ behind.updated_at | date:"Y.m.d H:i:s" }}</p>
       </div>
       <hr>

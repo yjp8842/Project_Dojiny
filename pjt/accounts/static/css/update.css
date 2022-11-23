@@ -1,0 +1,117 @@
+@font-face {
+  font-family: 'update';
+  src: url('../font/LINESeedKR-Bd.ttf') format('truetype');
+}
+
+body {
+  background-color: black;
+  height: 50rem;
+  font-family: update;
+  color: white;
+}
+
+.nav {
+  width: 90%;
+  /* height: 100px; */
+  height: 5rem;
+  margin-top: 0;
+  padding-left: 10%;
+  padding-top: 5%;
+  padding-bottom: 2%;
+  color: white;
+  font-size: 3em;
+}
+
+.box {
+  width: 100%;
+  /* height: 100%; */
+  display: flex;
+  /* flex-direction: column; */
+  justify-content: center;
+  margin-top: 50px;
+}
+
+.update-box {
+  width: 70rem;
+  /* height: 35rem;
+  background-color: #d9d9d9; */
+}
+
+#id_username {
+  background-color: #f5f5f5 !important;
+  font-family: update !important;
+  width: 90% !important;
+}
+
+#id_nickname {
+  background-color: #f5f5f5 !important;
+  font-family: update !important;
+  width: 90% !important;
+}
+
+#id_email {
+  background-color: #f5f5f5 !important;
+  font-family: update !important;
+  width: 90% !important;
+}
+
+#update-form li {
+  display: none;
+}
+
+#id_new_password1 {
+  width: 90%;
+  height: 40px;
+  border: none;
+  border-radius: 10px;
+  background-color: #f5f5f5;
+  font-family: update;
+  padding-left: 10px;
+}
+
+#id_new_password2 {
+  width: 90%;
+  height: 40px;
+  border: none;
+  border-radius: 10px;
+  background-color: #f5f5f5;
+  font-family: update;
+  padding-left: 10px;
+}
+
+.input {
+  line-height: 40px;
+  margin-bottom: 20px;
+}
+
+.middle {
+  display: flex;
+  margin-bottom: 50px;
+  justify-content: center;
+}
+
+#update-form {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+}
+
+.first {
+  width: 30rem;
+  margin-right: 50px;
+}
+
+.submit-btn {
+  width: 70px;
+  height: 40px;
+  border-radius: 10px;
+  font-family: update;
+  margin-right: 90px;
+}
+
+.back {
+  width: 30px;
+  height: 30px;
+  margin-top: 110px;
+  margin-left: 30px;
+}
