@@ -1,6 +1,7 @@
 from django.shortcuts import render, redirect, get_object_or_404
 from django.http import JsonResponse
 
+from django.contrib import messages
 from django.contrib.auth import update_session_auth_hash
 from django.contrib.auth import login as auth_login
 from django.contrib.auth import logout as auth_logout
@@ -26,6 +27,12 @@ def signin(request):
         if form.is_valid():
             auth_login(request, form.get_user())
             return redirect(request.GET.get('next') or 'http://127.0.0.1:8000/menu/')
+        else:
+            if User.objects.filter(username=request.POST.get('username')).exists():
+                messages.add_message(request, messages.ERROR, '올바른 비밀번호를 입력하세요.')
+            else:
+                messages.add_message(request, messages.ERROR, '올바른 유저네임 또는 올바른 비밀번호를 입력하세요.')
+                
     else:
         form = CustomAuthenticationForm()
     context = {
@@ -49,6 +56,11 @@ def signup(request) :
             user.save()
             auth_login(request, user)
             return redirect('http://127.0.0.1:8000/menu/')
+        else:
+            if User.objects.filter(username=request.POST.get('username')).exists():
+                messages.add_message(request, messages.ERROR, '이미 존재하는 username 입니다.')
+            if '@' not in request.POST.get('email'):
+                messages.add_message(request, messages.ERROR, '올바른 email을 입력해 주세요')
         form = CustomUserCreationForm()
         context = {
             'form': form,

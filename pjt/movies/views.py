@@ -9,16 +9,38 @@ import json
 def index(request) :
     if request.body:
         jsonObject = json.loads(request.body)
-        pageCount = jsonObject.get('pageCount')
-        movies = Movie.objects.all()[20*pageCount:20*(pageCount+1)]
-        jsonContext = []
-        for movie in movies:
-            jsonContext.append({
-                'pk' : movie.pk,
-                'poster_url': movie.poster_path,
-                'title': movie.title
-            })
-        return JsonResponse(jsonContext, safe=False)
+        if jsonObject.get('pageCount'):
+            pageCount = jsonObject.get('pageCount')
+            movies = Movie.objects.all()[20*pageCount:20*(pageCount+1)]
+            jsonContext = []
+            for movie in movies:
+                jsonContext.append({
+                    'pk': movie.pk,
+                    'poster_url': movie.poster_path,
+                    'title': movie.title
+                })
+            return JsonResponse(jsonContext, safe=False)
+
+        else:
+            if 'inputContent' in jsonObject.keys():
+                inputContent = jsonObject.get('inputContent')
+                movies = Movie.objects.all()
+                users = get_user_model().objects. all()
+                data = []
+
+                movies_title = movies.objects.filter(title__icontains = inputContent)
+                if len(inputContent) > 0 and len(movies_title) > 0:
+                    for movie in movies_title:
+                        item = {
+                            'pk': movie.pk,
+                            'title': movie.title,
+                            'url': movie.poster_path,
+                        }
+                        data.append(item)
+                context = {
+                    'searchResult': data
+                }
+                return JsonResponse(context)
     else:
         movies = Movie.objects.all()
         context = {

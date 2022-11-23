@@ -10,6 +10,19 @@ body {
   font-family: behind;
 }
 
+hr {
+  animation: separator-width 0.8s ease-out forwards;
+}
+
+@keyframes separator-width {
+  0% {
+    width: 0;
+  }
+  100% {
+    width: 100%;
+  }
+}
+
 .nav {
   width: 90%;
   /* height: 100px; */
@@ -44,11 +57,12 @@ a {
 
 .profile-user {
   display: flex;
+  align-items: center;
 }
 
 .user {
-  width: 50px;
-  height: 50px;
+  width: 40px;
+  height: 40px;
   margin-right: 10px;
   /* margin-top: 10px; */
   border-radius: 50px;

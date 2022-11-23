@@ -3,6 +3,7 @@ from .forms import BehindForm, CommentForm
 from .models import Behind, Comment
 from django.http import JsonResponse
 from django.contrib.auth import get_user_model
+from django.contrib import messages
 from django.db.models import Count
 import json
 
@@ -92,6 +93,13 @@ def create(request):
                 behind.user = request.user
                 behind.save()
                 return redirect('behinds:index')
+            else:
+                if len(request.POST.get('title')) > 50:
+                    messages.add_message(request, messages.ERROR, '제목은 최대 50자까지 작성이 가능합니다.')
+                if(request.POST.get("content").strip() == ''):
+                    messages.add_message(request, messages.ERROR, '본문을 입력해 주세요')
+                if (request.POST.get("title").strip() == ''):
+                    messages.add_message(request, messages.ERROR, '제목을 입력해 주세요')
             return render(request, 'behinds/create.html')
         else:
             return render(request, 'behinds/create.html')
@@ -135,10 +143,19 @@ def update(request, behind_pk):
             if form.is_valid():
                 form.save()
                 return redirect('behinds:detail', behind_pk)
+            else:
+                if len(request.POST.get('title')) > 50:
+                    messages.add_message(request, messages.ERROR, '제목은 최대 50자까지 작성이 가능합니다.')
+                if(request.POST.get("content").strip() == ''):
+                    messages.add_message(request, messages.ERROR, '본문을 입력해 주세요')
+                if (request.POST.get("title").strip() == ''):
+                    messages.add_message(request, messages.ERROR, '제목을 입력해 주세요')
         else:
+            print('not post')
             form = BehindForm(instance=behind)
     else:
         return redirect('behinds:detail', behind_pk)
+
     form = BehindForm(instance=behind)
     context = {
         'behind': behind,
@@ -176,6 +193,8 @@ def comment_update(request, behind_pk, comment_pk):
         if request.user == comment.user_comment:
             content = jsonObject.get('content')
             csrfmiddlewaretoken = jsonObject.get('csrftoken')
+            if len(content) > 200:
+                content = content[0:200]
             comment_values = {
                 'content': content,
                 'csrfmiddlewaretoken': csrfmiddlewaretoken

@@ -9,6 +9,14 @@
   <title>Document</title>
 </head>
 <body>
+  <div class="login-alert" id="login-alert">
+    <div class="login-alert-modal">
+      {% for message in messages %}
+        {{ message }}
+      {% endfor %}
+    </div>
+  </div>
+
   <div class="signin">
     <div class="login-tag">
       <a href="{% url 'accounts:signup' %}" class="a active"><h1>SIGN UP</h1></a>
@@ -32,38 +40,7 @@
       </div>
     </form>
   </div>
+
+  <script type="text/javascript" src="{% static "js/alert.js" %}"></script>
 </body>
 </html>
-
-{% comment %} {% extends 'base.html' %}
-{% load static %}
-
-{% block css %}
-  <link rel="stylesheet" href="{% static "css/signup.css" %}">
-{% endblock css %}
-
-{% block content %}
-  <div class="signin">
-    <div class="login-tag">
-      <a href="{% url 'accounts:signup' %}" class="a active"><h1>SIGN UP</h1></a>
-      <h1>|</h1>
-      <a href="{% url 'accounts:signin' %}" class="a"><h1>SIGN IN</h1></a>
-    </div>
-    <form action="{% url 'accounts:signin' %}" method="POST">
-      {% csrf_token %}
-      <div class='input'>
-          <label for="{{ form.username.id_for_label }}">Username</label><br>
-          {{ form.username }}
-          {{ form.username.errors }}
-      </div>
-      <div class="input margin">
-          <label for="{{ form.password.id_for_label }}">Password</label><br>
-          {{ form.password }}
-          {{ form.password.errors }}
-      </div>
-      <div class="submit">
-        <input type="submit" class="submit-btn margin" value="SIGN IN">  
-      </div>
-    </form>
-  </div>
-{% endblock content %} {% endcomment %}

@@ -24,5 +24,8 @@
       {% comment %} <input type="submit" value="제출" class="submit-btn"> {% endcomment %}
     </form>
   </div>
+  {% for message in messages %}
+    {{ message }}
+  {% endfor %}  
   <a href="{% url 'behinds:index' %}"><img src="{% static "images/back.png" %}" alt=""></a>
 {% endblock content %}
