@@ -12,7 +12,7 @@
   <div class="login-alert" id="login-alert">
     <div class="login-alert-modal">
       {% for message in messages %}
-        {{ message }}
+        <p class="alert-message">{{ message }}</p>
       {% endfor %}
     </div>
   </div>
@@ -26,14 +26,12 @@
     <form action="{% url 'accounts:signin' %}" method="POST">
       {% csrf_token %}
       <div class='input'>
-          <label for="{{ form.username.id_for_label }}">Username</label><br>
-          {{ form.username }}
-          {{ form.username.errors }}
+        <label for="{{ form.username.id_for_label }}">Email / Username</label><br>
+        {{ form.username }}
       </div>
       <div class="input margin">
-          <label for="{{ form.password.id_for_label }}">Password</label><br>
-          {{ form.password }}
-          {{ form.password.errors }}
+        <label for="{{ form.password.id_for_label }}">Password</label><br>
+        {{ form.password }}
       </div>
       <div class="submit">
         <input type="submit" class="submit-btn margin" value="SIGN IN">  
@@ -41,6 +39,6 @@
     </form>
   </div>
 
-  <script type="text/javascript" src="{% static "js/alert.js" %}"></script>
+  <script type="text/javascript" src="{% static "js/signin-alert.js" %}"></script>
 </body>
 </html>

@@ -100,6 +100,7 @@ formArr.forEach(form => {
         const imgListStar = document.querySelector(`#img-list-star${stars}`)
         imgListStar.innerHTML = ``
         resdatas = res.data
+        console.log(resdatas[0])
         if (res.data[0].status === 'over') {
           console.log('over')
           const returnstarlist = res.data[0].returnstarlist
@@ -122,7 +123,7 @@ formArr.forEach(form => {
 
         resdatas.forEach((data) => {
           imgListStar.innerHTML += `
-          <img src="https://image.tmdb.org/t/p/w500${data.poster_url}" alt="movie img" class="movie-img">
+          <a href='http://127.0.0.1:8000/movies/${data.pk}/detail/'><img src="https://image.tmdb.org/t/p/w500${data.poster_url}" alt="movie img" class="movie-img">
           `
         })
 

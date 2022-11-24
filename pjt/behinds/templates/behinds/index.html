@@ -47,100 +47,112 @@
     {% comment %} 최신순 {% endcomment %}
     <div class="middle-box" id="recent-form">
       <div class="form-box" id="form-box">
-        {% for behind in recentBehinds %}
-          <div class="form-list" id="form-list">
-            <div class="profile">
-              <div class="profile-user">
-                {% if behind.user.profile_image %}
-                  <img src="{{ behind.user.profile_image.url }}" alt="" class="user">
-                {% endif %}
-                <p id="director">{{ behind.user.username }} 감독</p>
+        {% if recentBehinds %}
+          {% for behind in recentBehinds %}
+            <div class="form-list" id="form-list">
+              <div class="profile">
+                <div class="profile-user">
+                  {% if behind.user.profile_image %}
+                    <img src="{{ behind.user.profile_image.url }}" alt="" class="user">
+                  {% endif %}
+                  <p id="director">{{ behind.user.username }} 감독</p>
+                </div>
+                <form id="follow-form" data-user-id="{{ behind.user.pk }}">
+                  {% csrf_token %}
+                  {% if user in behind.user.followers.all %}
+                    <button type="submit" class="follow" id="like-button-{{ behind.user.pk }}">언팔로우</button>
+                  {% else %}
+                    <button type="submit" class="follow" id="like-button-{{ behind.user.pk }}">팔로우</button>
+                  {% endif %}
+                </form>
               </div>
-              <form id="follow-form" data-user-id="{{ behind.user.pk }}">
-                {% csrf_token %}
-                {% if user in behind.user.followers.all %}
-                  <button type="submit" class="follow" id="like-button-{{ behind.user.pk }}">언팔로우</button>
+
+              <div class="in-content-box">
+                <a href="{% url 'behinds:detail' behind.pk %} " class="content-a"><h2>{{ behind.title }}</h2></a>    
+                {% if behind.content|length > 300 %}
+                  <p>{{ behind.content | slice:"301" }}...</p>
                 {% else %}
-                  <button type="submit" class="follow" id="like-button-{{ behind.user.pk }}">팔로우</button>
+                  <p>{{ behind.content | slice:"301" }}</p>
                 {% endif %}
-              </form>
-            </div>
 
-            <div class="in-content-box">
-              <a href="{% url 'behinds:detail' behind.pk %} "><h2>제목 : {{ behind.title }}</h2></a>    
-              {% if behind.content|length > 300 %}
-                <p>내용 : {{ behind.content | slice:"301" }}...</p>
-              {% else %}
-                <p>내용 : {{ behind.content | slice:"301" }}</p>
-              {% endif %}
-  
-              <div class="like" data-behind-id="{{ behind.pk }}">
-                {% if user in behind.like_user.all %}
-                  <img
-                    src="{% static "images/heart.png" %}"
-                    class="like-img like-img-button like-img-button-{{ behind.pk }}"
-                    data-behind-id="{{ behind.pk }}"
-                  >
-                {% else  %}
-                  <img
-                    src="{% static "images/love.png" %}"
-                    class="like-img like-img-button like-img-button-{{ behind.pk }}"
-                    data-behind-id="{{ behind.pk }}"
-                  >
-                {% endif %}
-                <p id="like-count-{{ behind.pk }}">{{ behind.like_user.all|length }}</p>
+                <div class="like" data-behind-id="{{ behind.pk }}">
+                  {% if user in behind.like_user.all %}
+                    <img
+                      src="{% static "images/heart.png" %}"
+                      class="like-img like-img-button like-img-button-{{ behind.pk }}"
+                      data-behind-id="{{ behind.pk }}"
+                    >
+                  {% else  %}
+                    <img
+                      src="{% static "images/love.png" %}"
+                      class="like-img like-img-button like-img-button-{{ behind.pk }}"
+                      data-behind-id="{{ behind.pk }}"
+                    >
+                  {% endif %}
+                  <p id="like-count-{{ behind.pk }}">{{ behind.like_user.all|length }}</p>
+                </div>
               </div>
             </div>
-
-          </div>
-        {% endfor %}
+          {% endfor %}
+        {% else %}
+          <p style="color:white; margin-top:150px;">작성된 게시글이 없습니다.</p>
+        {% endif %}
       </div>
     </div>
 
     {% comment %} 인기순 {% endcomment %}
     <div class="middle-box not-visible" id="popular-form">
       <div class="form-box" id="form-box">
-        {% for behind in popularBehinds %}
-          <div class="form-list" id="form-list">
-            <div class="profile">
-              <div class="profile-user">
-                <img src="{% static "images/user.png" %}" alt="" class="user">
-                <p id="director">{{ behind.user.username }} 감독</p>
+        {% if popularBehinds %}
+          {% for behind in popularBehinds %}
+            <div class="form-list" id="form-list">
+              <div class="profile">
+                <div class="profile-user">
+                  {% if behind.user.profile_image %}
+                    <img src="{{ behind.user.profile_image.url }}" alt="" class="user">
+                  {% endif %}
+                  <p id="director">{{ behind.user.username }} 감독</p>
+                </div>
+                <form id="follow-form" data-user-id="{{ behind.user.pk }}">
+                  {% csrf_token %}
+                  {% if user in behind.user.followers.all %}
+                    <button type="submit" class="follow" id="like-button-{{ behind.user.pk }}">언팔로우</button>
+                  {% else %}
+                    <button type="submit" class="follow" id="like-button-{{ behind.user.pk }}">팔로우</button>
+                  {% endif %}
+                </form>
               </div>
-              <form id="follow-form" data-user-id="{{ behind.user.pk }}">
-                {% csrf_token %}
-                {% if user in behind.user.followers.all %}
-                  <button type="submit" class="follow" id="like-button-{{ behind.user.pk }}">언팔로우</button>
+
+              <div class="in-content-box">
+                <a href="{% url 'behinds:detail' behind.pk %} " ><h2>{{ behind.title }}</h2></a>
+                {% if behind.content|length > 300 %}
+                  <p>{{ behind.content | slice:"301" }}...</p>
                 {% else %}
-                  <button type="submit" class="follow" id="like-button-{{ behind.user.pk }}">팔로우</button>
+                  <p>{{ behind.content | slice:"301" }}</p>
                 {% endif %}
-              </form>
-            </div>
 
-            <div class="in-content-box">
-              <a href="{% url 'behinds:detail' behind.pk %} " ><h2>제목 : {{ behind.title }}</h2></a>    
-              <p>내용 : {{ behind.content | slice:"301" }}</p>
-  
-              <div class="like" data-behind-id="{{ behind.pk }}">
-                {% if user in behind.like_user.all %}
-                  <img
-                    src="{% static "images/heart.png" %}"
-                    class="like-img like-img-button like-img-button-{{ behind.pk }}"
-                    data-behind-id="{{ behind.pk }}"
-                  >
-                {% else  %}
-                  <img
-                    src="{% static "images/love.png" %}"
-                    class="like-img like-img-button like-img-button-{{ behind.pk }}"
-                    data-behind-id="{{ behind.pk }}"
-                  >
-                {% endif %}
-                <p id="like-count-{{ behind.pk }}">{{ behind.like_user.all|length }}</p>
+                <div class="like" data-behind-id="{{ behind.pk }}">
+                  {% if user in behind.like_user.all %}
+                    <img
+                      src="{% static "images/heart.png" %}"
+                      class="like-img like-img-button like-img-button-{{ behind.pk }}"
+                      data-behind-id="{{ behind.pk }}"
+                    >
+                  {% else  %}
+                    <img
+                      src="{% static "images/love.png" %}"
+                      class="like-img like-img-button like-img-button-{{ behind.pk }}"
+                      data-behind-id="{{ behind.pk }}"
+                    >
+                  {% endif %}
+                  <p id="like-count-{{ behind.pk }}">{{ behind.like_user.all|length }}</p>
+                </div>
               </div>
             </div>
-
-          </div>
-        {% endfor %}
+          {% endfor %}
+        {% else %}
+          <p style="color:white; margin-top:150px;">작성된 게시글이 없습니다.</p>
+        {% endif %}
       </div>
     </div>
   </div>

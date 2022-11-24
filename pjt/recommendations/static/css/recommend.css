@@ -20,3 +20,78 @@ body {
   color: white;
   font-size: 3em;
 }
+
+hr {
+  animation: separator-width 0.5s ease-out forwards;
+}
+
+@keyframes separator-width {
+  0% {
+    width: 0;
+  }
+  100% {
+    width: 100%;
+  }
+}
+
+.movie-a {
+  width: 20rem;
+  height: 20rem;
+  flex: 0 0 20%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  margin-top: 20px;
+}
+
+.box {
+  display: flex;
+  justify-content: center;
+  z-index: 3;
+}
+
+.movie-img {
+  width: 14rem;
+  height: 19rem;
+  border-radius: 10px;
+  box-shadow: 6px 6px #f5f5f5;
+}
+
+.movie-list {
+  width: 75rem;
+  display: flex;
+  flex-wrap: wrap;
+  /* justify-content: center; */
+}
+
+.info {
+  display: none;
+}
+
+.movie-img:hover {
+  opacity: 0.2;
+}
+
+.movie-img:hover ~ .info {
+  display: block;
+  width: 90%;
+  position: absolute;
+  font-family: recommend;
+  color: white;
+  font-size: 17px;
+  text-align: center;
+}
+
+.back {
+  width: 30px;
+  height: 30px;
+}
+
+.back-page {
+  display: flex;
+  justify-content: flex-start;
+  margin-left: 30px;
+  margin-top: 630px;
+  position: fixed;
+}

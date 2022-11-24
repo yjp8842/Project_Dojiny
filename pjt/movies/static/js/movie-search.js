@@ -4,6 +4,12 @@ const csrftokenS = document.querySelector('[name=csrfmiddlewaretoken]').value
 // 결과 띄우는 창만 수정하면 됨
 const resultBox = document.querySelector('#result-Box')
 
+searchInput.addEventListener('keydown', function (event) {
+  if (event.code === "Enter") {
+    event.preventDefault()
+  }
+})
+
 searchInput.addEventListener('keyup', function (event) {
   // const allBehinds = event.target.dataset.behindContent
 
@@ -24,6 +30,7 @@ searchInput.addEventListener('keyup', function (event) {
     data: JSON.stringify(content_data),
   })
   .then((res) => {
+    console.log(res.data)
     const searchResult = res.data.searchResult
     console.log(searchResult)
     resultBox.innerHTML += ``
@@ -31,12 +38,8 @@ searchInput.addEventListener('keyup', function (event) {
       resultBox.innerHTML = ``
       searchResult.forEach(result => {
         resultBox.innerHTML += `
-          <a href='http://127.0.0.1:8000/behinds/${result.pk}/detail/' class='link'>
-            <div style='margin-top:2px; margin-bottom:2px; color:black'>
-              <div>
-                <p>${result.username} | ${result.title}</p>
-              </div>
-            </div>
+          <a href='http://127.0.0.1:8000/movies/${result.pk}/detail/' class='link'>
+            <img src='https://image.tmdb.org/t/p/w500${result.url}' alt="movie img"">
           </a>
         `
       })

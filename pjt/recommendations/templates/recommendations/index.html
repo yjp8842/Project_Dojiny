@@ -10,10 +10,16 @@
 {% endblock script %}
 
 {% block content %}
-  <div class="nav">recommendation page</div>
+  <div class="nav">추천 영화</div>
   <hr>
-  {% for item in items %}
-    {{ item.title }}
-    <img src="https://image.tmdb.org/t/p/w500{{ item.poster_path }}" alt="movie img" class="movie-img">
-  {% endfor %}
+  <div class="box">
+    <div class="movie-list">
+      {% for item in items %}
+        <a href="{% url 'movies:detail' item.pk %}" class="movie-a">
+          <img src="https://image.tmdb.org/t/p/w500{{ item.poster_path }}" alt="movie img" class="movie-img">
+          <div class="info">{{ item.title }}</div>
+        </a>
+      {% endfor %}
+    </div>
+  </div>
 {% endblock content %}

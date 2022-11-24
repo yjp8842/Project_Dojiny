@@ -6,10 +6,18 @@
 {% endblock css %}
 
 {% block script %}
-  <script type="text/javascript" src="{% static "js/navbar.back.js" %}"></script>
+  <script type="text/javascript" src="{% static "js/accounts-navbar-back.js" %}"></script>
 {% endblock script %}
 
 {% block content %}
+  <div class="update-alert" id="update-alert">
+    <div class="update-alert-modal">
+      {% for message in messages %}
+        <p class="alert-message">{{ message }}</p>
+      {% endfor %}
+    </div>
+  </div>
+
   <div class="nav">회원 정보 수정</div>
   <hr>
   <div class="box">
@@ -35,11 +43,6 @@
               {{ form.email }}
               {{ form.email.errors }}
             </div>
-            <div class="input">
-              {% comment %} <label for="{{ form.email.id_for_label }}">Email</label><br> {% endcomment %}
-              {{ form.profile_image }}
-              {% comment %} {{ form.email.errors }} {% endcomment %}
-            </div>
           </div>
           {% comment %} {{ passwordForm.as_p }} {% endcomment %}
           <div class="first">
@@ -52,6 +55,11 @@
               <label for="{{ passwordForm.new_password2.id_for_label }}">New Password2</label><br>
               {{ passwordForm.new_password2 }}
             </div>
+            <div class="input" id="img-update">
+              {% comment %} <label for="{{ form.email.id_for_label }}">Email</label><br> {% endcomment %}
+              {{ form.profile_image }}
+              {% comment %} {{ form.email.errors }} {% endcomment %}
+            </div>
           </div>
         </div>
         <input type="submit" value="수정" class="submit-btn">
@@ -61,4 +69,6 @@
   <div id="back-page">
     <a href="{% url 'mypage:index' user.pk %}"><img src="{% static "images/back.png" %}" alt="" class="back"></a>
   </div>
+
+  <script type="text/javascript" src="{% static "js/update-alert.js" %}"></script>
 {% endblock content %}

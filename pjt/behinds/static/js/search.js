@@ -2,6 +2,11 @@ const searchInput = document.querySelector('#search-input')
 const csrftokenS = document.querySelector('[name=csrfmiddlewaretoken]').value
 const resultBox = document.querySelector('#result-Box')
 
+searchInput.addEventListener('keydown', function (event) {
+  if (event.code === "Enter") {
+    event.preventDefault()
+  }
+})
 searchInput.addEventListener('keyup', function (event) {
   // const allBehinds = event.target.dataset.behindContent
 
@@ -30,7 +35,7 @@ searchInput.addEventListener('keyup', function (event) {
       searchResult.forEach(result => {
         resultBox.innerHTML += `
           <a href='http://127.0.0.1:8000/behinds/${result.pk}/detail/' class='link'>
-            <div style='width: 90%; max-height: fit-content; margin-top:15px; margin-bottom:2px; padding: 15px; background-color: white; border-radius: 20px;'>
+            <div style='width: 90%; max-height: fit-content; margin-top:15px; margin-bottom:2px; padding: 15px; background-color: white; border-radius: 20px; box-shadow: 5px 5px #5d5d5d; border: 2px solid black;'>
               <p style='text-decoration: underline;'>${result.username} 감독</p>
               <p style='font-size: small;'>${result.title}</p>
             </div>

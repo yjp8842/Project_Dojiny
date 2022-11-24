@@ -46,6 +46,7 @@ def likemovies(request, user_pk):
         jsonContext = []
         for movie in moviesanystar:
             jsonContext.append({
+                'pk': movie.like_movies.pk,
                 'poster_url': movie.like_movies.poster_path,
                 'title': movie.like_movies.title,
                 'status': status,

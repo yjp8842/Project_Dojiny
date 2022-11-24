@@ -7,8 +7,8 @@
 
 {% block script %}
   <script type="text/javascript" src="{% static "js/load.js" %}"></script>
-  <script type="text/javascript" src="{% static "js/navbar-back.js" %}"></script>
-  <script type="text/javascript" src="{% static "js/modal.js" %}"></script>
+  <script type="text/javascript" src="{% static "js/movie-modal.js" %}"></script>
+  <script type="text/javascript" src="{% static "js/movie-search.js" %}"></script>
 {% endblock script %}
 
 {% block content %}
@@ -17,7 +17,7 @@
     <div class="modal">
       <form action="" method="post" class="modal-form">
         {% csrf_token %}
-        <input type="text" class="input" id="search-input" data-behind-content="{{ behinds }}">
+        <input type="text" class="input" id="search-input">
         <img src="{% static "images/search.png" %}" alt="" class="search">
       </form>
       <div id="result-Box" class="result-card not-visible"></div>

@@ -111,5 +111,23 @@
 }
 
 .logout {
-  font-size: 15px !important;
+  height: 30px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  list-style: none;
+}
+
+.logout a {
+  font-size: 13px !important;
+  color: #525252;
+}
+
+.logout:hover a {
+  color: white;
+}
+
+.user-name {
+  font-size: 20px;
+  color: white;
 }

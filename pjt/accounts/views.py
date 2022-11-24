@@ -60,7 +60,7 @@ def signup(request) :
             if User.objects.filter(username=request.POST.get('username')).exists():
                 messages.add_message(request, messages.ERROR, '이미 존재하는 username 입니다.')
             if '@' not in request.POST.get('email'):
-                messages.add_message(request, messages.ERROR, '올바른 email을 입력해 주세요')
+                messages.add_message(request, messages.ERROR, '올바른 email을 입력해 주세요.')
         form = CustomUserCreationForm()
         context = {
             'form': form,
@@ -113,6 +113,11 @@ def update(request, user_pk) :
         form = CustomUserChangeForm(request.POST, request.FILES, instance=user)
         if form.is_valid():
             user = form.save()
+            if user.nickname :
+                pass
+            else:
+                user.nickname = user.username
+                user.save()
             if not request.FILES:
                 user.profile_image = 'image/user.jpg'
                 user.save()
@@ -121,25 +126,33 @@ def update(request, user_pk) :
                 form2.save()
                 update_session_auth_hash(request, form2.user)
                 return redirect('mypage:index', user.pk)
+            else: 
+                messages.add_message(request, messages.ERROR, '8자 이상의 연속되지 않은 비밀번호를 입력하세요')
 
             passwordForm = SetPasswordForm(user)
             form = CustomUserChangeForm(instance=user)
-            auth_login(request, user)
+            auth_login(request, user) 
             context = {
                 'form': form,
                 'passwordForm': passwordForm
             }   
             return render(request, 'accounts/update.html', context)
+        else:
+            if (request.user.username != request.POST.get('username')) and (User.objects.filter(username=request.POST.get('username')).exists()):
+                messages.add_message(request, messages.ERROR, '이미 존재하는 username 입니다.')
+            if (request.user.nickname != request.POST.get('nickname')) and (User.objects.filter(nickname=request.POST.get('nickname')).exists()):
+                messages.add_message(request, messages.ERROR, '이미 존재하는 nickname 입니다.')
+            if (request.POST.get('email')[-1] == '@' or '@' not in request.POST.get('email')):
+                messages.add_message(request, messages.ERROR, '올바른 형식의 이메일을 입력하세요')
     else:
         passwordForm = SetPasswordForm(user)
         form = CustomUserChangeForm(instance=user)
-        context = {
-            'form': form,
-            'passwordForm': passwordForm
-        }
-        return render(request, 'accounts/update.html', context)
+    passwordForm = SetPasswordForm(user)
+    form = CustomUserChangeForm(instance=user)
+    context = {
+        'form': form,
+        'passwordForm': passwordForm
+    }
+    return render(request, 'accounts/update.html', context)
 
-def password(request) :
-    pass
-    return render(request, 'accounts/password.html')
 

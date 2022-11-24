@@ -15,8 +15,7 @@
   <div class="detail">
     <div class="detail-box">
       <div class="btn">
-        <form action="{% url 'behinds:update' behind.pk %}" method="POST">
-          {% csrf_token %}
+        <form action="{% url 'behinds:update' behind.pk %}" method="GET">
           <button type="subimt" class="margin-btn"><img src="{% static "images/pencil.png" %}" alt="" class="img"></button>
         </form>
         <form action="{% url 'behinds:delete' behind.pk %}" method="POST">
@@ -24,7 +23,7 @@
           <button type="submit"><img src="{% static "images/delete.png" %}" alt="" class="img"></button>
         </form>
       </div>
-      <h1>{{ behind.title }}</h1>
+      <h1 class="behind-title">{{ behind.title }}</h1>
       <div class="info">
         <p>작성자 : <a href="{% url 'mypage:index' behind.user.pk %}" class="nickname1">{{ behind.user.username }}</a> 감독</p>
         <p>작성일자 : {{ behind.updated_at | date:"Y.m.d H:i:s" }}</p>
@@ -70,7 +69,7 @@
                     data-behind-id="{{ behind.pk }}"
                     style="display:none;"
                   >
-                    <button type="submit" class="update-btn">수정2</button>
+                    <button type="submit" class="update-btn">수정</button>
                     <button
                       class="update-btn edit-cancel edit-cancel{{ comment.pk }}"
                       data-comment-id="{{ comment.pk }}"
@@ -80,12 +79,12 @@
                   <form action="{% url 'behinds:comment_delete' behind.pk comment.pk %}">
                     <button type="submit" class="update-btn">삭제</button>
                   </form>
-                </div>
-                <div id="edit-div{{ comment.pk }}" style="display:none;">
-                  {% comment %} <textarea id="edit-area{{ comment.pk }}" cols="30" rows="10"></textarea> {% endcomment %}
-                  <input type="text" id="edit-area{{ comment.pk }}">
                 {% endif %}
               </div>
+            </div>
+            <div id="edit-div{{ comment.pk }}" style="display:none;">
+              {% comment %} <textarea id="edit-area{{ comment.pk }}" cols="30" rows="10"></textarea> {% endcomment %}
+              <input type="text" id="edit-area{{ comment.pk }}" class="edit-input">
             </div>
             {% comment %} 댓글 나오는 부분 {% endcomment %}
             <div class="comment-scroll">

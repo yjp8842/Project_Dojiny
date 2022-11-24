@@ -97,11 +97,11 @@ p {
 }
 
 .login-alert-modal {
-  top: 45%;
+  top: 50%;
   left: 50%;
   padding: 30px;
-  width: 30rem;
-  height: 6rem;
+  width: 28rem;
+  height: 5rem;
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -111,4 +111,10 @@ p {
   position: absolute;
   transform: translateX(-50%) translateY(-50%);
   box-shadow: 10px 10px #d9d9d9;
+}
+
+.alert-message {
+  font-size: 16px;
+  width: fit-content;
+  height: fit-content;
 }

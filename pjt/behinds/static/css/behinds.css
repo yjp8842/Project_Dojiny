@@ -11,7 +11,7 @@ body {
 }
 
 hr {
-  animation: separator-width 0.8s ease-out forwards;
+  animation: separator-width 0.5s ease-out forwards;
 }
 
 @keyframes separator-width {
@@ -66,6 +66,11 @@ a {
   margin-right: 10px;
   /* margin-top: 10px; */
   border-radius: 50px;
+  border: 2px solid black;
+}
+
+#director {
+  font-size: 20px;
 }
 
 .img {
@@ -107,7 +112,7 @@ a {
   flex-direction: column;
   align-items: center;
   padding-bottom: 50px;
-}
+} 
 
 .form-box::-webkit-scrollbar {
   display: none;
@@ -137,6 +142,7 @@ a {
   caret-color: black;
   font-size: medium;
   font-family: behind;
+  box-shadow: 5px 5px #262626;
 }
 
 .input:focus {
@@ -151,14 +157,19 @@ a {
 
 .follow {
   width: 65px;
-  height: 30px;
+  height: 35px;
   margin-top: 10px;
-  border-radius: 10px;
+  border-radius: 15px;
   border: none;
-  background-color: #353535;
-  color: white;
+  background-color: white;
   font-family: behind;
   cursor: pointer;
+  box-shadow: 5px 5px #5d5d5d;
+  border: 2px solid black;
+}
+
+.follow:hover {
+  transform: scale(1.1);
 }
 
 .like {
@@ -166,16 +177,20 @@ a {
   height: 30px;
   margin-top: 30px;
   margin-left: 5px;
+  align-items: flex-start;
 }
 
 .like-img {
-  width: 20px;
-  height: 20px;
-  margin-top: 14px;
-  margin-right: 5px;
+  width: 25px;
+  height: 25px;
+  margin-top: 12px;
+  margin-right: 7px;
   cursor: pointer;
 }
 
+.like-img:hover {
+  transform: scale(1.1);
+}
 
 .re-select {
   color: white;
@@ -221,7 +236,8 @@ a {
   border-radius: 50px;
   position: absolute;
   transform: translateX(-50%) translateY(-50%);
-  box-shadow: 10px 10px #d9d9d9;
+  /* box-shadow: 10px 10px #d9d9d9; */
+  border: 5px solid black;
 }
 
 .modal-form {
@@ -264,7 +280,8 @@ a {
 }
 
 .result-card::-webkit-scrollbar-thumb {
-  background-color: #4b4b4b;
+  background-color: #bbbbbb;
+  opacity: 0.5;
   border-radius: 10px;
 } 
 
@@ -322,4 +339,9 @@ a {
   /* margin-left: 15rem; */
   cursor: pointer;
   box-shadow: 3px 3px #c9c9c9;
+}
+
+.content-a h2 {
+  width: 540px;
+  word-wrap: break-word;
 }

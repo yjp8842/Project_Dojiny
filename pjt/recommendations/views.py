@@ -7,6 +7,10 @@ from django.contrib.auth import get_user_model
 import math
 from collections import defaultdict
 # Create your views here.
+
+user_genre_weight = []
+
+
 def sim_msd(name1, name2):
     # name1: 유저 데이터 셋
     # name2: 순회 무비 데이터
@@ -25,55 +29,67 @@ def sim_msd(name1, name2):
 ## ! 본 장르에 따라 가중치 부여해서 추가하기
 
 def sim_cosine(name1, name2):
+    global user_genre_weight
     sum_name1 = 0
     sum_name2 = 0
     sum_name1_name2 = 0
-    count = 0
+    count = i = 0
     for genres in name1:
         if genres in name2:
-            sum_name1 += pow(name1[genres], 2)
-            sum_name2 += pow(name2[genres], 2)
-            sum_name1_name2 += name1[genres]*name2[genres]
+            sum_name1 += pow(name1[genres], 2) * user_genre_weight[i]
+            sum_name2 += pow(name2[genres], 2) * user_genre_weight[i]
+            sum_name1_name2 += name1[genres]*name2[genres] * user_genre_weight[i]
+        i += 1
     if math.sqrt(sum_name1)*math.sqrt(sum_name2) != 0:
         return sum_name1_name2 / (math.sqrt(sum_name1)*math.sqrt(sum_name2))
     else: 
         return 0    
 
-def sim_pearson(name1, name2):
-    avg_name1 = 0
-    avg_name2 = 0
-    count = 0
+# def sim_pearson(name1, name2):
+#     global user_genre_weight
+#     avg_name1 = 0
+#     avg_name2 = 0
+#     count = 0
 
+#     for genres in name1:
+#         if genres in name2:
+#             avg_name1 += name1[genres]
+#             avg_name2 += name2[genres]
+#             count += 1
+
+#     if count != 0:
+#         avg_name1 = avg_name1 / count
+#         avg_name2 = avg_name2 / count
+        
+#     sum_name1 = 0
+#     sum_name2 = 0
+#     sum_name1_name2 = 0
+#     count = i = 0
+#     for genres in name1:
+#         if genres in name2:
+#             sum_name1 += pow(name1[genres] - avg_name1, 2) * user_genre_weight[i]
+#             sum_name2 += pow(name2[genres] - avg_name2, 2) * user_genre_weight[i]
+#             sum_name1_name2 += (name1[genres] - avg_name1) * (name2[genres] - avg_name2) * user_genre_weight[i]
+#             print(name1[genres], avg_name1, name2[genres], avg_name2)
+#         i += 1
+#     if math.sqrt(sum_name1) * math.sqrt(sum_name2) != 0:
+#         return sum_name1_name2 / (math.sqrt(sum_name1) * math.sqrt(sum_name2))
+#     else :
+#         return 0
+
+# def top_match(data, name, index=3, sim_function=sim_pearson):
+#     li = []
+#     for i in data:
+#         if name != i:
+#             li.append((sim_function(data,name,i),i))
+
+def entropy(name1, name2):
+    sum_entropy = 0
+    name2_lengh = len(name2)
     for genres in name1:
         if genres in name2:
-            avg_name1 = name1[genres]
-            avg_name2 = name2[genres]
-            count += 1
-
-    if count != 0:
-        avg_name1 = avg_name1 / count
-        avg_name1 = avg_name1 / count
-
-    sum_name1 = 0
-    sum_name2 = 0
-    sum_name1_name2 = 0
-    count = 0
-    for genres in name1:
-        if genres in name2:
-            sum_name1 += pow(name1[genres] - avg_name1, 2)
-            sum_name2 += pow(name2[genres] - avg_name2, 2)
-            print(type(name2[genres]))
-
-            print(avg_name2)
-            sum_name1_name2 += (name1[genres] - avg_name1) * (name2[genres] - avg_name2)
-    math.sqrt(sum_name1) * math.sqrt(sum_name2) != 0
-    return sum_name1_name2 / (math.sqrt(sum_name1) * math.sqrt(sum_name2))
-
-def top_match(data, name, index=3, sim_function=sim_pearson):
-    li = []
-    for i in data:
-        if name != i:
-            li.append((sim_function(data,name,i),i))
+            sum_entropy -= math.log(float(name2[genres]))
+    return sum_entropy/name2_lengh
 
 def index(request, user_pk) :
     # movies = Movie.objects.all()
@@ -182,6 +198,12 @@ def index(request, user_pk) :
     movies1990s_result = defaultdict(int)
     movies2000s_result = defaultdict(int)
     movies2010s_result = defaultdict(int)
+
+    global user_genre_weight
+    for i, v in user_movie_genres.items():
+        user_genre_weight.append(v/sum(user_movie_genres.values()))
+    # for i, v in user_movie_genres.items():
+    #     user_genre_weight.append( 1 / ( 1 + math.exp(-v/sum(user_movie_genres.values()))))
     
     # msd
     # for name2_pk, name2_value in movies1990s_rating.items():
@@ -215,14 +237,29 @@ def index(request, user_pk) :
     # for name2_pk, name2_value in movies2010s_rating.items():
     #     movies2010s_result[name2_pk] = sim_pearson(user_movie_rankings_avg, name2_value)
     # sorted_dict2010s = sorted(movies2010s_result.items(), key = lambda item: item[1], reverse = True)
+
     # for name2_pk, name2_value in movies2000s_rating.items():
     #     movies2000s_result[name2_pk] = sim_pearson(user_movie_rankings_avg, name2_value)
     # sorted_dict2000s = sorted(movies2000s_result.items(), key = lambda item: item[1], reverse = True)
+
     # for name2_pk, name2_value in movies1990s_rating.items():
     #     movies1990s_result[name2_pk] = sim_pearson(user_movie_rankings_avg, name2_value)
     # sorted_dict1990s = sorted(movies1990s_result.items(), key = lambda item: item[1], reverse = True)
     
     
+    # 엔트로피 가중치
+    # for name2_pk, name2_value in movies2010s_rating.items():
+    #     movies2010s_result[name2_pk] = entropy(user_movie_rankings_avg, name2_value)
+    #     sorted_dict2010s = sorted(movies2010s_result.items(), key = lambda item: item[1], reverse = True)
+
+    # for name2_pk, name2_value in movies2000s_rating.items():
+    #     movies2000s_result[name2_pk] = entropy(user_movie_rankings_avg, name2_value)
+    # sorted_dict2000s = sorted(movies2000s_result.items(), key = lambda item: item[1], reverse = True)
+
+    # for name2_pk, name2_value in movies1990s_rating.items():
+    #     movies1990s_result[name2_pk] = entropy(user_movie_rankings_avg, name2_value)
+    # sorted_dict1990s = sorted(movies1990s_result.items(), key = lambda item: item[1], reverse = True)
+
     # print(sorted_dict1990s)
     # print(sorted_dict2010s)
     # print(sorted_dict2000s)
@@ -246,30 +283,32 @@ def index(request, user_pk) :
             total_rating_2010 += int(value)
     result_movie_pk_sim = []
 
-    rating_1990 = round(total_rating_1990/total_rating*10)
-    rating_2000 = round(total_rating_2000/total_rating*10)
-    rating_2010 = round(total_rating_2010/total_rating*10)
+    rating_1990 = math.ceil(total_rating_1990/total_rating*10)
+    rating_2000 = math.ceil(total_rating_2000/total_rating*10)
+    rating_2010 = math.ceil(total_rating_2010/total_rating*10)
     
-    for i in range(0, rating_1990):
-        result_movie_pk_sim.append(sorted_dict1990s[i][0])
-    for i in range(0, rating_2000):
-        result_movie_pk_sim.append(sorted_dict2000s[i][0])
-    for i in range(0, rating_2010):
-        result_movie_pk_sim.append(sorted_dict2010s[i][0])
+    for i in range(0, rating_2010*3):
+        result_movie_pk_sim.append([sorted_dict2010s[i][0], Movie.objects.get(pk=sorted_dict2010s[i][0]).vote_average])
+    for i in range(0, rating_2000*3):
+        result_movie_pk_sim.append([sorted_dict2000s[i][0], Movie.objects.get(pk=sorted_dict2000s[i][0]).vote_average])
+    for i in range(0, rating_1990*3):
+        result_movie_pk_sim.append([sorted_dict1990s[i][0], Movie.objects.get(pk=sorted_dict1990s[i][0]).vote_average])
 
+    result_movie_pk_sim.sort(key=lambda x:x[1], reverse=True)
     result_movies = []
-    for i in result_movie_pk_sim:
+
+    for i in result_movie_pk_sim[0:10]:
         item = {
-            'title' : Movie.objects.get(pk=i).title,
-            'poster_path' : Movie.objects.get(pk=i).poster_path,
+            'title' : Movie.objects.get(pk=i[0]).title,
+            'poster_path' : Movie.objects.get(pk=i[0]).poster_path,
+            'pk' : Movie.objects.get(pk=i[0]).pk,
         }
         result_movies.append(item)
     
     context = {
         'items': result_movies
     }
-    print(user_movie_genres)
-    print(user_movie_rankings_avg)
+
     return render(request, 'recommendations/index.html', context)
 
 

@@ -17,6 +17,7 @@ forms.forEach(form => {
         // 팔로우 버튼 토글
         // console.log(response)
         const followBtns = document.querySelectorAll(`#follow-form > #like-button-${userId}`)
+
         followBtns.forEach(followBtn => {
           const isFollowed = response.data.isFollowed
           if (isFollowed === true) {

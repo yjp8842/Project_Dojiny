@@ -29,9 +29,9 @@
         </div>
         <hr class="nav-hr">
         <div class="nav-sections">
-          <li class="nav-text"><a href="#"><img src="{{ user.profile_image.url }}" alt="profile" class="modal-user"></a></li>        
-          <br>
-          <li class="nav-text"><a href="#" class="logout">로그아웃</a></li>        
+          <li class="nav-text"><img src="{{ user.profile_image.url }}" alt="profile" class="modal-user"></li>        
+          <li class="nav-text user-name">{{ user.username }}</li>        
+          <li class="logout"><a href="{% url 'accounts:logout' %}">로그아웃</a></li>        
           <br>
           <li class="nav-text item"><a href="http://127.0.0.1:8000/movies/">전체 영화</a></li>        
           <br>

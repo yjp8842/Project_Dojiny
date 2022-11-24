@@ -25,10 +25,9 @@ def index(request) :
             if 'inputContent' in jsonObject.keys():
                 inputContent = jsonObject.get('inputContent')
                 movies = Movie.objects.all()
-                users = get_user_model().objects. all()
+                users = get_user_model().objects.all()
                 data = []
-
-                movies_title = movies.objects.filter(title__icontains = inputContent)
+                movies_title = Movie.objects.filter(title__icontains = inputContent)[0:20]
                 if len(inputContent) > 0 and len(movies_title) > 0:
                     for movie in movies_title:
                         item = {
@@ -36,7 +35,13 @@ def index(request) :
                             'title': movie.title,
                             'url': movie.poster_path,
                         }
-                        data.append(item)
+                        flag = True
+                        for d in data :
+                            if d['pk'] == movie.pk:
+                                flag = False
+                                break
+                        if flag :
+                            data.append(item)
                 context = {
                     'searchResult': data
                 }

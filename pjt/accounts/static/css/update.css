@@ -41,18 +41,30 @@ body {
   background-color: #f5f5f5 !important;
   font-family: update !important;
   width: 90% !important;
+  box-shadow: 5px 5px #5d5d5d;
+  border: 3px solid black !important;
+  border-radius: 20px !important;
+  padding-left: 20px !important;
 }
 
 #id_nickname {
   background-color: #f5f5f5 !important;
   font-family: update !important;
   width: 90% !important;
+  box-shadow: 5px 5px #5d5d5d;
+  border: 3px solid black !important;
+  border-radius: 20px !important;
+  padding-left: 20px !important;
 }
 
 #id_email {
   background-color: #f5f5f5 !important;
   font-family: update !important;
   width: 90% !important;
+  box-shadow: 5px 5px #5d5d5d;
+  border: 3px solid black !important;
+  border-radius: 20px !important;
+  padding-left: 20px !important;
 }
 
 #update-form li {
@@ -67,6 +79,10 @@ body {
   background-color: #f5f5f5;
   font-family: update;
   padding-left: 10px;
+  box-shadow: 5px 5px #5d5d5d;
+  border: 3px solid black !important;
+  border-radius: 20px !important;
+  padding-left: 20px !important;
 }
 
 #id_new_password2 {
@@ -77,6 +93,10 @@ body {
   background-color: #f5f5f5;
   font-family: update;
   padding-left: 10px;
+  box-shadow: 5px 5px #5d5d5d;
+  border: 3px solid black !important;
+  border-radius: 20px !important;
+  padding-left: 20px !important;
 }
 
 .input {
@@ -104,9 +124,15 @@ body {
 .submit-btn {
   width: 70px;
   height: 40px;
-  border-radius: 10px;
+  border-radius: 20px;
   font-family: update;
   margin-right: 90px;
+  box-shadow: 5px 5px #5d5d5d;
+  cursor: pointer;
+}
+
+.submit-btn:hover {
+  transform: scale(1.1);
 }
 
 .back {
@@ -114,4 +140,51 @@ body {
   height: 30px;
   margin-top: 110px;
   margin-left: 30px;
+}
+
+#img-update {
+  margin-top: 40px;
+  margin-bottom: 0 !important;
+}
+
+#img-update a {
+  color: rgb(248, 244, 163);
+  margin-left: 10px;
+}
+
+#id_profile_image {
+  font-family: update;
+  margin-left: 10px;
+}
+
+.update-alert {
+  width: 99.2%;
+  height: 98%;
+  position: absolute;
+  display: none;
+  background-color: rgba(0, 0, 0, 0.8);
+}
+
+.update-alert-modal {
+  top: 50%;
+  left: 50%;
+  padding: 30px;
+  width: 28rem;
+  height: 5rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  background-color: #f5f5f5;
+  border-radius: 50px;
+  position: absolute;
+  transform: translateX(-50%) translateY(-50%);
+  box-shadow: 10px 10px #d9d9d9;
+}
+
+.alert-message {
+  font-size: 16px;
+  width: fit-content;
+  height: fit-content;
+  color: black !important;
 }

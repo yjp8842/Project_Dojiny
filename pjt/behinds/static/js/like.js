@@ -11,16 +11,19 @@ likeForms.forEach(form => {
     })
       .then(response => {
         const isLiked = response.data.isLiked
-        const likeImgBtn = document.querySelector(`.like-img-button-${behindId}`)
-        if (isLiked === true) {
-          likeImgBtn.setAttribute('src', "/static/images/heart.png")
-        } else {
-          likeImgBtn.setAttribute('src', "/static/images/love.png")
-        }
+        const likeImgBtns = document.querySelectorAll(`.like-img-button-${behindId}`)
+        likeImgBtns.forEach(likeImgBtn => {
+          if (isLiked === true) {
+            likeImgBtn.setAttribute('src', "/static/images/heart.png")
+          } else {
+            likeImgBtn.setAttribute('src', "/static/images/love.png")
+          }
+        })
         const likeCount = response.data.like_user_count
-        console.log(likeCount)
-        const likePTag = document.querySelector(`#like-count-${behindId}`)
-        likePTag.innerText = likeCount
+        const likePTags = document.querySelectorAll(`#like-count-${behindId}`)
+        likePTags.forEach(likePTag => {
+          likePTag.innerText = likeCount
+        })
       })
       .catch(err => {
         console.log(err)

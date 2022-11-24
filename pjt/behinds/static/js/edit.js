@@ -7,11 +7,13 @@ updateBtns.forEach(updateBtn => {
     event.preventDefault()
     // const commentContent = event.target.dataset.commentContent
     const commentId = event.target.dataset.commentId
+    const commentScroll = document.querySelector('.comment-scroll')
     const commentContent = document.querySelector(`#comment-${commentId}`).innerText
     const targetTextDiv = document.querySelector(`#edit-div${commentId}`)
     const targetTextArea = document.querySelector(`#edit-area${commentId}`)
     const updateBtnAxios = document.querySelector(`.update-form-axios${commentId}`)
     targetTextArea.value = commentContent
+    commentScroll.style.display = 'none'
     targetTextDiv.setAttribute('style','display:block;')
     updateBtn.setAttribute('style','display:none;')
     updateBtnAxios.setAttribute('style','display:block;')
@@ -25,12 +27,14 @@ cancelBtns.forEach(cancelBtn => {
     event.preventDefault()
     const commentId = event.target.dataset.commentId
     // const commentContent = event.target.dataset.commentContent
+    const commentScroll = document.querySelector('.comment-scroll')
     const commentContent = document.querySelector(`#comment-${commentId}`).innerText
     const targetTextDiv = document.querySelector(`#edit-div${commentId}`)
     const updateBtnAxios = document.querySelector(`.update-form-axios${commentId}`)
     const updateBtn = document.querySelector(`.update-form${commentId}`)
     const targetTextArea = document.querySelector(`#edit-area${commentId}`)
     targetTextArea.value = commentContent
+    commentScroll.style.display = 'block'
     targetTextDiv.setAttribute('style','display:none;')
     updateBtnAxios.setAttribute('style','display:none;')
     updateBtn.setAttribute('style','display:block;')
@@ -64,6 +68,7 @@ updateBtnAxioses.forEach(updateBtnAxios => {
     })
     .then(response => {
       // const commentContent = event.target.dataset.commentContent
+      const commentScroll = document.querySelector('.comment-scroll')
       const targetTextDiv = document.querySelector(`#edit-div${commentId}`)
       const targetTextArea = document.querySelector(`#edit-area${commentId}`)
       targetTextArea.innerText = ''
@@ -71,6 +76,7 @@ updateBtnAxioses.forEach(updateBtnAxios => {
       targetTextDiv.setAttribute('style','display:none;')
       updateBtn.setAttribute('style','display:block;')
       updateBtnAxios.setAttribute('style','display:none;')
+      commentScroll.style.display = 'block'
 
       const data = response.data
       const commentTag = document.querySelector(`#comment-${ commentId }`)

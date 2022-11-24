@@ -17,144 +17,152 @@
     }
   </style>
   <script type="text/javascript" src="{% static "js/list.js" %}"></script>
+  <script type="text/javascript" src="{% static "js/navbar-back.js" %}"></script>
 {% endblock script %}
 
 {% block content %}
-  <div class="nav">별점 남긴 영화</div>
+  <div class="nav">{{ person.nickname }} 님이 별점 남긴 영화</div>
   <hr>
   {% comment %} 유저 프로필로 돌아가기 {% endcomment %}
-  <div class="a-align">
-    <a href="{% url 'mypage:index' person.pk %}"><img src="{% static "images/back.png" %}" alt="" class="back"></a>
-  </div>
-  <div class="box">
-    {% comment %} 별점 5점인 영화 {% endcomment %}
-    {% if movies5star %}
-      <div class="movie-list">
-        <div class="star-btn">
-          <button type="submit" class="fa fa-star my-btn checked" id="first"></button>
-          <button type="submit" class="fa fa-star my-btn checked" id="second"></button>
-          <button type="submit" class="fa fa-star my-btn checked" id="third"></button>
-          <button type="submit" class="fa fa-star my-btn checked" id="fourth"></button>
-          <button type="submit" class="fa fa-star my-btn checked" id="fifth"></button>
-        </div>
-        <div class="page-btn">
-          <form action="" id="star5-form" data-user-id="{{ user.pk }}" data-stars="5" data-stars-list="fiveList">
-            {% csrf_token %}
-            <input  TYPE="IMAGE" src="{% static "images/before.png" %}" name="Submit" value="before" class="before" id="before" align="absmiddle">
-            <input  TYPE="IMAGE" src="{% static "images/next.png" %}" name="Submit" value="next" class="next" id="next" align="absmiddle">
-          </form>
-        </div>
-        <div class="img-list" id="img-list-star5">
-          {% for movie5star in movies5star %}
-          <img src="https://image.tmdb.org/t/p/w500{{ movie5star.like_movies.poster_path }}" alt="movie img" class="movie-img">
-          {% endfor %}
-        </div>
+  <div class="box-align">
+    <div class="back-page" id="back-page">
+      <a href="{% url 'mypage:index' person.pk %}"><img src="{% static "images/back.png" %}" alt="" class="back"></a>
+    </div>
+    <div class="movie-box">
+      <div class="box">
+        {% comment %} {% if not movies5star and not movies4star and not movies3star and not movies2star and not movies1star %}
+          <p style="color:white; margin-left:650px;">별점을 남긴 영화가 없습니다.</p>
+        {% endif %} {% endcomment %}
+        {% comment %} 별점 5점인 영화 {% endcomment %}
+        {% if movies5star %}
+          <div class="movie-list">
+            <div class="stars">
+              <img src="{% static "images/star.png" %}" alt="" class="star-img">
+              <img src="{% static "images/star.png" %}" alt="" class="star-img">
+              <img src="{% static "images/star.png" %}" alt="" class="star-img">
+              <img src="{% static "images/star.png" %}" alt="" class="star-img">
+              <img src="{% static "images/star.png" %}" alt="" class="star-img">
+            </div>
+            <div class="page-btn">
+              <form action="" id="star5-form" data-user-id="{{ user.pk }}" data-stars="5" data-stars-list="fiveList">
+                {% csrf_token %}
+                <input  TYPE="IMAGE" src="{% static "images/before.png" %}" name="Submit" value="before" class="before" id="before" align="absmiddle">
+                <input  TYPE="IMAGE" src="{% static "images/next.png" %}" name="Submit" value="next" class="next" id="next" align="absmiddle">
+              </form>
+            </div>
+            <div class="img-list" id="img-list-star5">
+              {% for movie5star in movies5star %}
+                <a href="{% url 'movies:detail' movie5star.like_movies.pk %}">
+                  <img src="https://image.tmdb.org/t/p/w500{{ movie5star.like_movies.poster_path }}" alt="movie img" class="movie-img">
+                </a>
+              {% endfor %}
+            </div>
+          </div>
+        {% endif %}
       </div>
-    {% endif %}
-  </div>
-  <div class="box">
-    {% comment %} 별점 4점인 영화 {% endcomment %}
-    {% if movies4star %}
-      <div class="movie-list">
-        <div class="star-btn">
-          <button type="submit" class="fa fa-star my-btn checked" id="first"></button>
-          <button type="submit" class="fa fa-star my-btn checked" id="second"></button>
-          <button type="submit" class="fa fa-star my-btn checked" id="third"></button>
-          <button type="submit" class="fa fa-star my-btn checked" id="fourth"></button>
-          <button type="submit" class="fa fa-star my-btn" id="fifth"></button>
-        </div>
-        <div class="page-btn">
-          <form action="" id="star4-form" data-user-id="{{ user.pk }}" data-stars="4" data-stars-list="fourList">
-            {% csrf_token %}
-            <input  TYPE="IMAGE" src="{% static "images/before.png" %}" name="Submit" value="before" class="before" id="before" align="absmiddle">
-            <input  TYPE="IMAGE" src="{% static "images/next.png" %}" name="Submit" value="next" class="next" id="next" align="absmiddle">
-          </form>
-        </div>
-        <div class="img-list" id="img-list-star4">
-          {% for movie4star in movies4star %}
-            <img src="https://image.tmdb.org/t/p/w500{{ movie4star.like_movies.poster_path }}" alt="movie img" class="movie-img">
-          {% endfor %}
-        </div>
+      <div class="box">
+        {% comment %} 별점 4점인 영화 {% endcomment %}
+        {% if movies4star %}
+          <div class="movie-list">
+            <div class="stars">
+              <img src="{% static "images/star.png" %}" alt="" class="star-img">
+              <img src="{% static "images/star.png" %}" alt="" class="star-img">
+              <img src="{% static "images/star.png" %}" alt="" class="star-img">
+              <img src="{% static "images/star.png" %}" alt="" class="star-img">
+            </div>
+            <div class="page-btn">
+              <form action="" id="star4-form" data-user-id="{{ user.pk }}" data-stars="4" data-stars-list="fourList">
+                {% csrf_token %}
+                <input  TYPE="IMAGE" src="{% static "images/before.png" %}" name="Submit" value="before" class="before" id="before" align="absmiddle">
+                <input  TYPE="IMAGE" src="{% static "images/next.png" %}" name="Submit" value="next" class="next" id="next" align="absmiddle">
+              </form>
+            </div>
+            <div class="img-list" id="img-list-star4">
+              {% for movie4star in movies4star %}
+                <a href="{% url 'movies:detail' movie4star.like_movies.pk %}">
+                  <img src="https://image.tmdb.org/t/p/w500{{ movie4star.like_movies.poster_path }}" alt="movie img" class="movie-img">
+                </a>
+              {% endfor %}
+            </div>
+          </div>
+        {% endif %}
       </div>
-    {% endif %}
-  </div>
-  <div class="box">
-    {% comment %} 별점 3점인 영화 {% endcomment %}
-    {% if movies3star %}
-      <div class="movie-list">
-        <div class="star-btn">
-          <button type="submit" class="fa fa-star my-btn checked" id="first"></button>
-          <button type="submit" class="fa fa-star my-btn checked" id="second"></button>
-          <button type="submit" class="fa fa-star my-btn checked" id="third"></button>
-          <button type="submit" class="fa fa-star my-btn " id="fourth"></button>
-          <button type="submit" class="fa fa-star my-btn " id="fifth"></button>
-        </div>
-        <div class="page-btn">
-          <form action="" id="star3-form" data-user-id="{{ user.pk }}" data-stars="3" data-stars-list="threeList">
-            {% csrf_token %}
-            <input  TYPE="IMAGE" src="{% static "images/before.png" %}" name="Submit" value="before" class="before" id="before" align="absmiddle">
-            <input  TYPE="IMAGE" src="{% static "images/next.png" %}" name="Submit" value="next" class="next" id="next" align="absmiddle">
-          </form>
-        </div>
-        <div class="img-list" id="img-list-star3">
-          {% for movie3star in movies3star %}
-            <img src="https://image.tmdb.org/t/p/w500{{ movie3star.like_movies.poster_path }}" alt="movie img" class="movie-img">
-          {% endfor %}
-        </div>
+      <div class="box">
+        {% comment %} 별점 3점인 영화 {% endcomment %}
+        {% if movies3star %}
+          <div class="movie-list">
+            <div class="stars">
+              <img src="{% static "images/star.png" %}" alt="" class="star-img">
+              <img src="{% static "images/star.png" %}" alt="" class="star-img">
+              <img src="{% static "images/star.png" %}" alt="" class="star-img">
+            </div>
+            <div class="page-btn">
+              <form action="" id="star3-form" data-user-id="{{ user.pk }}" data-stars="3" data-stars-list="threeList">
+                {% csrf_token %}
+                <input  TYPE="IMAGE" src="{% static "images/before.png" %}" name="Submit" value="before" class="before" id="before" align="absmiddle">
+                <input  TYPE="IMAGE" src="{% static "images/next.png" %}" name="Submit" value="next" class="next" id="next" align="absmiddle">
+              </form>
+            </div>
+            <div class="img-list" id="img-list-star3">
+              {% for movie3star in movies3star %}
+                <a href="{% url 'movies:detail' movie3star.like_movies.pk %}">
+                  <img src="https://image.tmdb.org/t/p/w500{{ movie3star.like_movies.poster_path }}" alt="movie img" class="movie-img">
+                </a>
+              {% endfor %}
+            </div>
+          </div>
+        {% endif %}
       </div>
-    {% endif %}
-  </div>
-  <div class="box">
-    {% comment %} 별점 2점인 영화 {% endcomment %}
-    {% if movies2star %}
-      <div class="movie-list">
-        <div class="star-btn">
-          <button type="submit" class="fa fa-star my-btn checked" id="first"></button>
-          <button type="submit" class="fa fa-star my-btn checked" id="second"></button>
-          <button type="submit" class="fa fa-star my-btn " id="third"></button>
-          <button type="submit" class="fa fa-star my-btn " id="fourth"></button>
-          <button type="submit" class="fa fa-star my-btn " id="fifth"></button>
-        </div>
-        <div class="page-btn">
-          <form action="" id="star2-form" data-user-id="{{ user.pk }}" data-stars="2" data-stars-list="twoList">
-            {% csrf_token %}
-            <input  TYPE="IMAGE" src="{% static "images/before.png" %}" name="Submit" value="before" class="before" id="before" align="absmiddle">
-            <input  TYPE="IMAGE" src="{% static "images/next.png" %}" name="Submit" value="next" class="next" id="next" align="absmiddle">
-          </form>
-        </div>
-        <div class="img-list" id="img-list-star2">
-          {% for movie2star in movies2star %}
-            <img src="https://image.tmdb.org/t/p/w500{{ movie2star.like_movies.poster_path }}" alt="movie img" class="movie-img">
-          {% endfor %}
-        </div>
+      <div class="box">
+        {% comment %} 별점 2점인 영화 {% endcomment %}
+        {% if movies2star %}
+          <div class="movie-list">
+            <div class="stars">
+              <img src="{% static "images/star.png" %}" alt="" class="star-img">
+              <img src="{% static "images/star.png" %}" alt="" class="star-img">
+            </div>
+            <div class="page-btn">
+              <form action="" id="star2-form" data-user-id="{{ user.pk }}" data-stars="2" data-stars-list="twoList">
+                {% csrf_token %}
+                <input  TYPE="IMAGE" src="{% static "images/before.png" %}" name="Submit" value="before" class="before" id="before" align="absmiddle">
+                <input  TYPE="IMAGE" src="{% static "images/next.png" %}" name="Submit" value="next" class="next" id="next" align="absmiddle">
+              </form>
+            </div>
+            <div class="img-list" id="img-list-star2">
+              {% for movie2star in movies2star %}
+                <a href="{% url 'movies:detail' movie2star.like_movies.pk %}">
+                  <img src="https://image.tmdb.org/t/p/w500{{ movie2star.like_movies.poster_path }}" alt="movie img" class="movie-img">
+                </a>
+              {% endfor %}
+            </div>
+          </div>
+        {% endif %}
       </div>
-    {% endif %}
-  </div>
-  <div class="box">
-    {% comment %} 별점 1점인 영화 {% endcomment %}
-    {% if movies1star %}
-      <div class="movie-list">
-        <div class="star-btn">
-          <button type="submit" class="fa fa-star my-btn checked" id="first"></button>
-          <button type="submit" class="fa fa-star my-btn " id="second"></button>
-          <button type="submit" class="fa fa-star my-btn " id="third"></button>
-          <button type="submit" class="fa fa-star my-btn " id="fourth"></button>
-          <button type="submit" class="fa fa-star my-btn " id="fifth"></button>
-        </div>
-        <div class="page-btn">
-          <form action="" id="star1-form" data-user-id="{{ user.pk }}" data-stars="1" data-stars-list="oneList">
-            {% csrf_token %}
-            <input  TYPE="IMAGE" src="{% static "images/before.png" %}" name="Submit" value="before" class="before" id="before" align="absmiddle">
-            <input  TYPE="IMAGE" src="{% static "images/next.png" %}" name="Submit" value="next" class="next" id="next" align="absmiddle">
-          </form>
-        </div>
-        <div class="img-list" id="img-list-star1">
-          {% for movie1star in movies1star %}
-            <img src="https://image.tmdb.org/t/p/w500{{ movie1star.like_movies.poster_path }}" alt="movie img" class="movie-img">
-          {% endfor %}
-        </div>
+      <div class="box">
+        {% comment %} 별점 1점인 영화 {% endcomment %}
+        {% if movies1star %}
+          <div class="movie-list">
+            <div class="stars">
+              <img src="{% static "images/star.png" %}" alt="" class="star-img">
+            </div>
+            <div class="page-btn">
+              <form action="" id="star1-form" data-user-id="{{ user.pk }}" data-stars="1" data-stars-list="oneList">
+                {% csrf_token %}
+                <input  TYPE="IMAGE" src="{% static "images/before.png" %}" name="Submit" value="before" class="before" id="before" align="absmiddle">
+                <input  TYPE="IMAGE" src="{% static "images/next.png" %}" name="Submit" value="next" class="next" id="next" align="absmiddle">
+              </form>
+            </div>
+            <div class="img-list" id="img-list-star1">
+              {% for movie1star in movies1star %}
+                <a href="{% url 'movies:detail' movie1star.like_movies.pk %}">
+                  <img src="https://image.tmdb.org/t/p/w500{{ movie1star.like_movies.poster_path }}" alt="movie img" class="movie-img">
+                </a>
+              {% endfor %}
+            </div>
+          </div>
+        {% endif %}
       </div>
-    {% endif %}
+    </div>
   </div>
     
 {% endblock content %}

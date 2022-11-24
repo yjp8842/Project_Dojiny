@@ -6,24 +6,38 @@
 {% endblock css %}
 
 {% block script %}
-
+  <script type="text/javascript" src="{% static "js/navbar-back.js" %}"></script>
 {% endblock script %}
 
 {% block content %}
-  <div class="nav">팔로우한 감독 LIST</div>
+  <div class="nav">{{ person.nickname }} 님이 팔로우한 감독 LIST</div>
   <hr>
-  <div class="back-page">
-    <a href="http://127.0.0.1:8000/mypage/{{person.pk}}/profile"><img src="{% static "images/back.png" %}" alt="" class="back"></a>
-  </div>
-  <div class="box">
-    {% for director in directors %}
-      <div class="director-box">
-        {% if director.profile_image %}
-          <img src="{{ director.profile_image.url }}" alt="" class="director-img">
-        {% endif %}
-        <p>{{ director }} 감독</p>
-        <p>최근 게시글 : <a href="http://127.0.0.1:8000/behinds/{{ director.behind_set.all.last.pk }}/detail/">{{ director.behind_set.all.last.title }}</a></p>
-      </div>
-    {% endfor %}
+  <div class="box-align">
+    <div class="back-page" id="back-page">
+      <a href="http://127.0.0.1:8000/mypage/{{person.pk}}/profile"><img src="{% static "images/back.png" %}" alt="" class="back"></a>
+    </div>
+    <div class="box">
+      {% if directors %}
+        {% for director in directors %}
+          <div class="director-box">
+            <div class="director-profile">
+              {% if director.profile_image %}
+                <img src="{{ director.profile_image.url }}" alt="" class="director-img">
+              {% endif %}
+              <p>{{ director }} 감독</p>
+            </div>
+            <p>최근 게시글</p>
+            {% if director.behind_set.all.last.title|length > 30 %}
+              <a href="http://127.0.0.1:8000/behinds/{{ director.behind_set.all.last.pk }}/detail/">{{ director.behind_set.all.last.title | slice:"31" }} ...</a>
+            {% else %}
+              <a href="http://127.0.0.1:8000/behinds/{{ director.behind_set.all.last.pk }}/detail/">{{ director.behind_set.all.last.title }}</a>
+            {% endif %}
+          </div>
+        {% endfor %}
+      {% else %}
+        <p style="color:white; margin-top:150px; margin-left: 500px;">팔로우한 감독이 없습니다.</p>
+      {% endif %}
+      
+    </div>
   </div>
 {% endblock content %}

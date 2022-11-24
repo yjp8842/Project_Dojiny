@@ -5,7 +5,19 @@
   <link rel="stylesheet" href="{% static 'css/create.css' %}">
 {% endblock css %}
 
+{% block script %}
+  <script type="text/javascript" src="{% static "js/create-alert.js" %}"></script>
+{% endblock script %}
+
 {% block content %}
+<div class="create-alert" id="create-alert">
+  <div class="create-alert-modal">
+    {% for message in messages %}
+      <p class="alert-message">{{ message }}</p>
+    {% endfor %}
+  </div>
+</div>
+
   <div class="nav">
     감독 비하인드 수정 페이지
   </div>
@@ -23,14 +35,6 @@
       <input type="submit" class="submit-btn">
       {% comment %} <input type="submit" value="제출" class="submit-btn"> {% endcomment %}
     </form>
-  </div>
-  {% for message in messages %}
-    {{ message }}
-  {% endfor %}  
+  </div> 
   <a href="{% url 'behinds:detail' behind.pk %}"><img src="{% static "images/back.png" %}" alt=""></a>
 {% endblock content %}
-
-{% block script %}
-
-
-{% endblock script %}

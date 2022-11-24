@@ -21,7 +21,7 @@ def index(request):
             behind_name = get_user_model().objects.filter(username__icontains=inputContent)
             if len(inputContent) > 0 and len(behind_name) > 0:
                 for user in behind_name:
-                    targetBehinds = user.behind_set.filter(user=user.pk)
+                    targetBehinds = user.behind_set.filter(user=user.pk).order_by('-pk')
                     for targetbehind in targetBehinds:
                         item = {
                             'pk': targetbehind.pk,
@@ -30,7 +30,7 @@ def index(request):
                         }
                         data.append(item)
 
-            behinds_title = Behind.objects.filter(title__icontains = inputContent)
+            behinds_title = Behind.objects.filter(title__icontains = inputContent).order_by('-pk')
             if len(inputContent) > 0 and len(behinds_title) > 0:
                 for behind in behinds_title:
                     item = {
@@ -46,7 +46,7 @@ def index(request):
                     if flag :
                         data.append(item)
 
-            behinds_content = Behind.objects.filter(content__icontains = inputContent)
+            behinds_content = Behind.objects.filter(content__icontains = inputContent).order_by('-pk')
             if len(inputContent) > 0 and len(behinds_content) > 0:
                 for behind in behinds_content:
                     item = {
@@ -68,6 +68,8 @@ def index(request):
     else:
         recentBehinds = Behind.objects.all().order_by('-pk')
         popularBehinds = Behind.objects.annotate(popular_count=Count('like_user')).order_by('-popular_count')
+        print(popularBehinds)
+        # popularBehinds = Behind.objects.annotate(popular_count=Count('like_user')).order_by('-popular_count')
         context = {
             'recentBehinds': recentBehinds,
             'popularBehinds': popularBehinds,
@@ -94,13 +96,20 @@ def create(request):
                 behind.save()
                 return redirect('behinds:index')
             else:
+                beforeTitle = request.POST.get("title")[0:50]
+                beforeContent = request.POST.get("content")
                 if len(request.POST.get('title')) > 50:
                     messages.add_message(request, messages.ERROR, '제목은 최대 50자까지 작성이 가능합니다.')
                 if(request.POST.get("content").strip() == ''):
                     messages.add_message(request, messages.ERROR, '본문을 입력해 주세요')
                 if (request.POST.get("title").strip() == ''):
                     messages.add_message(request, messages.ERROR, '제목을 입력해 주세요')
-            return render(request, 'behinds/create.html')
+                context = {
+                    'flag' : True,
+                    "beforeTitle" : beforeTitle,
+                    "beforeContent" : beforeContent,
+                }
+            return render(request, 'behinds/create.html', context)
         else:
             return render(request, 'behinds/create.html')
     # 로그인을 했지만 권한이 없는 사용자
