@@ -32,8 +32,7 @@
       <p>{{ behind.content }}</p>
     </div>
     
-
-
+    {% comment %} comment {% endcomment %}
     <div class="second-box">
       <p class="comment-info">댓글 작성</p>
       <form action="{% url 'behinds:comment_create' behind.pk %}"  method="POST" class="form">
@@ -83,7 +82,6 @@
               </div>
             </div>
             <div id="edit-div{{ comment.pk }}" style="display:none;">
-              {% comment %} <textarea id="edit-area{{ comment.pk }}" cols="30" rows="10"></textarea> {% endcomment %}
               <input type="text" id="edit-area{{ comment.pk }}" class="edit-input">
             </div>
             {% comment %} 댓글 나오는 부분 {% endcomment %}

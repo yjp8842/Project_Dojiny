@@ -10,6 +10,7 @@
 {% endblock script %}
 
 {% block content %}
+{% comment %} alert modal 부분 {% endcomment %}
   <div class="create-alert" id="create-alert">
     <div class="create-alert-modal">
       {% for message in messages %}
@@ -18,13 +19,13 @@
     </div>
   </div>
 
+  {% comment %} 감독 비하인드 작성 {% endcomment %}
   <div class="nav">감독 비하인드 작성 페이지</div>
   <hr>
   <div class="form-box">
     <form action="{% url 'behinds:create' %}" method="POST">
       {% csrf_token %}
       <div class="title">
-        {% comment %} <label for="title">Title: </label> {% endcomment %}
         {% if flag %}
           <input type="text" name="title" id="title" value = "{{ beforeTitle }}">
         {% else %}
@@ -32,16 +33,13 @@
         {% endif %}
       </div>
       <div class="content">
-        {% comment %} <label for="content">Content: </label> {% endcomment %}
         {% if flag %}
           <textarea id="content" name="content" cols="30" rows="10">{{ beforeContent }}</textarea>
         {% else %}
           <textarea id="content" name="content" cols="30" rows="10" placeholder="내용을 입력하세요."></textarea>
         {% endif %}
-        {% comment %} <input type="text" name="content" id="content" placeholder = "   내용을 입력하세요."> {% endcomment %}
       </div>
       <input type="submit" class="submit-btn" value="작성하기">
-      {% comment %} <input type="submit" value="제출" class="submit-btn"> {% endcomment %}
     </form>
   </div>
   <a href="{% url 'behinds:index' %}"><img src="{% static "images/back.png" %}" alt="" class="back"></a>

@@ -69,7 +69,7 @@ class CustomUserCreationForm(UserCreationForm):
         widget=forms.TextInput(
             attrs = {
                 'class': 'form-control', 
-                'style': 'width: 90%;' 'height: 40px;' 'border: none;' 'border-radius: 10px;' 'background-color: #D9D9D9;' 'font-family: login;' 'padding-left: 10px;',
+                'style': 'width: 90%;' 'height: 40px;' 'border: 3px solid black;' 'border-radius: 20px;' 'background-color: white;' 'font-family: login;' 'padding-left: 10px;',
             }
         ),
     )
@@ -81,7 +81,7 @@ class CustomUserCreationForm(UserCreationForm):
         widget=forms.TextInput(
             attrs = {
                 'class': 'form-control', 
-                'style': 'width: 90%;' 'height: 40px;' 'border: none;' 'border-radius: 10px;' 'background-color: #D9D9D9;' 'font-family: login;' 'padding-left: 10px;',
+                'style': 'width: 90%;' 'height: 40px;' 'border: 3px solid black;' 'border-radius: 20px;' 'background-color: white;' 'font-family: login;' 'padding-left: 10px;',
                 'placeholder': '미기입시 유저이름으로 생성. 이후 개인정보페이지에서 수정 가능.'
             }
         ),
@@ -94,7 +94,7 @@ class CustomUserCreationForm(UserCreationForm):
         widget=forms.TextInput(
             attrs = {
                 'class': 'form-control', 
-                'style': 'width: 90%;' 'height: 40px;' 'border: none;' 'border-radius: 10px;' 'background-color: #D9D9D9;' 'font-family: login;' 'padding-left: 10px;',
+                'style': 'width: 90%;' 'height: 40px;' 'border: 3px solid black;' 'border-radius: 20px;' 'background-color: white;' 'font-family: login;' 'padding-left: 10px;',
             }
         ),
     )
@@ -104,7 +104,7 @@ class CustomUserCreationForm(UserCreationForm):
         widget=forms.PasswordInput(
             attrs = {
                 'class': 'form-control', 
-                'style': 'width: 90%;' 'height: 40px;' 'border: none;' 'border-radius: 10px;' 'background-color: #D9D9D9;' 'font-family: login;' 'padding-left: 10px;',
+                'style': 'width: 90%;' 'height: 40px;' 'border: 3px solid black;' 'border-radius: 20px;' 'background-color: white;' 'font-family: login;' 'padding-left: 10px;',
             }
         ),
     )

@@ -10,6 +10,7 @@
 {% endblock script %}
 
 {% block content %}
+  {% comment %} update error alert 띄우는 부분 {% endcomment %}
   <div class="update-alert" id="update-alert">
     <div class="update-alert-modal">
       {% for message in messages %}

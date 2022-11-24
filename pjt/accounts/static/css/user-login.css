@@ -1,0 +1,154 @@
+/* 공통 */
+@font-face {
+  font-family: 'login';
+  src: url('../font/LINESeedKR-Bd.ttf') format('truetype');
+}
+
+body {
+  background-color: black;
+  height: 98vh;
+  font-family: login;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.login-tag {
+  display: flex;
+  justify-content: space-evenly;
+}
+
+.a {
+  text-decoration: none;
+  color: black;
+}
+
+.active {
+  color: #c5c5c5;
+}
+
+.input {
+  margin-top: 10px;
+  margin-left: 20px;
+}
+
+.margin {
+  margin-top: 30px;
+}
+
+.submit {
+  display: flex;
+  justify-content: center;
+}
+
+.submit-btn {
+  width: 80px;
+  height: 45px;
+  border: 3px solid black;
+  border-radius: 20px;
+  background-color: white;
+  font-family: login;
+  cursor: pointer;
+  transition: 0.5s;
+  box-shadow: 5px 5px #5d5d5d;
+}
+
+.submit-btn:hover {
+  transform: scale(1.1);
+}
+
+#id_username,
+#id_password {
+  width: 90%;
+  height: 40px;
+  border: none;
+  border-radius: 10px;
+  background-color: #D9D9D9;
+  font-family: login;
+  padding-left: 10px;
+}
+
+#id_username,
+#id_nickname,
+#id_email,
+#id_password1,
+#id_password {
+  background-color: #f5f5f5 !important;
+  font-family: login !important;
+  width: 85% !important;
+  box-shadow: 5px 5px #5d5d5d;
+  border: 3px solid black !important;
+  border-radius: 20px !important;
+  padding-left: 20px !important;
+}
+
+#id_username:focus,
+#id_nickname:focus,
+#id_email:focus,
+#id_password1:focus,
+#id_password:focus {
+  outline: none;
+}
+
+#id_nickname::placeholder {
+  font-size: smaller;
+}
+
+/* SIGNUP */
+.signup {
+  width: 420px;
+  height: 520px;
+  background-color: #ECECEC;
+  padding: 30px;
+  box-shadow: 10px 10px #7d7d7d;
+  border: 5px solid black;
+  border-radius: 80px;
+}
+
+.check {
+  margin-left: 25px;
+}
+
+/* SIGNIN */
+.signin {
+  width: 420px;
+  height: 350px;
+  background-color: #ECECEC;
+  padding: 30px;
+  box-shadow: 10px 10px #7d7d7d;
+  border: 5px solid black;
+  border-radius: 80px;
+}
+
+/* alert modal 부분 */
+.login-alert {
+  width: 99.2%;
+  height: 98%;
+  position: absolute;
+  display: none;
+  background-color: rgba(0, 0, 0, 0.8);
+}
+
+.login-alert-modal {
+  width: 28rem;
+  height: 5rem;
+  position: absolute;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  top: 50%;
+  left: 50%;
+  padding: 30px;
+  background-color: #f5f5f5;
+  border-radius: 50px;
+  transform: translateX(-50%) translateY(-50%);
+  box-shadow: 10px 10px #d9d9d9;
+}
+
+.alert-message {
+  width: 85%;
+  height: fit-content;
+  margin-left: 30px;
+  font-size: small;
+}

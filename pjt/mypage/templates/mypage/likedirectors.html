@@ -10,7 +10,7 @@
 {% endblock script %}
 
 {% block content %}
-  <div class="nav">{{ person.nickname }} 님이 팔로우한 감독 LIST</div>
+  <div class="nav">{{ person.nickname }} 님이 팔로우한 감독</div>
   <hr>
   <div class="box-align">
     <div class="back-page" id="back-page">
@@ -35,9 +35,8 @@
           </div>
         {% endfor %}
       {% else %}
-        <p style="color:white; margin-top:150px; margin-left: 500px;">팔로우한 감독이 없습니다.</p>
+        <p style="color:#d9d9d9; margin-top:150px; margin-left: 500px;">팔로우한 감독이 없습니다.</p>
       {% endif %}
-      
     </div>
   </div>
 {% endblock content %}

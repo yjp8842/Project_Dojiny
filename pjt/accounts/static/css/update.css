@@ -12,7 +12,6 @@ body {
 
 .nav {
   width: 90%;
-  /* height: 100px; */
   height: 5rem;
   margin-top: 0;
   padding-left: 10%;
@@ -24,39 +23,17 @@ body {
 
 .box {
   width: 100%;
-  /* height: 100%; */
   display: flex;
-  /* flex-direction: column; */
   justify-content: center;
   margin-top: 50px;
 }
 
 .update-box {
   width: 70rem;
-  /* height: 35rem;
-  background-color: #d9d9d9; */
 }
 
-#id_username {
-  background-color: #f5f5f5 !important;
-  font-family: update !important;
-  width: 90% !important;
-  box-shadow: 5px 5px #5d5d5d;
-  border: 3px solid black !important;
-  border-radius: 20px !important;
-  padding-left: 20px !important;
-}
-
-#id_nickname {
-  background-color: #f5f5f5 !important;
-  font-family: update !important;
-  width: 90% !important;
-  box-shadow: 5px 5px #5d5d5d;
-  border: 3px solid black !important;
-  border-radius: 20px !important;
-  padding-left: 20px !important;
-}
-
+#id_username,
+#id_nickname,
 #id_email {
   background-color: #f5f5f5 !important;
   font-family: update !important;
@@ -67,24 +44,7 @@ body {
   padding-left: 20px !important;
 }
 
-#update-form li {
-  display: none;
-}
-
-#id_new_password1 {
-  width: 90%;
-  height: 40px;
-  border: none;
-  border-radius: 10px;
-  background-color: #f5f5f5;
-  font-family: update;
-  padding-left: 10px;
-  box-shadow: 5px 5px #5d5d5d;
-  border: 3px solid black !important;
-  border-radius: 20px !important;
-  padding-left: 20px !important;
-}
-
+#id_new_password1,
 #id_new_password2 {
   width: 90%;
   height: 40px;
@@ -99,47 +59,14 @@ body {
   padding-left: 20px !important;
 }
 
-.input {
-  line-height: 40px;
-  margin-bottom: 20px;
-}
-
-.middle {
-  display: flex;
-  margin-bottom: 50px;
-  justify-content: center;
-}
-
 #update-form {
   display: flex;
   flex-direction: column;
   align-items: flex-end;
 }
 
-.first {
-  width: 30rem;
-  margin-right: 50px;
-}
-
-.submit-btn {
-  width: 70px;
-  height: 40px;
-  border-radius: 20px;
-  font-family: update;
-  margin-right: 90px;
-  box-shadow: 5px 5px #5d5d5d;
-  cursor: pointer;
-}
-
-.submit-btn:hover {
-  transform: scale(1.1);
-}
-
-.back {
-  width: 30px;
-  height: 30px;
-  margin-top: 110px;
-  margin-left: 30px;
+#update-form li {
+  display: none;
 }
 
 #img-update {
@@ -157,6 +84,45 @@ body {
   margin-left: 10px;
 }
 
+.middle {
+  display: flex;
+  margin-bottom: 50px;
+  justify-content: center;
+}
+
+.first {
+  width: 30rem;
+  margin-right: 50px;
+}
+
+.input {
+  line-height: 40px;
+  margin-bottom: 20px;
+}
+
+.submit-btn {
+  width: 90px;
+  height: 45px;
+  border-radius: 20px;
+  font-family: update;
+  margin-right: 80px;
+  box-shadow: 5px 5px #5d5d5d;
+  cursor: pointer;
+  transition: 0.5s;
+}
+
+.submit-btn:hover {
+  transform: scale(1.1);
+}
+
+.back {
+  width: 30px;
+  height: 30px;
+  margin-top: 110px;
+  margin-left: 30px;
+}
+
+/* alert modal 부분 */
 .update-alert {
   width: 99.2%;
   height: 98%;

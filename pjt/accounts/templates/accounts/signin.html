@@ -5,10 +5,11 @@
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <link rel="stylesheet" href="{% static "css/signup.css" %}">
-  <title>Document</title>
+  <link rel="stylesheet" href="{% static "css/user-login.css" %}">
+  <title>SIGNIN</title>
 </head>
 <body>
+  {% comment %} error alert 띄우는 부분 {% endcomment %}
   <div class="login-alert" id="login-alert">
     <div class="login-alert-modal">
       {% for message in messages %}
@@ -17,6 +18,7 @@
     </div>
   </div>
 
+  {% comment %} 로그인하는 부분 {% endcomment %}
   <div class="signin">
     <div class="login-tag">
       <a href="{% url 'accounts:signup' %}" class="a active"><h1>SIGN UP</h1></a>

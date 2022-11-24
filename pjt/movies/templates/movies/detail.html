@@ -5,23 +5,9 @@
   <link rel="stylesheet" href="{% static "css/movie-detail.css" %}">
 {% endblock css %}
 
-
 {% block script %}
-  <style>
-    .checked {
-      color: blue;
-    }
-    .my-btn {
-      background-color: inherit !important;
-      border : 0 !important;
-      filter: invert(100%);
-      margin-left: -4px;
-    }
-  </style>
   <script type="text/javascript" src="{% static "js/stars.js" %}"></script>
-
 {% endblock script %}
-
 
 {% block content %}
   <div class="nav">{{ movie.title }}</div>

@@ -31,6 +31,10 @@ body {
   overflow-y: scroll;
 }
 
+.detail-box::-webkit-scrollbar {
+  display: none;
+}
+
 .behind-title {
   width: 560px;
   word-wrap: break-word;
@@ -38,10 +42,6 @@ body {
 
 .second-box {
   margin-top: 140px;
-}
-
-.detail-box::-webkit-scrollbar {
-  display: none;
 }
 
 .btn {
@@ -63,7 +63,6 @@ button {
   border: none; 
   background-color: #f5f5f5;
   cursor: pointer;
-  /* margin-bottom: 15px; */
 }
 
 .img {
@@ -90,10 +89,6 @@ hr {
   margin-bottom: 40px;
   margin-left: 20px;
   padding: 13px;
-  /* border-top: none;
-  border-left: none;
-  border-right: none;
-  border-bottom: 2px solid #f5f5f5; */
   border: 3px solid white;
   border-radius: 30px;
   background: black;
@@ -120,10 +115,6 @@ hr {
   padding-right: 30px;
 }
 
-/* .comments::-webkit-scrollbar {
-  display: none;
-} */
-
 .comments::-webkit-scrollbar {
   width: 5px;
 }
@@ -141,8 +132,6 @@ hr {
 .comment-box {
   width: 29rem;
   height: 40px;
-  /* overflow-y: scroll; */
-  /* height: fit-content; */
   background-color: #f5f5f5;
   border-radius: 40px;
   margin-bottom: 30px;
@@ -150,7 +139,6 @@ hr {
   padding-left: 25px;
   padding-right: 25px;
   padding-bottom: 45px;
-  /* font-size: 10px; */
   box-shadow: 7px 7px #d9d9d9;
 }
 
@@ -182,7 +170,6 @@ hr {
   margin-top: 840px;
   margin-left: 30px;
   position: fixed;
-  /* margin-bottom: 30px; */
 }
 
 .update-btn {
@@ -213,17 +200,12 @@ hr {
 .comment-scroll {
   width: 100%;
   height: 100%;
-  /* margin-bottom: 20px; */
   padding-top: 10px;
   padding-right: 10px;
   padding-left: 10px;
   word-wrap: break-word;
   overflow-y: scroll;
 }
-
-/* .comment-scroll::-webkit-scrollbar {
-  display: none;
-} */
 
 .comment-scroll::-webkit-scrollbar {
   width: 5px;
@@ -242,7 +224,6 @@ hr {
   border-bottom: 2px solid rgb(79, 79, 79);
   font-family: detail;
   font-size: small;
-  /* margin-bottom: 5px; */
   margin-left: 20px;
   color: #808080;
 }
@@ -265,12 +246,10 @@ hr {
   margin-right: 3px;
   color: black;
   font-size: medium;
-  /* text-decoration: none; */
 }
 
 .nickname {
   margin-right: 3px;
   color: black;
   font-size: small;
-  /* text-decoration: none; */
 }

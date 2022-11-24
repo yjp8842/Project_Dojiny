@@ -10,27 +10,13 @@ body {
   font-family: behind;
 }
 
-.img {
-  width: 30px;
-  height: 30px;
-  margin-left: 40px;
-}
-
-.back {
-  width: 30px;
-  height: 30px;
-  margin-left: 40px;
-}
-
 .nav {
   width: 90%;
-  /* height: 100px; */
   height: 4.5rem;
   margin-top: 0;
   padding-left: 10%;
   padding-top: 5%;
   padding-bottom: 2%;
-  /* background-image: url("../images/behinds.jpg"); */
   font-size: 2.5em;
   color: white;
 }
@@ -55,7 +41,6 @@ form {
   justify-content: center;
   align-items: flex-end;
   flex-direction: column;
-  /* margin-top: 20px; */
 }
 
 .form-box {
@@ -78,7 +63,6 @@ form {
 .title {
   width: 100%;
   height: 5rem;
-  /* margin-top: 10px; */
   margin-bottom: 30px;
 }
 
@@ -109,15 +93,26 @@ form {
   font-family: behind;
   font-size: medium;
   cursor: pointer;
-  /* transition: 0.5s; */
   box-shadow: 5px 5px #5d5d5d;
 }
 
 .submit-btn:hover {
   background-color: #D9D9D9;
-  /* color: white; */
 }
 
+.img {
+  width: 30px;
+  height: 30px;
+  margin-left: 40px;
+}
+
+.back {
+  width: 30px;
+  height: 30px;
+  margin-left: 40px;
+}
+
+/* alert modal 부분 */
 .create-alert {
   width: 99.2%;
   height: 98%;

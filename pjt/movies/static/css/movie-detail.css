@@ -10,21 +10,8 @@ body {
   color: white;
 }
 
-.movie-img {
-  width: 25rem;
-  height: 35rem;
-  border-radius: 10px;
-  box-shadow: 10px 10px #d9d9d9;
-}
-
-.back-a {
-  width: 30px;
-  height: 30px;
-}
-
 .nav {
   width: 90%;
-  /* height: 100px; */
   height: 5rem;
   margin-top: 0;
   padding-left: 10%;
@@ -38,6 +25,18 @@ body {
   display: flex;
   justify-content: center;
   margin-top: 50px;
+}
+
+.movie-img {
+  width: 25rem;
+  height: 35rem;
+  border-radius: 10px;
+  box-shadow: 10px 10px #d9d9d9;
+}
+
+.back-a {
+  width: 30px;
+  height: 30px;
 }
 
 .info {
@@ -81,4 +80,15 @@ body {
 .star {
   margin-top: 10px;
   margin-bottom: 60px;
+}
+
+.checked {
+  color: blue;
+}
+
+.my-btn {
+  background-color: inherit !important;
+  border : 0 !important;
+  filter: invert(100%);
+  margin-left: -4px;
 }
