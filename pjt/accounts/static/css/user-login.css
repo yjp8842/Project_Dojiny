@@ -147,8 +147,9 @@ body {
 }
 
 .alert-message {
-  width: 85%;
+  width: 100%;
   height: fit-content;
-  margin-left: 30px;
-  font-size: small;
+  margin-left: auto;
+  font-size: medium;
+  text-align: center;
 }
