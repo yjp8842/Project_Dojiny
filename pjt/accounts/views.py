@@ -28,7 +28,7 @@ def signin(request):
             auth_login(request, form.get_user())
             return redirect(request.GET.get('next') or 'http://127.0.0.1:8000/menu/')
         else:
-            if User.objects.filter(username=request.POST.get('username')).exists():
+            if User.objects.filter(username=request.POST.get('username')).exists() or User.objects.filter(email=request.POST.get('username')).exists():
                 messages.add_message(request, messages.ERROR, '올바른 비밀번호를 입력하세요.')
             else:
                 messages.add_message(request, messages.ERROR, '올바른 유저네임 또는 올바른 비밀번호를 입력하세요.')
